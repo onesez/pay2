@@ -20,7 +20,13 @@ public class ReflectionUtil {
 			}
 		}
 		
-		return methodMap.getOrDefault(clazz.getName(), MethodAccess.get(clazz));
+		Object obj = methodMap.get(clazz.getName());
+		
+		if(null == obj) {
+			return null;
+		}
+		
+		return (MethodAccess)obj;
 	}
 	
   
@@ -34,7 +40,7 @@ public class ReflectionUtil {
 			}
 		}
 		
-		return (ConstructorAccess<T>) objMap.getOrDefault(clazz.getName(), ConstructorAccess.get(clazz));
+		return (ConstructorAccess<T>) objMap.get(clazz.getName());
 	}
 	
 	public static <T> T getInstance(Class<T> clazz) {
@@ -89,7 +95,7 @@ public class ReflectionUtil {
     	}
     }
 	
-	//»ñÈ¡¶ÔÏóµÄÊôÐÔ  
+	//ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½  
     public static Object getFieldValue(Object obj, String fieldName){  
         Field field=getDeclaredField(obj, fieldName);  
         if(field==null){  
@@ -108,7 +114,7 @@ public class ReflectionUtil {
 		return result;  
     }
     
-	//ÉèÖÃ¶ÔÏóµÄÊôÐÔ  
+	//ï¿½ï¿½ï¿½Ã¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½  
     public static void setFieldValue(Object obj, String fieldName, Object value){  
         Field field=getDeclaredField(obj, fieldName);  
         if(field==null){  
@@ -125,14 +131,14 @@ public class ReflectionUtil {
           
     }
       
-    //ÅÐ¶ÏfieldµÄÐÞÊÎ·ûÊÇ·ñÊÇpublic,²¢¾Ý´Ë¸Ä±äfieldµÄ·ÃÎÊÈ¨ÏÞ  
+    //ï¿½Ð¶ï¿½fieldï¿½ï¿½ï¿½ï¿½ï¿½Î·ï¿½ï¿½Ç·ï¿½ï¿½ï¿½public,ï¿½ï¿½ï¿½Ý´Ë¸Ä±ï¿½fieldï¿½Ä·ï¿½ï¿½ï¿½È¨ï¿½ï¿½  
     public static void makeAccessiable(Field field){  
         if(!Modifier.isPublic(field.getModifiers())){  
             field.setAccessible(true);  
         }  
     }  
       
-    //»ñÈ¡fieldÊôÐÔ£¬ÊôÐÔÓÐ¿ÉÄÜÔÚ¸¸ÀàÖÐ¼Ì³Ð  
+    //ï¿½ï¿½È¡fieldï¿½ï¿½ï¿½Ô£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¿ï¿½ï¿½ï¿½ï¿½Ú¸ï¿½ï¿½ï¿½ï¿½Ð¼Ì³ï¿½  
     public static Field getDeclaredField(Object obj, String fieldName){  
     	
         for(Class<?> clazz=obj.getClass(); clazz!=Object.class; clazz=clazz.getSuperclass()){  

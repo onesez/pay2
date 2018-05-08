@@ -15,35 +15,99 @@
 		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
 			connectionURL="jdbc:mysql://localhost:3306/pay2" userId="root" password="linlurui">
 		</jdbcConnection>
-		
+
 		<!-- 默认false，把JDBC DECIMAL 和 NUMERIC 类型解析为 Integer，为 true时把JDBC DECIMAL 和 NUMERIC 类型解析为java.math.BigDecimal -->
 		<javaTypeResolver>
-			<property name="forceBigDecimals" value="false" />
+			<property name="forceBigDecimals" value="true" />
 		</javaTypeResolver>
 
 		<!-- targetProject:生成PO类的位置 -->
-		<javaModelGenerator targetPackage="ccait.entity" targetProject=".\src">
+		<javaModelGenerator targetPackage="entity.query.entity" targetProject=".\src">
 			<!-- enableSubPackages:是否让schema作为包的后缀 -->
 			<property name="enableSubPackages" value="false" />
 			<!-- 从数据库返回的值被清理前后的空格 -->
 			<property name="trimStrings" value="true" />
 		</javaModelGenerator>
         <!-- targetProject:mapper映射文件生成的位置 -->
-		<sqlMapGenerator targetPackage="ccait.mybatis.map" targetProject=".\src">
+		<sqlMapGenerator targetPackage="entity.query.mybatis.map" targetProject=".\src">
 			<!-- enableSubPackages:是否让schema作为包的后缀 -->
 			<property name="enableSubPackages" value="false" />
 		</sqlMapGenerator>
 		<!-- targetPackage：mapper接口生成的位置 -->
-		<javaClientGenerator type="XMLMAPPER" targetPackage="ccait.mybatis.map" targetProject=".\src">
+		<javaClientGenerator type="XMLMAPPER" targetPackage="entity.query.mybatis.map" targetProject=".\src">
 			<!-- enableSubPackages:是否让schema作为包的后缀 -->
 			<property name="enableSubPackages" value="false" />
 		</javaClientGenerator>
 		<!-- 指定数据库表 -->
+		<table schema="" tableName="admin_log">
+			<property name="rootClass" value="entity.query.Queryable&lt;AdminLog&gt;" />
+		</table>
+		<table schema="" tableName="auth_group_access">
+			<property name="rootClass" value="entity.query.Queryable&lt;AuthGroupAccess&gt;" />
+		</table>
+		
+		<table schema="" tableName="auth_rule">
+			<property name="rootClass" value="entity.query.Queryable&lt;AuthRule&gt;" />
+		</table>
+		<table schema="" tableName="bank">
+			<property name="rootClass" value="entity.query.Queryable&lt;Bank&gt;" />
+		</table>
+		<table schema="" tableName="bankcode">
+			<property name="rootClass" value="entity.query.Queryable&lt;Bankcode&gt;" />
+		</table>
+		
+		<table schema="" tableName="client">
+			<property name="rootClass" value="entity.query.Queryable&lt;Client&gt;" />
+		</table>
+		<table schema="" tableName="closelist">
+			<property name="rootClass" value="entity.query.Queryable&lt;Closelist&gt;" />
+		</table>
+		<table schema="" tableName="deduct">
+			<property name="rootClass" value="entity.query.Queryable&lt;Ceduct&gt;" />
+		</table>
+		
+		<table schema="" tableName="drawlist">
+			<property name="rootClass" value="entity.query.Queryable&lt;Drawlist&gt;" />
+		</table>
+		<table schema="" tableName="jdbank">
+			<property name="rootClass" value="entity.query.Queryable&lt;Jdbank&gt;" />
+		</table>
+		<table schema="" tableName="notice">
+			<property name="rootClass" value="entity.query.Queryable&lt;Notice&gt;" />
+		</table>
+		
+		<table schema="" tableName="order_user">
+			<property name="rootClass" value="entity.query.Queryable&lt;OrderUser&gt;" />
+		</table>
+		<table schema="" tableName="orderlist">
+			<property name="rootClass" value="entity.query.Queryable&lt;Orderlist&gt;" />
+		</table>
+		<table schema="" tableName="platform">
+			<property name="rootClass" value="entity.query.Queryable&lt;Platform&gt;" />
+		</table>
+		
+		<table schema="" tableName="platform_profile">
+			<property name="rootClass" value="entity.query.Queryable&lt;PlatformProfile&gt;" />
+		</table>
+		<table schema="" tableName="product">
+			<property name="rootClass" value="entity.query.Queryable&lt;Product&gt;" />
+		</table>
+		<table schema="" tableName="random">
+			<property name="rootClass" value="entity.query.Queryable&lt;Random&gt;" />
+		</table>
+		
+		<table schema="" tableName="rate">
+			<property name="rootClass" value="entity.query.Queryable&lt;Rate&gt;" />
+		</table>
+		<table schema="" tableName="role">
+			<property name="rootClass" value="entity.query.Queryable&lt;Role&gt;" />
+		</table>
 		<table schema="" tableName="user">
 			<property name="rootClass" value="entity.query.Queryable&lt;User&gt;" />
 		</table>
-		<table schema="" tableName="auth">
-			<property name="rootClass" value="entity.query.Queryable&lt;Auth&gt;" />
+		
+		<table schema="" tableName="yl_id">
+			<property name="rootClass" value="entity.query.Queryable&lt;YlId&gt;" />
 		</table>
 		<!-- 有些表的字段需要指定java类型
 		 <table schema="" tableName="">

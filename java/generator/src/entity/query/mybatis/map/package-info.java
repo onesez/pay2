@@ -5,4 +5,4 @@
  * @author Auser
  *
  */
-package ccait.entity;
+package entity.query.mybatis.map;
