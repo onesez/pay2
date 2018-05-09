@@ -1,0 +1,549 @@
+[ 2018-05-07T00:01:31+08:00 ] ::1 /pay2/index.php/Admin/Draw/daifu.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000040s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000396s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000448s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000506s ]
+SQL: SHOW COLUMNS FROM `user` [ RunTime:0.0028s ]
+SQL: SELECT * FROM `user` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0011s ]
+SQL: SHOW COLUMNS FROM `admin_log` [ RunTime:0.0011s ]
+SQL: SELECT `log_ip`,`log_time` FROM `admin_log` WHERE `user_id` = 1 ORDER BY log_id desc LIMIT 1,1   [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `orderlist` [ RunTime:0.0013s ]
+SQL: SELECT SUM(pay_to_member) AS tp_sum FROM `orderlist` WHERE ( 1=1 ) AND `creat_time` BETWEEN '1525622400' AND '1525622491' AND `pay_state` = '1' LIMIT 1   [ RunTime:0.0006s ]
+SQL: SHOW COLUMNS FROM `auth_rule` [ RunTime:0.0015s ]
+SQL: SELECT * FROM `auth_rule` WHERE ( ismenu = 1 ) ORDER BY id asc  [ RunTime:0.0007s ]
+SQL: SHOW COLUMNS FROM `drawlist` [ RunTime:0.0011s ]
+SQL: SELECT * FROM `drawlist` WHERE `id` = 0 LIMIT 1   [ RunTime:0.0005s ]
+SQL: SELECT `id`,`user_name` FROM `user` WHERE `id` = null LIMIT 1   [ RunTime:0.0032s ]
+SQL: SELECT SUM(pay_to_member) AS tp_sum FROM `orderlist` WHERE `user_id` = null AND `pay_state` = 1 LIMIT 1   [ RunTime:0.0005s ]
+SQL: SELECT SUM(amount) AS tp_sum FROM `drawlist` WHERE `user_id` = null AND `status` = '已支付' LIMIT 1   [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `platform` [ RunTime:0.0025s ]
+SQL: SELECT `id`,`platform` FROM `platform` WHERE `is_open` = 1 ORDER BY id asc  [ RunTime:0.0006s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000090s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000132s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.014366s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.014443s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000143s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000170s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000446s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000498s ]
+
+[ 2018-05-07T00:01:32+08:00 ] ::1 /pay2/index.php/Admin/Main/login_task_ajax.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000012s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000266s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000364s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000412s ]
+SQL: SHOW COLUMNS FROM `user` [ RunTime:0.0010s ]
+SQL: SELECT * FROM `user` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0007s ]
+SQL: SHOW COLUMNS FROM `admin_log` [ RunTime:0.0008s ]
+SQL: SELECT `log_ip`,`log_time` FROM `admin_log` WHERE `user_id` = 1 ORDER BY log_id desc LIMIT 1,1   [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `orderlist` [ RunTime:0.0015s ]
+SQL: SELECT SUM(pay_to_member) AS tp_sum FROM `orderlist` WHERE ( 1=1 ) AND `creat_time` BETWEEN '1525622400' AND '1525622492' AND `pay_state` = '1' LIMIT 1   [ RunTime:0.0006s ]
+SQL: SHOW COLUMNS FROM `auth_rule` [ RunTime:0.0007s ]
+SQL: SELECT * FROM `auth_rule` WHERE ( ismenu = 1 ) ORDER BY id asc  [ RunTime:0.0005s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000458s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000499s ]
+
+[ 2018-05-07T00:25:29+08:00 ] ::1 /pay2/index.php/Admin/Draw/daifu.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000042s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000867s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001137s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001229s ]
+SQL: SHOW COLUMNS FROM `user` [ RunTime:0.0011s ]
+SQL: SELECT * FROM `user` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0008s ]
+SQL: SHOW COLUMNS FROM `admin_log` [ RunTime:0.0008s ]
+SQL: SELECT `log_ip`,`log_time` FROM `admin_log` WHERE `user_id` = 1 ORDER BY log_id desc LIMIT 1,1   [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `orderlist` [ RunTime:0.0009s ]
+SQL: SELECT SUM(pay_to_member) AS tp_sum FROM `orderlist` WHERE ( 1=1 ) AND `creat_time` BETWEEN '1525622400' AND '1525623929' AND `pay_state` = '1' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `auth_rule` [ RunTime:0.0007s ]
+SQL: SELECT * FROM `auth_rule` WHERE ( ismenu = 1 ) ORDER BY id asc  [ RunTime:0.0006s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000125s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000176s ]
+NOTIC: [8] Undefined variable: dfInfo /Library/WebServer/Documents/pay2/Application/Runtime/Cache/Admin/96494cb56cb2b4a8d1fbf1ca48f4d5a3.php 第 65 行.
+NOTIC: [8] Undefined variable: sendid /Library/WebServer/Documents/pay2/Application/Runtime/Cache/Admin/96494cb56cb2b4a8d1fbf1ca48f4d5a3.php 第 66 行.
+NOTIC: [8] Undefined variable: tdList /Library/WebServer/Documents/pay2/Application/Runtime/Cache/Admin/96494cb56cb2b4a8d1fbf1ca48f4d5a3.php 第 72 行.
+NOTIC: [8] Undefined variable: dfInfo /Library/WebServer/Documents/pay2/Application/Runtime/Cache/Admin/96494cb56cb2b4a8d1fbf1ca48f4d5a3.php 第 80 行.
+NOTIC: [8] Undefined variable: dfInfo /Library/WebServer/Documents/pay2/Application/Runtime/Cache/Admin/96494cb56cb2b4a8d1fbf1ca48f4d5a3.php 第 85 行.
+NOTIC: [8] Undefined variable: dfInfo /Library/WebServer/Documents/pay2/Application/Runtime/Cache/Admin/96494cb56cb2b4a8d1fbf1ca48f4d5a3.php 第 91 行.
+NOTIC: [8] Undefined variable: dfInfo /Library/WebServer/Documents/pay2/Application/Runtime/Cache/Admin/96494cb56cb2b4a8d1fbf1ca48f4d5a3.php 第 97 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.019255s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.019330s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000634s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000695s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001125s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001232s ]
+
+[ 2018-05-07T00:25:35+08:00 ] ::1 /pay2/index.php/Admin/Main/login_task_ajax.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000031s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000512s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000626s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000711s ]
+SQL: SHOW COLUMNS FROM `user` [ RunTime:0.0012s ]
+SQL: SELECT * FROM `user` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `admin_log` [ RunTime:0.0008s ]
+SQL: SELECT `log_ip`,`log_time` FROM `admin_log` WHERE `user_id` = 1 ORDER BY log_id desc LIMIT 1,1   [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `orderlist` [ RunTime:0.0008s ]
+SQL: SELECT SUM(pay_to_member) AS tp_sum FROM `orderlist` WHERE ( 1=1 ) AND `creat_time` BETWEEN '1525622400' AND '1525623935' AND `pay_state` = '1' LIMIT 1   [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `auth_rule` [ RunTime:0.0006s ]
+SQL: SELECT * FROM `auth_rule` WHERE ( ismenu = 1 ) ORDER BY id asc  [ RunTime:0.0005s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000559s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000625s ]
+
+[ 2018-05-07T00:25:36+08:00 ] ::1 /pay2/index.php/Admin/Order/lst.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000025s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000375s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000481s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000544s ]
+SQL: SHOW COLUMNS FROM `user` [ RunTime:0.0009s ]
+SQL: SELECT * FROM `user` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0006s ]
+SQL: SHOW COLUMNS FROM `admin_log` [ RunTime:0.0007s ]
+SQL: SELECT `log_ip`,`log_time` FROM `admin_log` WHERE `user_id` = 1 ORDER BY log_id desc LIMIT 1,1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `orderlist` [ RunTime:0.0010s ]
+SQL: SELECT SUM(pay_to_member) AS tp_sum FROM `orderlist` WHERE ( 1=1 ) AND `creat_time` BETWEEN '1525622400' AND '1525623936' AND `pay_state` = '1' LIMIT 1   [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `auth_rule` [ RunTime:0.0005s ]
+SQL: SELECT * FROM `auth_rule` WHERE ( ismenu = 1 ) ORDER BY id asc  [ RunTime:0.0004s ]
+NOTIC: [8] Undefined variable: start /Library/WebServer/Documents/pay2/Application/Admin/Controller/OrderController.class.php 第 16 行.
+NOTIC: [8] Undefined variable: totalstart /Library/WebServer/Documents/pay2/Application/Admin/Controller/OrderController.class.php 第 25 行.
+SQL: SHOW COLUMNS FROM `orderlist` [ RunTime:0.0007s ]
+SQL: SELECT COUNT(*) AS tp_count FROM orderlist as a left join `user` b on a.pay_user=b.user_name  WHERE ( 1=1 ) LIMIT 1   [ RunTime:0.0013s ]
+SQL: SELECT SUM(pay_total) AS tp_sum FROM `orderlist` WHERE ( 1=1 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT SUM(pay_sell_fee) AS tp_sum FROM `orderlist` WHERE ( 1=1 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT SUM(pay_to_member) AS tp_sum FROM `orderlist` WHERE ( 1=1 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT SUM(pay_platform_fee) AS tp_sum FROM `orderlist` WHERE ( 1=1 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT SUM(pay_to_boss) AS tp_sum FROM `orderlist` WHERE ( 1=1 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT SUM(profit) AS tp_sum FROM `orderlist` WHERE ( 1=1 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT SUM(pay_user_commission) AS tp_sum FROM `orderlist` WHERE ( 1=1 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `orderlist` [ RunTime:0.0007s ]
+SQL: SELECT a.*,b.id as adminid,b.truename as parent_name FROM orderlist a left join user b on a.pay_user=b.id  WHERE ( 1=1 ) ORDER BY id desc LIMIT 0,10   [ RunTime:0.0015s ]
+SQL: SHOW COLUMNS FROM `product` [ RunTime:0.0007s ]
+SQL: SELECT `product_name` FROM `product` ORDER BY id asc  [ RunTime:0.0004s ]
+SQL: SELECT `id`,`truename` FROM `user` WHERE `role_id` = 30  [ RunTime:0.0004s ]
+NOTIC: [8] Undefined variable: dls /Library/WebServer/Documents/pay2/Application/Admin/Controller/OrderController.class.php 第 176 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000141s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000191s ]
+NOTIC: [8] Undefined variable: start /Library/WebServer/Documents/pay2/Application/Runtime/Cache/Admin/6929b1ce86d5fcc660e84cb37a1b0795.php 第 69 行.
+NOTIC: [8] Undefined variable: end /Library/WebServer/Documents/pay2/Application/Runtime/Cache/Admin/6929b1ce86d5fcc660e84cb37a1b0795.php 第 69 行.
+NOTIC: [8] Undefined variable: totalstart /Library/WebServer/Documents/pay2/Application/Runtime/Cache/Admin/6929b1ce86d5fcc660e84cb37a1b0795.php 第 71 行.
+NOTIC: [8] Undefined variable: totalend /Library/WebServer/Documents/pay2/Application/Runtime/Cache/Admin/6929b1ce86d5fcc660e84cb37a1b0795.php 第 71 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.019101s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.019151s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000156s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000183s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000574s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000633s ]
+
+[ 2018-05-07T00:25:36+08:00 ] ::1 /pay2/index.php/Admin/Main/login_task_ajax.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000010s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000240s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000339s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000375s ]
+SQL: SHOW COLUMNS FROM `user` [ RunTime:0.0009s ]
+SQL: SELECT * FROM `user` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `admin_log` [ RunTime:0.0005s ]
+SQL: SELECT `log_ip`,`log_time` FROM `admin_log` WHERE `user_id` = 1 ORDER BY log_id desc LIMIT 1,1   [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `orderlist` [ RunTime:0.0008s ]
+SQL: SELECT SUM(pay_to_member) AS tp_sum FROM `orderlist` WHERE ( 1=1 ) AND `creat_time` BETWEEN '1525622400' AND '1525623936' AND `pay_state` = '1' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `auth_rule` [ RunTime:0.0005s ]
+SQL: SELECT * FROM `auth_rule` WHERE ( ismenu = 1 ) ORDER BY id asc  [ RunTime:0.0004s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000499s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000542s ]
+
+[ 2018-05-07T00:25:41+08:00 ] ::1 /pay2/index.php/Admin/Draw/lst.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000011s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000243s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000319s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000356s ]
+SQL: SHOW COLUMNS FROM `user` [ RunTime:0.0008s ]
+SQL: SELECT * FROM `user` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `admin_log` [ RunTime:0.0007s ]
+SQL: SELECT `log_ip`,`log_time` FROM `admin_log` WHERE `user_id` = 1 ORDER BY log_id desc LIMIT 1,1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `orderlist` [ RunTime:0.0009s ]
+SQL: SELECT SUM(pay_to_member) AS tp_sum FROM `orderlist` WHERE ( 1=1 ) AND `creat_time` BETWEEN '1525622400' AND '1525623941' AND `pay_state` = '1' LIMIT 1   [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `auth_rule` [ RunTime:0.0005s ]
+SQL: SELECT * FROM `auth_rule` WHERE ( ismenu = 1 ) ORDER BY id asc  [ RunTime:0.0004s ]
+NOTIC: [8] Undefined variable: start /Library/WebServer/Documents/pay2/Application/Admin/Controller/DrawController.class.php 第 15 行.
+NOTIC: [8] Undefined variable: zfstart /Library/WebServer/Documents/pay2/Application/Admin/Controller/DrawController.class.php 第 24 行.
+SQL: SHOW COLUMNS FROM `drawlist` [ RunTime:0.0006s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `drawlist` left join user on drawlist.user_id=user.id  WHERE ( 1=1 ) ORDER BY drawlist.id desc LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT drawlist.*,user.id as adminid,user.user_name as txshanghu,user.company_name as company_name FROM `drawlist` left join user on drawlist.user_id=user.id  WHERE ( 1=1 ) ORDER BY drawlist.id desc LIMIT 0,10   [ RunTime:0.0003s ]
+SQL: SELECT SUM(amount) AS tp_sum FROM `drawlist` left join user on drawlist.user_id=user.id  WHERE ( 1=1 ) LIMIT 1   [ RunTime:0.0002s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000091s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000143s ]
+NOTIC: [8] Undefined variable: start /Library/WebServer/Documents/pay2/Application/Runtime/Cache/Admin/170109d508fd9729dc8f6963d04a3269.php 第 75 行.
+NOTIC: [8] Undefined variable: end /Library/WebServer/Documents/pay2/Application/Runtime/Cache/Admin/170109d508fd9729dc8f6963d04a3269.php 第 75 行.
+NOTIC: [8] Undefined variable: zfstart /Library/WebServer/Documents/pay2/Application/Runtime/Cache/Admin/170109d508fd9729dc8f6963d04a3269.php 第 77 行.
+NOTIC: [8] Undefined variable: zfend /Library/WebServer/Documents/pay2/Application/Runtime/Cache/Admin/170109d508fd9729dc8f6963d04a3269.php 第 77 行.
+NOTIC: [8] Undefined variable: order_num /Library/WebServer/Documents/pay2/Application/Runtime/Cache/Admin/170109d508fd9729dc8f6963d04a3269.php 第 80 行.
+NOTIC: [8] Undefined variable: order_num /Library/WebServer/Documents/pay2/Application/Runtime/Cache/Admin/170109d508fd9729dc8f6963d04a3269.php 第 82 行.
+NOTIC: [8] Undefined variable: platform /Library/WebServer/Documents/pay2/Application/Runtime/Cache/Admin/170109d508fd9729dc8f6963d04a3269.php 第 84 行.
+NOTIC: [8] Undefined variable: user_name /Library/WebServer/Documents/pay2/Application/Runtime/Cache/Admin/170109d508fd9729dc8f6963d04a3269.php 第 86 行.
+NOTIC: [8] Undefined variable: company_name /Library/WebServer/Documents/pay2/Application/Runtime/Cache/Admin/170109d508fd9729dc8f6963d04a3269.php 第 89 行.
+NOTIC: [8] Undefined variable: user_name /Library/WebServer/Documents/pay2/Application/Runtime/Cache/Admin/170109d508fd9729dc8f6963d04a3269.php 第 91 行.
+NOTIC: [8] Undefined variable: bank_account /Library/WebServer/Documents/pay2/Application/Runtime/Cache/Admin/170109d508fd9729dc8f6963d04a3269.php 第 93 行.
+NOTIC: [8] Undefined variable: detailid /Library/WebServer/Documents/pay2/Application/Runtime/Cache/Admin/170109d508fd9729dc8f6963d04a3269.php 第 95 行.
+NOTIC: [8] Undefined variable: status /Library/WebServer/Documents/pay2/Application/Runtime/Cache/Admin/170109d508fd9729dc8f6963d04a3269.php 第 99 行.
+NOTIC: [8] Undefined variable: status /Library/WebServer/Documents/pay2/Application/Runtime/Cache/Admin/170109d508fd9729dc8f6963d04a3269.php 第 100 行.
+NOTIC: [8] Undefined variable: status /Library/WebServer/Documents/pay2/Application/Runtime/Cache/Admin/170109d508fd9729dc8f6963d04a3269.php 第 101 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.023684s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.023723s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000144s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000172s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000437s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000480s ]
+
+[ 2018-05-07T00:25:41+08:00 ] ::1 /pay2/index.php/Admin/Main/login_task_ajax.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000013s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000302s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000378s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000421s ]
+SQL: SHOW COLUMNS FROM `user` [ RunTime:0.0010s ]
+SQL: SELECT * FROM `user` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0006s ]
+SQL: SHOW COLUMNS FROM `admin_log` [ RunTime:0.0005s ]
+SQL: SELECT `log_ip`,`log_time` FROM `admin_log` WHERE `user_id` = 1 ORDER BY log_id desc LIMIT 1,1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `orderlist` [ RunTime:0.0011s ]
+SQL: SELECT SUM(pay_to_member) AS tp_sum FROM `orderlist` WHERE ( 1=1 ) AND `creat_time` BETWEEN '1525622400' AND '1525623941' AND `pay_state` = '1' LIMIT 1   [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `auth_rule` [ RunTime:0.0005s ]
+SQL: SELECT * FROM `auth_rule` WHERE ( ismenu = 1 ) ORDER BY id asc  [ RunTime:0.0004s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000447s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000482s ]
+
+[ 2018-05-07T00:25:46+08:00 ] ::1 /pay2/index.php/Admin/Platform/lst.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000010s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000220s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000277s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000328s ]
+SQL: SHOW COLUMNS FROM `user` [ RunTime:0.0009s ]
+SQL: SELECT * FROM `user` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `admin_log` [ RunTime:0.0006s ]
+SQL: SELECT `log_ip`,`log_time` FROM `admin_log` WHERE `user_id` = 1 ORDER BY log_id desc LIMIT 1,1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `orderlist` [ RunTime:0.0011s ]
+SQL: SELECT SUM(pay_to_member) AS tp_sum FROM `orderlist` WHERE ( 1=1 ) AND `creat_time` BETWEEN '1525622400' AND '1525623946' AND `pay_state` = '1' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `auth_rule` [ RunTime:0.0005s ]
+SQL: SELECT * FROM `auth_rule` WHERE ( ismenu = 1 ) ORDER BY id asc  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `platform` [ RunTime:0.0005s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `platform` WHERE `status` = '1' ORDER BY id asc LIMIT 1   [ RunTime:0.0009s ]
+SQL: SELECT * FROM `platform` WHERE `status` = '1' ORDER BY id asc LIMIT 0,100   [ RunTime:0.0007s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000047s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000087s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.010843s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.010886s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000124s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000148s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000511s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000562s ]
+
+[ 2018-05-07T00:25:46+08:00 ] ::1 /pay2/index.php/Admin/Main/login_task_ajax.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000021s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000308s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000286s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000319s ]
+SQL: SHOW COLUMNS FROM `user` [ RunTime:0.0009s ]
+SQL: SELECT * FROM `user` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `admin_log` [ RunTime:0.0008s ]
+SQL: SELECT `log_ip`,`log_time` FROM `admin_log` WHERE `user_id` = 1 ORDER BY log_id desc LIMIT 1,1   [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `orderlist` [ RunTime:0.0008s ]
+SQL: SELECT SUM(pay_to_member) AS tp_sum FROM `orderlist` WHERE ( 1=1 ) AND `creat_time` BETWEEN '1525622400' AND '1525623946' AND `pay_state` = '1' LIMIT 1   [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `auth_rule` [ RunTime:0.0008s ]
+SQL: SELECT * FROM `auth_rule` WHERE ( ismenu = 1 ) ORDER BY id asc  [ RunTime:0.0007s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000663s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000720s ]
+
+[ 2018-05-07T00:26:04+08:00 ] ::1 /pay2/index.php/Admin/Platform/lst.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000014s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000316s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000481s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000536s ]
+SQL: SHOW COLUMNS FROM `user` [ RunTime:0.0008s ]
+SQL: SELECT * FROM `user` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0006s ]
+SQL: SHOW COLUMNS FROM `admin_log` [ RunTime:0.0005s ]
+SQL: SELECT `log_ip`,`log_time` FROM `admin_log` WHERE `user_id` = 1 ORDER BY log_id desc LIMIT 1,1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `orderlist` [ RunTime:0.0009s ]
+SQL: SELECT SUM(pay_to_member) AS tp_sum FROM `orderlist` WHERE ( 1=1 ) AND `creat_time` BETWEEN '1525622400' AND '1525623964' AND `pay_state` = '1' LIMIT 1   [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `auth_rule` [ RunTime:0.0006s ]
+SQL: SELECT * FROM `auth_rule` WHERE ( ismenu = 1 ) ORDER BY id asc  [ RunTime:0.0006s ]
+SQL: SHOW COLUMNS FROM `platform` [ RunTime:0.0008s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `platform` WHERE `status` = '1' ORDER BY id asc LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT * FROM `platform` WHERE `status` = '1' ORDER BY id asc LIMIT 0,100   [ RunTime:0.0004s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000067s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000102s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.020489s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.020583s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000277s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000328s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000678s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000741s ]
+
+[ 2018-05-07T00:26:04+08:00 ] ::1 /pay2/index.php/Admin/Main/login_task_ajax.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000013s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000283s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000371s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000415s ]
+SQL: SHOW COLUMNS FROM `user` [ RunTime:0.0009s ]
+SQL: SELECT * FROM `user` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `admin_log` [ RunTime:0.0006s ]
+SQL: SELECT `log_ip`,`log_time` FROM `admin_log` WHERE `user_id` = 1 ORDER BY log_id desc LIMIT 1,1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `orderlist` [ RunTime:0.0008s ]
+SQL: SELECT SUM(pay_to_member) AS tp_sum FROM `orderlist` WHERE ( 1=1 ) AND `creat_time` BETWEEN '1525622400' AND '1525623964' AND `pay_state` = '1' LIMIT 1   [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `auth_rule` [ RunTime:0.0006s ]
+SQL: SELECT * FROM `auth_rule` WHERE ( ismenu = 1 ) ORDER BY id asc  [ RunTime:0.0006s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000594s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000645s ]
+
+[ 2018-05-07T00:26:07+08:00 ] ::1 /pay2/index.php/Admin/Order/lst.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000024s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000238s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000283s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000317s ]
+SQL: SHOW COLUMNS FROM `user` [ RunTime:0.0010s ]
+SQL: SELECT * FROM `user` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `admin_log` [ RunTime:0.0006s ]
+SQL: SELECT `log_ip`,`log_time` FROM `admin_log` WHERE `user_id` = 1 ORDER BY log_id desc LIMIT 1,1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `orderlist` [ RunTime:0.0009s ]
+SQL: SELECT SUM(pay_to_member) AS tp_sum FROM `orderlist` WHERE ( 1=1 ) AND `creat_time` BETWEEN '1525622400' AND '1525623967' AND `pay_state` = '1' LIMIT 1   [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `auth_rule` [ RunTime:0.0006s ]
+SQL: SELECT * FROM `auth_rule` WHERE ( ismenu = 1 ) ORDER BY id asc  [ RunTime:0.0006s ]
+NOTIC: [8] Undefined variable: start /Library/WebServer/Documents/pay2/Application/Admin/Controller/OrderController.class.php 第 16 行.
+NOTIC: [8] Undefined variable: totalstart /Library/WebServer/Documents/pay2/Application/Admin/Controller/OrderController.class.php 第 25 行.
+SQL: SHOW COLUMNS FROM `orderlist` [ RunTime:0.0009s ]
+SQL: SELECT COUNT(*) AS tp_count FROM orderlist as a left join `user` b on a.pay_user=b.user_name  WHERE ( 1=1 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT SUM(pay_total) AS tp_sum FROM `orderlist` WHERE ( 1=1 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT SUM(pay_sell_fee) AS tp_sum FROM `orderlist` WHERE ( 1=1 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT SUM(pay_to_member) AS tp_sum FROM `orderlist` WHERE ( 1=1 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT SUM(pay_platform_fee) AS tp_sum FROM `orderlist` WHERE ( 1=1 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT SUM(pay_to_boss) AS tp_sum FROM `orderlist` WHERE ( 1=1 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT SUM(profit) AS tp_sum FROM `orderlist` WHERE ( 1=1 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT SUM(pay_user_commission) AS tp_sum FROM `orderlist` WHERE ( 1=1 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `orderlist` [ RunTime:0.0011s ]
+SQL: SELECT a.*,b.id as adminid,b.truename as parent_name FROM orderlist a left join user b on a.pay_user=b.id  WHERE ( 1=1 ) ORDER BY id desc LIMIT 0,10   [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `product` [ RunTime:0.0006s ]
+SQL: SELECT `product_name` FROM `product` ORDER BY id asc  [ RunTime:0.0004s ]
+SQL: SELECT `id`,`truename` FROM `user` WHERE `role_id` = 30  [ RunTime:0.0006s ]
+NOTIC: [8] Undefined variable: dls /Library/WebServer/Documents/pay2/Application/Admin/Controller/OrderController.class.php 第 176 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000085s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000130s ]
+NOTIC: [8] Undefined variable: start /Library/WebServer/Documents/pay2/Application/Runtime/Cache/Admin/6929b1ce86d5fcc660e84cb37a1b0795.php 第 69 行.
+NOTIC: [8] Undefined variable: end /Library/WebServer/Documents/pay2/Application/Runtime/Cache/Admin/6929b1ce86d5fcc660e84cb37a1b0795.php 第 69 行.
+NOTIC: [8] Undefined variable: totalstart /Library/WebServer/Documents/pay2/Application/Runtime/Cache/Admin/6929b1ce86d5fcc660e84cb37a1b0795.php 第 71 行.
+NOTIC: [8] Undefined variable: totalend /Library/WebServer/Documents/pay2/Application/Runtime/Cache/Admin/6929b1ce86d5fcc660e84cb37a1b0795.php 第 71 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.022749s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.022814s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000248s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000297s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001030s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001121s ]
+
+[ 2018-05-07T00:26:07+08:00 ] ::1 /pay2/index.php/Admin/Main/login_task_ajax.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000013s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000286s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000371s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000414s ]
+SQL: SHOW COLUMNS FROM `user` [ RunTime:0.0010s ]
+SQL: SELECT * FROM `user` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0006s ]
+SQL: SHOW COLUMNS FROM `admin_log` [ RunTime:0.0006s ]
+SQL: SELECT `log_ip`,`log_time` FROM `admin_log` WHERE `user_id` = 1 ORDER BY log_id desc LIMIT 1,1   [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `orderlist` [ RunTime:0.0008s ]
+SQL: SELECT SUM(pay_to_member) AS tp_sum FROM `orderlist` WHERE ( 1=1 ) AND `creat_time` BETWEEN '1525622400' AND '1525623967' AND `pay_state` = '1' LIMIT 1   [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `auth_rule` [ RunTime:0.0007s ]
+SQL: SELECT * FROM `auth_rule` WHERE ( ismenu = 1 ) ORDER BY id asc  [ RunTime:0.0005s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000572s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000631s ]
+
+[ 2018-05-07T00:26:09+08:00 ] ::1 /pay2/index.php/Admin/Closes/lst.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000013s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000291s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000380s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000426s ]
+SQL: SHOW COLUMNS FROM `user` [ RunTime:0.0009s ]
+SQL: SELECT * FROM `user` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `admin_log` [ RunTime:0.0005s ]
+SQL: SELECT `log_ip`,`log_time` FROM `admin_log` WHERE `user_id` = 1 ORDER BY log_id desc LIMIT 1,1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `orderlist` [ RunTime:0.0009s ]
+SQL: SELECT SUM(pay_to_member) AS tp_sum FROM `orderlist` WHERE ( 1=1 ) AND `creat_time` BETWEEN '1525622400' AND '1525623969' AND `pay_state` = '1' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `auth_rule` [ RunTime:0.0005s ]
+SQL: SELECT * FROM `auth_rule` WHERE ( ismenu = 1 ) ORDER BY id asc  [ RunTime:0.0005s ]
+NOTIC: [8] Undefined variable: start /Library/WebServer/Documents/pay2/Application/Admin/Controller/ClosesController.class.php 第 15 行.
+SQL: SHOW COLUMNS FROM `closelist` [ RunTime:0.0006s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `closelist` left join user on closelist.username=user.user_name  WHERE ( 1=1 ) ORDER BY closelist.id desc LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT closelist.*,user.id as user_id,user.user_name,user.company_name FROM `closelist` left join user on closelist.username=user.user_name  WHERE ( 1=1 ) ORDER BY closelist.id desc LIMIT 0,10   [ RunTime:0.0004s ]
+SQL: SELECT SUM(amount) AS tp_sum FROM `closelist` WHERE ( 1=1 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT SUM(pay_fee) AS tp_sum FROM `closelist` WHERE ( 1=1 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT SUM(real_amount) AS tp_sum FROM `closelist` WHERE ( 1=1 ) LIMIT 1   [ RunTime:0.0003s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000069s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000122s ]
+NOTIC: [8] Undefined variable: start /Library/WebServer/Documents/pay2/Application/Runtime/Cache/Admin/46b6817d09f1565abb3508e1a3f13009.php 第 69 行.
+NOTIC: [8] Undefined variable: end /Library/WebServer/Documents/pay2/Application/Runtime/Cache/Admin/46b6817d09f1565abb3508e1a3f13009.php 第 69 行.
+NOTIC: [8] Undefined variable: order_num /Library/WebServer/Documents/pay2/Application/Runtime/Cache/Admin/46b6817d09f1565abb3508e1a3f13009.php 第 94 行.
+NOTIC: [8] Undefined variable: username /Library/WebServer/Documents/pay2/Application/Runtime/Cache/Admin/46b6817d09f1565abb3508e1a3f13009.php 第 96 行.
+NOTIC: [8] Undefined variable: company_name /Library/WebServer/Documents/pay2/Application/Runtime/Cache/Admin/46b6817d09f1565abb3508e1a3f13009.php 第 98 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.013254s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.013300s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000151s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000185s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000478s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000519s ]
+
+[ 2018-05-07T00:26:09+08:00 ] ::1 /pay2/index.php/Admin/Main/login_task_ajax.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000016s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000273s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000286s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000317s ]
+SQL: SHOW COLUMNS FROM `user` [ RunTime:0.0008s ]
+SQL: SELECT * FROM `user` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `admin_log` [ RunTime:0.0006s ]
+SQL: SELECT `log_ip`,`log_time` FROM `admin_log` WHERE `user_id` = 1 ORDER BY log_id desc LIMIT 1,1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `orderlist` [ RunTime:0.0009s ]
+SQL: SELECT SUM(pay_to_member) AS tp_sum FROM `orderlist` WHERE ( 1=1 ) AND `creat_time` BETWEEN '1525622400' AND '1525623969' AND `pay_state` = '1' LIMIT 1   [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `auth_rule` [ RunTime:0.0006s ]
+SQL: SELECT * FROM `auth_rule` WHERE ( ismenu = 1 ) ORDER BY id asc  [ RunTime:0.0005s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000492s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000534s ]
+
+[ 2018-05-07T00:26:11+08:00 ] ::1 /pay2/index.php/Admin/Draw/add.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000013s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000289s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000377s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000424s ]
+SQL: SHOW COLUMNS FROM `user` [ RunTime:0.0098s ]
+SQL: SELECT * FROM `user` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0007s ]
+SQL: SHOW COLUMNS FROM `admin_log` [ RunTime:0.0009s ]
+SQL: SELECT `log_ip`,`log_time` FROM `admin_log` WHERE `user_id` = 1 ORDER BY log_id desc LIMIT 1,1   [ RunTime:0.0015s ]
+SQL: SHOW COLUMNS FROM `orderlist` [ RunTime:0.0012s ]
+SQL: SELECT SUM(pay_to_member) AS tp_sum FROM `orderlist` WHERE ( 1=1 ) AND `creat_time` BETWEEN '1525622400' AND '1525623971' AND `pay_state` = '1' LIMIT 1   [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `auth_rule` [ RunTime:0.0006s ]
+SQL: SELECT * FROM `auth_rule` WHERE ( ismenu = 1 ) ORDER BY id asc  [ RunTime:0.0006s ]
+SQL: SELECT * FROM `user` WHERE `user_name` = 'admin' LIMIT 1   [ RunTime:0.0006s ]
+SQL: SHOW COLUMNS FROM `bankcode` [ RunTime:0.0007s ]
+SQL: SELECT `bankname` FROM `bankcode` ORDER BY id asc  [ RunTime:0.0004s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000047s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000086s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.010397s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.010447s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000127s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000153s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000362s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000398s ]
+
+[ 2018-05-07T00:26:11+08:00 ] ::1 /pay2/index.php/Admin/Main/login_task_ajax.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000009s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000212s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000274s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000305s ]
+SQL: SHOW COLUMNS FROM `user` [ RunTime:0.0009s ]
+SQL: SELECT * FROM `user` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `admin_log` [ RunTime:0.0008s ]
+SQL: SELECT `log_ip`,`log_time` FROM `admin_log` WHERE `user_id` = 1 ORDER BY log_id desc LIMIT 1,1   [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `orderlist` [ RunTime:0.0011s ]
+SQL: SELECT SUM(pay_to_member) AS tp_sum FROM `orderlist` WHERE ( 1=1 ) AND `creat_time` BETWEEN '1525622400' AND '1525623971' AND `pay_state` = '1' LIMIT 1   [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `auth_rule` [ RunTime:0.0006s ]
+SQL: SELECT * FROM `auth_rule` WHERE ( ismenu = 1 ) ORDER BY id asc  [ RunTime:0.0006s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000563s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000611s ]
+
+[ 2018-05-07T00:28:22+08:00 ] ::1 /pay2/index.php/Admin/Main/login_task_ajax.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000013s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000288s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000382s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000425s ]
+SQL: SHOW COLUMNS FROM `user` [ RunTime:0.0008s ]
+SQL: SELECT * FROM `user` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `admin_log` [ RunTime:0.0005s ]
+SQL: SELECT `log_ip`,`log_time` FROM `admin_log` WHERE `user_id` = 1 ORDER BY log_id desc LIMIT 1,1   [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `orderlist` [ RunTime:0.0007s ]
+SQL: SELECT SUM(pay_to_member) AS tp_sum FROM `orderlist` WHERE ( 1=1 ) AND `creat_time` BETWEEN '1525622400' AND '1525624102' AND `pay_state` = '1' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `auth_rule` [ RunTime:0.0004s ]
+SQL: SELECT * FROM `auth_rule` WHERE ( ismenu = 1 ) ORDER BY id asc  [ RunTime:0.0004s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000433s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000465s ]
+
+[ 2018-05-07T00:29:23+08:00 ] ::1 /pay2/index.php/Admin/Tongdao/add.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000009s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000233s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000277s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000308s ]
+ERR: 无法加载控制器:Tongdao
+

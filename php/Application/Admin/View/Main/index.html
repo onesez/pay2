@@ -1,0 +1,165 @@
+<extend name="Public:base" />
+<block name="content"><script type="text/javascript" src="__PUBLIC__/js/myAjax.js"></script>
+<!--改动-->
+<style>
+.ipList .td1 td {
+    color: #545454;
+    line-height: 22px;
+    padding: 10px;
+    border: 1px solid #E7E7E7;
+    text-align: center;
+}
+</style>
+<table class="Index_card" style="display:block;">
+	<tr>
+		<td valign="top">
+				<table class="Index_card" style="float:left;">
+						<tr>
+							  <td width="32%">
+								  <dl class="dl_2">
+									  <dt>
+										  <div class="Dt_1">系统公告</div>
+										  <div class="Dt_3"><a href="{:U('Notice/lst')}" class="color_tiann">更多</a></div>
+									  </dt>
+									  <dd>
+										  <div class="Dt_0">
+													  <foreach name = "Gongaolist" item = "vo">
+														 <div class="Bpwen1"><a href="{:U('Notice/detail',array('id'=>$vo['id']))}">
+															  {$vo.title}</a>
+															  <span>{$vo['create_date']?$vo['create_date']|date='Y-m-d',###:''}</span>
+														  </div>
+													  </foreach>
+										  </div>
+									  </dd>
+									  <dd class="Dd">
+										  <div class="Dd_1"></div>
+										  <div class="Dd_2"></div>
+										  <div class="Dd_3"></div>
+									  </dd>
+								  </dl>
+							  </td>
+					  
+						</tr>
+						<tr>
+						  <td colspan="8" style=" height:25px;">&nbsp;</td>
+						</tr>
+						<tr>
+							  <td width="32%">
+								  <dl class="dl_2">
+									  <dt>
+										  <div class="Dt_1">交易统计</div>
+										  <div class="Dt_3"></div>
+									  </dt>
+									  <form id="search_form" action="{:U('Main/index')}" method="POST">
+									  <table id="dbTable" class="ipList" width="100%" border="0" cellspacing="0" cellpadding="0">
+										   <tbody>
+											  <tr class="td1" >
+												  <td colspan="2" style="text-align: left;">
+												  日期从:
+												  <input name="start" value="{$start}" type="text" class="V_input1" style="width:128px;" onclick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})" />至
+												  <input name="end" value="{$end}" type="text" class="V_input1" style="width:128px;" onclick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})" />							
+												  <input type="submit" name="" value="搜索" class="Annkeld1">
+												  <input type="button" onclick="searchqk()" value="清空条件" class="Annkeld1"/>
+												  </td>
+											  </tr>
+											  <tr class="td1" >
+												  <td>产品类型</td>
+												  <td>交易金额(元)</td>
+											  </tr>
+											  <foreach name = "productData" item = "vo" key="k">
+											  <tr class="td1" >
+												  <td>{$vo.product_name}</td>
+												  <td>{$vo.total|default='0'}</td>
+											  </tr>
+											  </foreach>	
+										   </tbody>
+									  </table>
+									  </form>
+								  </dl>			
+							  </td>
+						</tr>
+						
+					  </table>
+		</td>
+		<td>&nbsp;</td>
+		<td valign="top">
+			<table class="Index_card">
+					<tr>
+							<td style="width:65px;"><div class="em Money"></div></td>
+							<td width="225" align="left">
+									<div class="Contact">
+										<dl class="overflow-visible">
+											<dt class="overflow-visible">
+												<div id="ctl00_ContentPlaceHolder1_nameclass" class="Ti auth-state-pass-personal">
+													<span class="abbr">
+														<span class="color_fei">Hi, </span>
+														<span class="color_shenn">{$userData.truename}</span>
+						
+														<span class="auth-show">
+														  <span class="auth-icon auth-icon-v">
+															<span class="auth-tip">
+															  <span class="auth-tip-content">
+																<span class="auth-tip-ok"><a href="/user/verify/" title="您还没有进行实名认证">立即认证！</a></span>
+															  </span>
+															  <span class="auth-tip-corner"><span class="auth-tip-corner-inner"></span></span>
+															</span>
+															<a href="/user/realname/" class="auth-icon-v-link" title="已认证，认证类型：个人" ></a>
+														  </span>
+														 
+												</span>
+												<span class="auth-btn"><a href="/user/realname/" class="Annkeld">立即认证</a></span>
+												</div>
+												<div class="Bz"><span class="ju">用户名:&nbsp;&nbsp;&nbsp;<span class="color_ju">{$userData.user_name}</span></div>
+											</dt>
+											<dd>
+												<ul class="aul">
+													<li>安全手机：<span id="ctl00_ContentPlaceHolder1_classshouji" class="color_ju">{$userData.mobile}</span><a href="{:U('Acount/realname')}" class="Mleft20 color_tiann">修改</a></li>
+													<!-- <li class="a">安全邮箱：<span id="ctl00_ContentPlaceHolder1_classemail" class="color_ju">已绑定</span><a href="/user/email/" id="ctl00_ContentPlaceHolder1_linemail" class="Mleft20 color_tiann">修改</a></li> -->
+													 <li class="b">实名认证：<span id="ctl00_ContentPlaceHolder1_shiming" class="color_ju">已认证</span><a href="{:U('Acount/realname')}" class="Mleft20 color_tiann">修改</a></li> 
+													<!-- <li class="c">提现密码：<span id="ctl00_ContentPlaceHolder1_classtixian" class="color_ju">已设置</span><a href="/user/awalpassword/" id="ctl00_ContentPlaceHolder1_lintixian" class="Mleft20 color_tiann">修改</a></li> -->
+												</ul>
+											</dd>
+										</dl>
+									</div>
+								</td>
+					</tr>
+					<tr>
+							<td colspan="8" style=" height:25px;">&nbsp;</td>
+						  </tr>
+					<tr>
+							<td style="width:65px;"><div class="em"></div></td>
+				
+							<td width="225" align="left">
+								<div class="Contact">
+									<dl>
+										<dt>
+											<div class="Ti change">
+												<span class="abbr" >今日成功收款总额(除手续费)<span class="color_ju">{$total|default="0.00"}</span>元 ,</span>
+											</div>
+											 <div class="Ti change">
+												<span class="abbr" >可提现余额<span class="color_ju">{$userData.balance}</span>元</span>
+												<span class="ju"><a href="{:U('Draw/add')}" class="Annkele">提 现</a></span></span>
+											</div>
+										</dt>
+										<dd>
+											<ul class="bul Mtop20">
+												<li><a href="{:U('Draw/add')}">提现</a></li>
+												<li><a href="{:U('Acount/realname')}">提现账户</a></li>
+											</ul>
+											<div class="Scfdh0"></div>
+											<ul class="bul">
+												<li><a href="{:U('Closes/lst')}">结算记录</a></li>
+												<li><a href="{:U('Draw/lst')}">提现记录</a></li>
+											</ul>
+										</dd>
+									</dl>
+								</div>
+							</td>
+					</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+
+<!--结束-->
+</block> 		

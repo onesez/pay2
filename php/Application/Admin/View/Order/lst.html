@@ -1,0 +1,256 @@
+<extend name="Public:base" />
+<block name="content">
+<script type="text/javascript" src="__PUBLIC__/js/myAjax.js"></script>
+        <div class="title02">交易列表</div>
+		<form id="search_form" action="{:U('Order/lst')}" method="POST">
+			<table width="100%" border="0" cellspacing="0" cellpadding="0" class="V_tb2">
+				<tr >
+					<td>
+						日期从:
+						<input name="start" value="{$start}" type="text" class="V_input1" style="width:128px;" size="12" onclick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})" />至:<input name="end" value="{$end}" type="text" class="V_input1" style="width:128px;" size="12" onclick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})" />
+						交易金额:
+						<input name="totalstart" value="{$totalstart}" type="text" class="V_input1" style="width:80px;"/>至:<input name="totalend" value="{$totalend}" type="text" class="V_input1" style="width:80px;"/>
+						<div class="clear:both;"></div>
+						&nbsp;商家订单号:
+						<label><input name="pay_order_id" type="text" class="V_input1" value="{$pay_order_id}"/></label>
+						&nbsp;系统订单号:
+						<label><input name="order_num" type="text" class="V_input1" value="{$order_num}"/></label>
+						&nbsp;商户ID:
+						<label><input name="user_id" type="text" class="V_input1" value="{$user_id}" /></label>
+						&nbsp;产品类型:
+						<select name="pay_product" class="V_input1">
+							<option selected="selected" value="">所有</option>
+							<foreach name='productData' item='v'>
+							<option value="{$v.product_name}" <if condition="$pay_product eq $v['product_name']">selected="selected"</if>>{$v.product_name}</option>
+							</foreach>	
+						</select>
+						&nbsp;支付状态:
+						<select name="pay_state" class="V_input1">
+							<option selected="selected" value="">所有</option>
+							<option value="1" <if condition="$pay_state eq '1'">selected="selected"</if>>支付成功</option>
+							<option value="2" <if condition="$pay_state eq '2'">selected="selected"</if>>待支付</option>
+						</select>
+						&nbsp;结算状态:
+						<select name="status" class="V_input1">
+							<option selected="selected" value="">所有</option>
+							<option value="1" <if condition="$status eq '1'">selected="selected"</if>>已结算</option>
+							<option value="2" <if condition="$status eq '2'">selected="selected"</if>>待结算</option>
+						</select>
+						<if condition="($ddprice eq '1')"> 
+						&nbsp;代理商:
+						<select name="pay_user" class="V_input1">
+							<option value="">所有</option>
+							<foreach name='dailiData' item='vo'>
+							<option value="{$vo.id}" <if condition="$pay_user eq $vo['id']">selected="selected"</if>>{$vo.truename}</option>
+							</foreach>								
+						</select>						
+						</if>						
+						&nbsp;
+							<div class="clear:both;"></div>
+							<input type="submit" name="" value="搜索" class="Annkeld1"/>
+							<input type="button" onclick="searchqk()" value="清空条件" class="Annkeld1"/>
+							<a class="Annkeld1" href="{:U('Order/expOrder')}">导出查询结果</a>						
+					</td>
+				</tr>
+			</table>
+		</form>	
+        </div>
+        <div class="block04">
+            <table id="dbTable" class="ipList" width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr class="title">
+                    <td>商家订单提交日期</td>
+                    <td>商户ID</td>
+                    <td>商家订单号</td>
+                    <td>商家提交金额</td>
+                    <td>系统订单号</td>
+                    <td>支付状态</td>
+                    <td>成功支付时间</td>
+					<td>理论结算时间</td>
+                    <td>成功支付金额(元)</td>
+					<td>费率(‰)</td>
+					<td>手续费(元)</td>
+					<td>应结算金额</td>
+					<td>产品类型</td>
+					<if condition="($dls eq '1')">
+					<td>代理费率(‰)</td>					
+					<td>代理佣金(元)</td>					
+					</if> 					
+					<if condition="($ddprice eq '1')"> 
+					<td>通道名称</td>					
+					<td>成本费率(‰)</td>
+					<td>成本手续费(元)</td>
+					<td>所属代理商</td>					
+					<td>代理费率(‰)</td>					
+					<td>代理佣金(元)</td>					
+					<td>三方应结算金额</td>
+					<td>单笔利润</td>
+					<td style="width: 65px;">操作</td>
+					</if> 
+                </tr>
+				<tbody id="check_list">
+				<foreach name = "memberlist" item = "vo">
+                <tr id="{$vo.id}" class="td1">
+					<td>{$vo['pay_date']?$vo['pay_date']|date='Y-m-d H:i:s',###:''}</td>
+					<td><a href="{:U('Member/detail',array('user_name'=>$vo['user_id']))}" style="background-color: #9e9d9c;">{$vo.user_id}</a></td>
+					<td>{$vo.pay_order_id}</td>
+					<td>{$vo.pay_amount}</td>
+					<td>{$vo.order_num}</td>
+					<td>{$vo['pay_state']==1?'支付成功':'待支付'}</td>
+					<td>{$vo['pay_time']?$vo['pay_time']|date='Y-m-d H:i:s',###:''}</td>
+					<td>{$vo['pay_time']?$vo['pay_time']|date='Y-m-d H:i:s',###:''}</td>	
+					<td>{$vo.pay_total}</td>					
+					<td>{$vo.pay_sell_rote}</td>
+					<td>{$vo.pay_sell_fee}</td>
+					<td>{$vo.pay_to_member}</td>
+					<td>{$vo.pay_product}</td>
+					<if condition="($dls eq '1')">
+					<td>{$vo.pay_company_rote}</td>					
+					<td>{$vo.pay_user_commission}</td>							
+					</if> 
+					<if condition="($ddprice eq '1')"> 
+					<td>{$vo.pay_platform_name}</td>					
+					<td>{$vo.pay_platform_rote}</td>
+					<td>{$vo.pay_platform_fee}</td>
+					<td>{$vo.parent_name|default='暂无'}</td>					
+					<td>{$vo.pay_company_rote}</td>					
+					<td>{$vo.pay_user_commission}</td>					
+					<td>{$vo.pay_to_boss}</td>
+					<td>{$vo.profit}</td>
+					<td>
+					     <a class="smallbtn" onclick="closelist(this)" data-url="{:U('Order/bjs')}" data-id="{$vo.id}">补结</a>
+					     <a class="smallbtn" href="javascript:;" onclick="bd('{:U('Order/bd',array('id'=>$vo['id']))}')">补单</a>
+					     <a class="smallbtn" onclick="closelist(this)" data-url="{:U('Order/tuik')}" data-id="{$vo.id}">标记退款</a>
+					</td>
+					</if> 
+                </tr>
+				</foreach>
+                <tr class="td1">
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>	
+					<td>{$total1}</td>					
+					<td></td>
+					<td>{$total2}</td>
+					<td>{$total3}</td>
+					<td></td>
+					<if condition="($dls eq '1')">
+					<td></td>					
+					<td>{$total7}</td>							
+					</if> 
+					<if condition="($ddprice eq '1')"> 
+					<td></td>					
+					<td></td>
+					<td>{$total4}</td>
+					<td></td>					
+					<td></td>					
+					<td>{$total7}</td>					
+					<td>{$total5}</td>
+					<td>{$total6}</td>
+					<td>
+					</td>
+					</if> 					
+                </tr>				
+				</tbody>				
+                <!-- 隔行变色 -->
+                <script language="JavaScript">
+                    $(function() {
+                        $(".td1").each(function(i) { this.style.backgroundColor = ['#fff', '#fafafa'][i % 2] })
+                    })
+                </script>
+            </table>
+        </div>
+		<div style="clear: both;"></div>
+		<div class="pagelist">
+			<div id="PageContent" class="scott">{$page}</div>
+		</div>
+<script>
+	var ajaxurl="{:U('Order/expOrder')}";
+	$("#check_all").click(function(){ 
+		$.ajax({  
+			type: "post",  
+			url: ajaxurl,  
+			data: $("#frmUserInfo").serialize(),  
+			success: function (result) { 
+				if(result.status=='1'){					
+					layer.alert(result.info,{
+					   icon: 1,
+					   closeBtn: 0,
+					   btn: ['确定'],
+					   yes: function(index){
+						 window.parent.location.reload(); //刷新父页面
+						 //window.location.reload();
+						 //window.location.href = result.url;
+					   }
+					});
+					//alert(result.info);
+					//layer.alert(result.info, {icon: 1});
+					//window.location.href = result.url;
+				}else{
+					layer.alert(result.info, {icon: 2});
+				}
+			}  
+		});
+	});
+</script>
+<script>
+function closelist(obj){
+	layer.confirm('确认操作？', {
+		  btn: ['确定','取消'] //按钮
+		}, function(){
+			$.ajax({
+				type : 'post',
+				url : $(obj).attr('data-url'),
+				data : {id:$(obj).attr('data-id')},
+				dataType : 'json',
+				success : function(result){
+					//console.log(result);
+					if(result.status=='1'){					
+						layer.alert(result.info,{
+						   icon: 1,
+						   closeBtn: 0,
+						   btn: ['确定'],
+						   yes: function(index){
+							 //window.location.reload();
+							 window.location.href = result.url;
+						   }
+						});
+						//alert(result.info);
+						//layer.alert(result.info, {icon: 1});
+						//window.location.href = result.url;
+					}else{
+						layer.alert(result.info, {icon: 2});
+					}
+				}
+			})
+		}
+	);
+}
+</script>
+<script language="javascript">
+function bd(url){
+	layer.open({
+		type: 2,
+		title: '补单',
+		//shadeClose: true,
+		shade: 0.8,
+		area: ['40%', '60%'],
+		content: url //iframe的url
+	}); 
+}
+</script>
+<script>
+$(function(){
+    $("#dbTable tr ").dblclick(function() {
+		//alert($(this).attr('id'));
+		var tar_id = $(this).attr('id');
+		var tar_url="{:U('Order/detail')}?id="+tar_id;	
+		window.location.href = tar_url;
+    });
+})
+</script>
+</block>		

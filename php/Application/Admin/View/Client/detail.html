@@ -1,0 +1,86 @@
+<extend name="Public:base" />
+<block name="content">
+<link href="__PUBLIC__/admin/skin/user/Css/withdrawal_apply.css" rel="stylesheet" type="text/css" media="screen,projection" />
+<div class="title02">客户详情</div>
+    <form id="rzform" enctype="multipart/form-data">
+        <table class="V_tb2">
+          <tr class="td1">
+            <th>提交日期：</th>
+            <td>{$detaillist.create_date}</td>
+          </tr>
+          <tr class="td1">
+            <th>客户姓名：</th>
+            <td>{$detaillist.name}</td>
+          </tr>
+          <tr class="td1">
+            <th>客户手机：</th>
+            <td>{$detaillist.mobile}</td>
+          </tr>
+          <tr class="td1">
+            <th>身份证号：</th>
+            <td>{$detaillist.id_card_num}</td>
+          </tr>
+          <tr class="td1">
+            <th>银行信息：</th>
+            <td style="line-height: 30px;">
+				<foreach name = "bankData" item = "vo">			
+					<span>【{$vo.bankname}】：{$vo.bank_card_num}</span></br>
+				</foreach>				
+			</td>
+          </tr>
+          <tr class="td1">
+            <th>授权金额：</th>
+            <td>{$detaillist.amount}元</td>
+          </tr>
+          <tr class="td1">
+            <th>授权起止日期：</th>
+            <td>{$detaillist.pass_begin} — {$detaillist.pass_end}</td>
+          </tr>
+          <tr class="td1">
+            <th>授权协议正面：</th>
+            <td>
+				<empty name="detaillist.url1">
+					暂无
+				<else/>
+					<a class="Bhyg1" href="__PUBLIC__/Uploads/{$detaillist.url1}" target="_blank"><img id="imgShow_WU_FILE_0" src="__PUBLIC__/Uploads/{$detaillist.url1}" /></a>
+				</empty>			
+			</td>
+          </tr>
+          <tr class="td1">
+            <th>授权协议反面：</th>
+            <td>
+				<empty name="detaillist.url2">
+					暂无
+				<else/>
+					<a class="Bhyg1" href="__PUBLIC__/Uploads/{$detaillist.url2}" target="_blank"><img id="imgShow_WU_FILE_0" src="__PUBLIC__/Uploads/{$detaillist.url2}" /></a>
+				</empty>
+			</td>
+          </tr>
+          <tr class="td1">
+            <th>手持证件协议：</th>
+            <td>
+				<empty name="detaillist.url3">
+					暂无
+				<else/>
+					<a class="Bhyg1" href="__PUBLIC__/Uploads/{$detaillist.url3}" target="_blank"><img id="imgShow_WU_FILE_0" src="__PUBLIC__/Uploads/{$detaillist.url3}" /></a>
+				</empty>			
+			</td>
+          </tr>
+          <tr class="td1">
+            <th>经办人合影：</th>
+            <td>
+				<empty name="detaillist.url4">
+					暂无
+				<else/>
+					<a class="Bhyg1" href="__PUBLIC__/Uploads/{$detaillist.url4}" target="_blank"><img id="imgShow_WU_FILE_0" src="__PUBLIC__/Uploads/{$detaillist.url4}" /></a>
+				</empty>
+			</td>
+          </tr>
+          <tr class="td1">
+            <th>录入人：</th>
+            <td>{$detaillist.handler}
+			</td>
+          </tr>
+        </table>
+</form> 
+</block> 

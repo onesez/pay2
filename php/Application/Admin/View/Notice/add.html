@@ -1,0 +1,70 @@
+<extend name="Public:base" />
+<block name="content">
+<link href="__PUBLIC__/admin/skin/user/Css/withdrawal_apply.css" rel="stylesheet" type="text/css" media="screen,projection" />
+<div class="title02">发布公告</div>
+    <form id="rzform" >
+        <table class="V_tb2">
+          <tr class="td1">
+            <th>发布日期：</th>
+            <td><input type="text" name="create_date" class="V_input3" value="{$create_date}" onclick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})"/></td>
+          </tr>
+          <tr class="td1">
+            <th>公告标题：</th>
+            <td>
+				<input type="text" name="title" class="V_input3"/>
+			</td>
+          </tr>
+          <tr class="td1" style="height: 160px;">
+            <th>公告内容：</th>
+            <td><textarea name="content" cols="" rows="" style="width: 40%;height: 90%;"></textarea></td>
+          </tr>
+          <tr class="td1">
+            <th></th>
+            <td>
+			<button id="btnSubmit" class="V_btn4 submit ajaxSubmit_apply">确认发布</button>
+			</td>
+          </tr>
+        </table>
+</form>
+<script type="text/javascript" src="__PUBLIC__/js/jquery.form.js"></script>
+<script type="text/javascript">  
+	$(function () {  
+		var ajaxurl="{:U('Notice/add')}";
+		$("#btnSubmit").click(function () { 
+				$('#rzform').ajaxForm({  
+					type: "post",  
+					url: ajaxurl,
+					dataType: 'json',  
+					beforeSend:function(result){ 
+						$("#btnSubmit").attr({ disabled: "disabled" });
+						//index = layer.load();	
+						index = layer.msg('提交中...', {icon: 16,shade: [0.5, '#f5f5f5'], time:20000}) ;						
+					}, 					
+					success: function (result) {  
+						if(result.status=='1'){
+						
+							layer.alert(result.info,{
+							   icon: 1,
+							   closeBtn: 0,
+							   btn: ['确定'],
+							   yes: function(index){
+								 //window.location.reload();
+								 window.location.href = result.url;
+							   }
+							});	
+							//alert(result.info);
+							//layer.alert(result.info, {icon: 1});
+							//window.location.href = result.url;
+						}else{
+							layer.alert(result.info, {icon: 2});
+						}
+					},
+					complete: function () {
+						$("#btnSubmit").removeAttr("disabled");
+						layer.close(index);
+					}					
+				});
+		});  
+	});  
+</script>
+</block> 

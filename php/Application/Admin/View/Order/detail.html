@@ -1,0 +1,90 @@
+<extend name="Public:base" />
+<block name="content">
+<link href="__PUBLIC__/admin/skin/user/Css/withdrawal_apply.css" rel="stylesheet" type="text/css" media="screen,projection" />
+<div class="title02">交易详情</div>										
+    <form id="rzform" enctype="multipart/form-data">
+        <table class="V_tb2">
+          <tr class="td1">
+            <th>商家订单提交日期：</th>
+            <td>{$detaillist['pay_date']?$detaillist['pay_date']|date='Y-m-d H:i:s',###:''}</td>
+          </tr>
+          <tr class="td1">
+            <th>商户ID：</th>
+            <td>{$detaillist.user_id}</td>
+          </tr>
+          <tr class="td1">
+            <th>商家订单号：</th>
+            <td>{$detaillist.pay_order_id}</td>
+          </tr>
+          <tr class="td1">
+            <th>商家提交金额：</th>
+            <td>{$detaillist.pay_amount}</td>
+          </tr>
+          <tr class="td1">
+            <th>系统订单号：</th>
+            <td>{$detaillist.order_num}</td>
+          </tr>
+          <tr class="td1">
+            <th>支付状态：</th>
+            <td>{$detaillist['pay_state']==1?'支付成功':'待支付'}</td>
+          </tr>
+          <tr class="td1">
+            <th>成功支付时间：</th>
+            <td>{$detaillist['pay_time']?$detaillist['pay_time']|date='Y-m-d H:i:s',###:''}</td>
+          </tr>
+          <tr class="td1">
+            <th>理论结算时间：</th>
+            <td>{$detaillist['pay_time']?$detaillist['pay_time']|date='Y-m-d H:i:s',###:''}</td>
+          </tr>
+          <tr class="td1">
+            <th>成功支付金额(元)：</th>				
+            <td>{$detaillist.pay_total}元</td>
+          </tr>
+          <tr class="td1">
+            <th>费率(‰)：</th>
+            <td>{$detaillist.pay_sell_rote}
+			</td>
+          </tr>
+          <tr class="td1">
+            <th>手续费(元)：</th>
+            <td>{$detaillist.pay_sell_fee}
+			</td>
+          </tr>
+          <tr class="td1">
+            <th>应结算金额：</th>
+            <td>{$detaillist.pay_to_member}
+			</td>
+          </tr>
+          <tr class="td1">
+            <th>通道名称：</th>
+            <td>{$detaillist.pay_platform_name}
+			</td>
+          </tr>
+          <tr class="td1">
+            <th>产品类型：</th>
+            <td>{$detaillist.pay_product}
+			</td>
+          </tr>
+          <tr class="td1">
+            <th>成本费率(‰)：</th>			
+            <td>{$detaillist.pay_platform_rote}
+			</td>
+          </tr>
+          <tr class="td1">
+            <th>成本手续费(元)：</th>
+            <td>{$detaillist.pay_platform_fee}
+			</td>
+          </tr>
+          <tr class="td1">
+            <th>三方应结算金额：</th>
+            <td>{$detaillist.pay_to_boss}
+			</td>
+          </tr>
+          <tr class="td1">
+            <th>单笔利润：</th>
+            <td>{$detaillist.profit}
+			</td>
+          </tr>
+        </table>
+</form> 
+</block> 

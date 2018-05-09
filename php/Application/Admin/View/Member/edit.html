@@ -1,0 +1,313 @@
+<extend name="Public:base" />
+<block name="content">
+<style> 
+.table-td{ 
+	float: left;
+    padding: 10px;
+    border: 1px solid #e0e0e0;
+    margin-right: 5px;
+    background: #e4e4e4;
+    margin-bottom: 10px;
+    min-height: 460px;
+}
+.table-bottom{ 
+    border-bottom: 1px solid #ffffff;
+    margin-bottom: 10px;
+    line-height: 30px;
+}
+.table-d table{ 
+	border: 1px solid #eee;
+	text-align: center;
+} 
+.table-d table tr{
+	line-height: 36px;
+}
+ .table-d table td{
+	border: 1px solid #eee;
+	line-height: 36px;
+	padding-left: 0px;
+}
+ .V_input{
+    width: 95px;
+	height: 28px;
+    line-height: 28px;
+    color: #545454;
+    border: 1px solid #dedede;
+    margin: 5px 5px 5px 0;
+} 
+</style>
+<script>
+function delt(obj){
+	layer.confirm('确认删除此用户当前通道？', {
+		  btn: ['确定','取消'] //按钮
+		}, function(){
+			$.ajax({
+				type : 'post',
+				url : $(obj).attr('data-url'),
+				data : {act:'del',uid:$(obj).attr('u-id'),tdid:$(obj).attr('td-id')},
+				dataType : 'json',
+				success : function(result){
+					//console.log(result);
+					if(result.status=='1'){					
+						layer.alert(result.info,{
+						   icon: 1,
+						   closeBtn: 0,
+						   btn: ['确定'],
+						   yes: function(index){
+							 //window.location.reload();
+							 window.location.href = result.url;
+						   }
+						});
+						//alert(result.info);
+						//layer.alert(result.info, {icon: 1});
+						//window.location.href = result.url;
+					}else{
+						layer.alert(result.info, {icon: 2});
+					}
+				}
+			})
+		}
+	);
+}
+</script>
+<link href="__PUBLIC__/admin/skin/user/Css/withdrawal_apply.css" rel="stylesheet" type="text/css" media="screen,projection" />
+<div class="title02">修改用户</div>
+    <form id="rzform">
+		<input name="id" type="hidden" value="{$editlist.id}"/>
+        <table class="V_tb2">
+          <tr class="td1">
+            <th>用户名：</th>
+            <td>
+				<input type="text" name="user_name" class="V_input3" value="{$editlist.user_name}"/>
+			</td>
+          </tr>
+          <tr class="td1">
+            <th>用户密码：</th>
+            <td>
+			<input type="text" name="password" class="V_input3" value=""/>
+			<span style="font-size: 12px;color: red;">*留空表示不修改用户当前密码</span>
+			</td>
+          </tr>
+          <tr class="td1">
+            <th>商户密钥：</th>
+            <td>
+				<input type="text" name="md5key" class="V_input3" value="{$editlist.md5key}"/>
+			</td>
+          </tr>
+          <tr class="td1">
+            <th>商户名称：</th>
+            <td>
+				<input type="text" name="company_name" class="V_input3" value="{$editlist.company_name}"/>
+			</td>
+          </tr>
+          <tr class="td1">
+            <th>真实姓名：</th>
+            <td><input type="text" name="truename" class="V_input3" value="{$editlist.truename}"/></td>
+          </tr>
+          <tr class="td1">
+            <th>身份证号：</th>
+            <td><input type="text" name="id_card_num" class="V_input3" value="{$editlist.id_card_num}"/></td>
+          </tr> 
+		  <tr class="td1">
+            <th>手机号码：</th>
+            <td><input type="text" name="mobile" class="V_input3" value="{$editlist.mobile}"/></td>
+          </tr>
+		  <tr class="td1">
+            <th>代付ip(段)：</th>
+            <td>
+			<input type="text" name="payment_ip" class="V_input3" value="{$editlist.payment_ip}" style="width: 420px;"/>
+			<span style="font-size: 12px;color: red;">*代付发起ip段，不同ip用+分割</span>
+			</td>
+          </tr>
+		  <tr class="td1">
+            <th>联系地址：</th>
+            <td><input type="text" name="address" class="V_input3" value="{$editlist.address}" style="width: 420px;"></td>
+          </tr>
+		  <tr class="td1">
+            <th>入金锁定：</th>
+            <td>
+				<select name="is_lock" class="layui-input" style="display:block;">
+					<option value="">请选择</option>
+					<option value="2" <if condition="$editlist['is_lock'] eq 2">selected="selected"</if>>正常</option>
+					<option value="1" <if condition="$editlist['is_lock'] eq 1">selected="selected"</if>>锁定</option>
+				</select>			
+			</td>
+          </tr>
+		  <tr class="td1">
+            <th>出金锁定：</th>
+            <td>
+				<select name="draw_money_lock" class="layui-input" style="display:block;">
+					<option value="">请选择</option>
+					<option value="2" <if condition="$editlist['draw_money_lock'] eq 2">selected="selected"</if>>正常</option>
+					<option value="1" <if condition="$editlist['draw_money_lock'] eq 1">selected="selected"</if>>暂停</option>
+				</select>			
+			</td>
+          </tr>
+          <tr class="td1">
+            <th>锁定金额：</th>
+            <td><input type="text" name="lock_ratio" class="V_input3" value="{$editlist.lock_ratio}" onkeyup="value=value.replace(/[^\d\.]/g,'');"/>万元</td>
+          </tr> 		  
+		  <tr class="td1">
+            <th>上级代理：</th>
+            <td>
+				<select name="parent_name" class="layui-input" style="display:block;">
+					<option value="">请选择</option>
+					<foreach name='dailiData' item='vo'>
+					<option value="{$vo.id}" <if condition="$editlist['parent_name'] eq $vo['id']">selected="selected"</if>>{$vo.truename}</option>
+					</foreach>								
+				</select>			
+			</td>
+          </tr>
+		  <tr class="td1">
+            <th>用户角色：</th>
+            <td>
+				<select name="role_id" class="layui-input" style="display:block;">
+					<option value="">请选择</option>
+					<foreach name='roleList' item='v'>
+					<option value="{$v.id}" <if condition="$editlist['title'] eq $v['title']">selected="selected"</if>>{$v.title}</option>
+					</foreach>								
+				</select>			
+			</td>
+          </tr>		  
+ 		  <tr class="td1">
+            <th>结算费率：</th>
+			<td style="padding: 10px;">
+				<div class="table-d">
+				   <foreach name="platformList" item="vo">
+					<div class="table-td">
+						<div class="table-bottom">
+						通道名称：{$vo.platform_name}
+						<a onclick="delt(this)" data-url="{:U('Member/fldel_ajax')}" u-id="{$vo.user_id}" td-id="{$vo.platform_id}" style="cursor: pointer;">删除</a>
+						</div>
+						<table class="table table-bordered table-striped dataTable">
+							<tr style="background: #b4b7b7;">
+								<td>通道名称</td>
+								<td>产品名称</td>
+								<td>成本费率</td>
+								<td>代理费率</td>
+								<td>销售费率</td>
+								<td>结算周期</td>
+							</tr>
+							<foreach name="vo['rate']" item="rate">
+							<tr>
+								<td>{$rate.platform_name}</td>
+								<td>{$rate.product_name}</td>
+								<td>{$rate.platform_rote}‰</td>
+								<td>{$rate.company_rote}‰</td>
+								<td>{$rate.sell_rote}‰</td>
+								<td>{$rate.period}</td>
+							</tr>
+							</foreach>
+						</table>
+					</div>
+					</foreach>
+				</div>
+			</td>
+          </tr>
+          <tr class="td1">
+            <th></th>
+            <td>
+			<button id="btnSubmit" class="V_btn4 submit ajaxSubmit_apply">确认修改</button>
+			</td>
+          </tr>
+        </table>
+</form>
+<script type="text/javascript">
+function getSelectVal(num,str){ 
+	var ajaxSelect = "{:U('Client/bankajax')}";
+	//alert(str);
+    $.getJSON(ajaxSelect,function(data){ 
+        var smallname = $("#smallname"+num); 
+        $("option",smallname).remove(); //清空原有的选项 
+        $.each(data,function(index,array){ 
+			(array['bankname']==str)?a='selected="selected"':a=''; //选中
+            var option = '<option value="'+array['bankname']+'" '+a+'>'+array['bankname']+'</option>'; 
+            smallname.append(option); 
+        }); 
+    }); 
+}
+</script>
+<script type="text/javascript"> 
+var num = 2;                 
+function add(){	
+	var bankname = arguments[0] ? arguments[0] :'';
+	var bank_card_num = arguments[1] ? arguments[1] : '';	
+	var str = '';
+		str +='<div id="divson'+num+'">'
+				+'银行名称:'
+				+'<select name="canshu1[]" id="smallname'+num+'" style="width:100px;">'
+				+'</select>'
+				+'银行卡号:'
+				+'<input type="text" name="canshu2[]" class="V_input3" id="canshu2'+num+'"/>'
+				+'<img onclick="del('+num+')"src="__PUBLIC__/admin/skin/images/jian.png">'
+			 +'</div>';	
+	$(".divall").append(str);
+	//alert(bankname);
+	$("#canshu1" + num).attr('value', bankname);
+	$("#canshu2" + num).attr('value', bank_card_num);
+	getSelectVal(num,bankname);
+	num++;
+
+}
+
+//历史记录批量添加
+function batchAddTable(list){
+	for(var i = 0;i < list.length; i++){
+		add(
+			list[i].bankname,
+			list[i].bank_card_num
+		);
+	}
+}
+
+function del(num){
+	  $("#divson"+num).remove();
+}
+</script>
+<script type="text/javascript" src="__PUBLIC__/js/jquery.form.js"></script>
+<script type="text/javascript">  
+	$(function () {  
+		var ajaxurl="{:U('Member/edit')}";
+		$("#btnSubmit").click(function () { 
+				$('#rzform').ajaxForm({  
+					type: "post",  
+					url: ajaxurl,
+					dataType: 'json',  
+					beforeSend:function(result){ 
+						$("#btnSubmit").attr({ disabled: "disabled" });
+						//index = layer.load();	
+						index = layer.msg('提交中...', {icon: 16,shade: [0.5, '#f5f5f5'], time:20000}) ;						
+					}, 					
+					success: function (result) {  
+						if(result.status=='1'){
+						
+							layer.alert(result.info,{
+							   icon: 1,
+							   closeBtn: 0,
+							   btn: ['确定'],
+							   yes: function(index){
+								 //window.location.reload();
+								 window.location.href = result.url;
+							   }
+							});	
+							//alert(result.info);
+							//layer.alert(result.info, {icon: 1});
+							//window.location.href = result.url;
+						}else{
+							layer.alert(result.info, {icon: 2});
+						}
+					},
+					complete: function () {
+						$("#btnSubmit").removeAttr("disabled");
+						layer.close(index);
+					}					
+				});
+		});  
+	});  
+</script>
+<script type="text/javascript">
+	<?php if($bankData){?>
+		batchAddTable(<?php echo json_encode($bankData);?>);
+	<?php }?>
+</script>
+</block> 

@@ -1,0 +1,160 @@
+<extend name="Public:base" />
+<block name="content">
+<link href="__PUBLIC__/admin/skin/user/Css/withdrawal_apply.css" rel="stylesheet" type="text/css" media="screen,projection" />
+<div class="title02">新增客户</div>
+    <form id="rzform" enctype="multipart/form-data">
+        <table class="V_tb2">
+          <tr class="td1">
+            <th>提交日期：</th>
+            <td><input type="text" name="create_date" class="V_input3" value="{$create_date}" onclick="laydate({istime: true, format: 'YYYY-MM-DD'})"/></td>
+          </tr>
+          <tr class="td1">
+            <th>客户姓名：</th>
+            <td>
+				<input type="text" name="name" class="V_input3" id="name"/>
+				<span style="font-size: 12px;color: red;">*为保证代扣资料的准确性,同一客户(姓名、身份证号码相同)仅限提交1次</span>
+			</td>
+          </tr>
+          <tr class="td1">
+            <th>客户手机：</th>
+            <td><input type="text" name="mobile" class="V_input3" id="mobile"/></td>
+          </tr>
+          <tr class="td1">
+            <th>身份证号：</th>
+            <td><input type="text" name="id_card_num" class="V_input3" id="id_card_num"/></td>
+          </tr>
+          <tr class="td1">
+            <th>银行卡号：</th>
+            <td>
+				<div class="divall">
+					<div id="divson">
+						银行名称:<select name="canshu1[]" style="width:100px;">
+						<foreach name='bankList' item='v'>
+							<option value="{$v.bankname}" >{$v.bankname}</option>
+						</foreach>
+						</select>银行卡号:<input type="text" name="canshu2[]" class="V_input3" id="canshu21" onkeyup="value=value.replace(/[^\d\.]/g,'');"/>
+					</div>
+				</div>
+				<img onclick="add()" src="__PUBLIC__/admin/skin/images/add.png" style="margin-bottom: 5px;">
+				<span style="font-size: 12px;color: red;">*同一客户,多张银行卡</span>
+			</td>
+          </tr>
+          <tr class="td1">
+            <th>授权金额：</th>
+            <td><input type="text" name="amount" class="V_input3" id="amount" onkeyup="value=value.replace(/[^\d\.]/g,'');"/></td>
+          </tr>
+          <tr class="td1">
+            <th>授权起止日期：</th>
+            <td>
+			<input type="text" name="pass_begin" class="V_input3" id="pass_begin" onclick="laydate({istime: true, format: 'YYYY-MM-DD'})"/>-
+			<input type="text" name="pass_end" class="V_input3" id="pass_end" onclick="laydate({istime: true, format: 'YYYY-MM-DD'})"/>
+			</td>
+          </tr>
+          <tr class="td1">
+            <th>授权协议正面：</th>
+            <td><input type="file" name="url1" class="V_input3" id="url1"/></td>
+          </tr>
+          <tr class="td1">
+            <th>授权协议反面：</th>
+            <td><input type="file" name="url2" class="V_input3" id="url2"/></td>
+          </tr>
+          <tr class="td1">
+            <th>手持证件协议：</th>
+            <td><input type="file" name="url3" class="V_input3" id="url3"/></td>
+          </tr>
+          <tr class="td1">
+            <th>经办人合影：</th>
+            <td><input type="file" name="url4" class="V_input3" id="url4"/></td>
+          </tr>
+          <tr class="td1">
+            <th>录入人：</th>
+            <td>{$_SESSION['truename']}
+			<input type="hidden" name="handler" class="V_input3" id="handler" value="{$_SESSION['truename']}" />
+			</td>
+          </tr>
+          <tr class="td1">
+            <th></th>
+            <td>
+			<button id="btnSubmit" class="V_btn4 submit ajaxSubmit_apply">确认添加</button>
+			</td>
+          </tr>
+        </table>
+</form>
+<script type="text/javascript">
+function getSelectVal(num){ 
+	var ajaxSelect = "{:U('Client/bankajax')}";
+	//var bigname = $("#bigname").val();
+    $.getJSON(ajaxSelect,function(data){ 
+        var smallname = $("#smallname"+num); 
+        $("option",smallname).remove(); //清空原有的选项 
+        $.each(data,function(index,array){ 
+            var option = '<option value="'+array['bankname']+'">'+array['bankname']+'</option>'; 
+            smallname.append(option); 
+        }); 
+    }); 
+}
+</script>
+<script type="text/javascript"> 
+var num = 2;                 
+function add(){
+	getSelectVal(num);
+	var str = '';
+		str +='<div id="divson'+num+'">'
+				+'银行名称:'
+				+'<select name="canshu1[]" id="smallname'+num+'" style="width:100px;">'
+				+'</select>'
+				+'银行卡号:'
+				+'<input type="text" name="canshu2[]" class="V_input3" id="canshu2'+num+'"/>'
+				+'<img onclick="del('+num+')"src="__PUBLIC__/admin/skin/images/jian.png">'
+			 +'</div>';	
+	$(".divall").append(str);
+	num++;
+
+}
+ 
+    function del(num){
+          $("#divson"+num).remove();
+    }
+</script>
+<script type="text/javascript" src="__PUBLIC__/js/jquery.form.js"></script>
+<script type="text/javascript">  
+	$(function () {  
+		var ajaxurl="{:U('Client/add')}";
+		$("#btnSubmit").click(function () { 
+				$('#rzform').ajaxForm({  
+					type: "post",  
+					url: ajaxurl,
+					dataType: 'json',  
+					beforeSend:function(result){ 
+						$("#btnSubmit").attr({ disabled: "disabled" });
+						//index = layer.load();	
+						index = layer.msg('提交中...', {icon: 16,shade: [0.5, '#f5f5f5'], time:20000}) ;						
+					}, 					
+					success: function (result) {  
+						if(result.status=='1'){
+						
+							layer.alert(result.info,{
+							   icon: 1,
+							   closeBtn: 0,
+							   btn: ['确定'],
+							   yes: function(index){
+								 //window.location.reload();
+								 window.location.href = result.url;
+							   }
+							});	
+							//alert(result.info);
+							//layer.alert(result.info, {icon: 1});
+							//window.location.href = result.url;
+						}else{
+							layer.alert(result.info, {icon: 2});
+						}
+					},
+					complete: function () {
+						$("#btnSubmit").removeAttr("disabled");
+						layer.close(index);
+					}					
+				});
+		});  
+	});  
+</script>
+</block> 

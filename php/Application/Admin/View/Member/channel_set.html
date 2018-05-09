@@ -1,0 +1,293 @@
+<extend name="Public:base" />
+<block name="content">
+<style>
+.table-td{ 
+	float: left;
+    padding: 10px;
+    border: 1px solid #e0e0e0;
+    margin-right: 5px;
+    background: #e4e4e4;
+    margin-bottom: 10px;
+    min-height: 460px;
+} 
+.table-bottom{ 
+    border-bottom: 1px solid #ffffff;
+    margin-bottom: 10px;
+    line-height: 30px;
+} 
+.table-d table{ 
+	border: 1px solid #eee;
+	text-align: center;
+	margin-bottom: 10px;
+} 
+.table-d table tr{
+	line-height: 36px;
+}
+ .table-d table td{
+	border: 1px solid #eee;
+	line-height: 36px;
+	padding-left: 0px;
+}
+ .V_input{
+    width: 95px;
+	height: 28px;
+    line-height: 28px;
+    color: #545454;
+    border: 1px solid #dedede;
+    margin: 5px;
+} 
+</style>
+<link href="__PUBLIC__/admin/skin/user/Css/withdrawal_apply.css" rel="stylesheet" type="text/css" media="screen,projection" />
+<div class="title02">配置通道</div>
+		<form id="rzform">
+			<input type="hidden" name="user_id" value="{$userData.id}" class="V_input"/>
+			<input type="hidden" name="user_id" value="{$dailiUser.id}" class="V_input"/>
+			<table class="V_tb2">
+			  <tr class="td1">
+				<th>此用户所属上级代理：</th>
+				<td>
+					<input type="text" name="period" class="V_input3" value="{$dailiUser.truename|default='暂无'}"/>	
+				</td>
+			  </tr>			  
+			  <tr class="td1">
+				<th>通道选择：</th>
+				<td>
+					<select name="platform_id" class="layui-input" style="display:block;" onchange="slectTd(this)">
+						<option value="">请选择</option>
+						<foreach name='platformInfo' item='v'>
+						<option value="{$v.id}">{$v.platform}</option>
+						</foreach>								
+					</select>			
+				</td>
+			  </tr>
+			  <tr class="td1">
+				<th>结算属性：</th>
+				<td>
+					<input id="period" type="text" name="period" class="V_input3"/>	
+				</td>
+			  </tr>			  
+			  <tr class="td1">
+				<th>附属产品：</th>
+				<td style="padding-top: 10px;">
+					<div class="table-d" style="margin-top: 10px;">
+						<table id="dataTbody" class="table table-bordered table-striped dataTable">
+							<tr style="background: #b4b7b7;">
+								<td style="width: 30%;">产品名称</td>
+								<td style="width: 20%;">成本费率(‰)</td>
+								<td>代理费率(‰)</td>
+								<td>销售费率(‰)</td>
+								<td>结算周期(天)</td>
+							</tr>
+						</table>
+						<span style="font-size: 12px;color: red;line-height: 25px;display:none;">*若千3则填3,若接口商无此产品则保留为空</span>
+					</div>	
+				</td>
+			  </tr>
+			  <tr class="td1">
+				<th></th>
+				<td>
+				<button id="btnSubmit" class="V_btn4 submit ajaxSubmit_apply">确认配置</button>
+				</td>
+			  </tr>
+			</table>
+		</form>
+		<form id="rzformA">
+			<input type="hidden" name="user_id" value="{$userData.id}" class="V_input">
+			<table class="V_tb2">
+				  <tr class="td1">
+					<th>产品指定：</th>
+					<td>
+						<table class="table table-bordered table-striped dataTable" style="width: 100%;">
+							<tbody id="checkAll">						
+							<foreach name="productList" item="vo" key="k">			
+									<tr style="line-height: 40px;">
+										<td class="title left" style="padding-right:50px;">
+											<b style="color: #000;">{$vo.product_name}</b>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<ul class="check_list" id="checkList_{$k}" >										
+											<foreach name="vo.info" item="vv" key="kk">											
+												<li>
+												<!-- <input type="checkbox" name="rules[]" value="{$vv.id}"/> -->
+												<input type="radio" name="is_use_{$vo.id}" value="{$vv.id}" <if condition="$vv['is_use'] eq '1'">checked</if>/>
+												{$vv.platform_name}
+												</li>											
+											</foreach>
+											<div class="clear-both"></div>
+											</ul>
+										</td>
+									</tr>
+							</foreach>
+							</tbody>
+						 </table>
+					</td>
+				  </tr>
+				  <tr class="td1">
+					<th></th>
+					<td>
+					<button id="btnSubmitA" class="V_btn4 submit ajaxSubmit_apply">确认选择</button>
+					</td>
+				  </tr>	
+			</table>
+		</form>
+		<table class="V_tb2">		
+          <tr class="td1">
+            <th>此用户当前费率信息：</th>
+				<td style="padding: 10px;">
+					<div class="table-d">
+					   <foreach name="platformList" item="vo">
+					   <notempty name="vo.rate">
+					   <div class="table-td">
+					        <div class="table-bottom">
+							通道名称：{$vo.platform_name}	
+							</div>							
+							<table class="table table-bordered table-striped dataTable">
+								<tr style="background: #b4b7b7;">
+									<td>通道名称</td>
+									<td>产品名称</td>
+									<td>成本费率</td>
+									<td>代理费率</td>
+									<td>销售费率</td>
+									<td>结算周期(天)</td>
+								</tr>
+								<foreach name="vo['rate']" item="rate">
+								<tr>
+									<td>{$rate.platform_name}</td>
+									<td>{$rate.product_name}</td>
+									<td>{$rate.platform_rote}‰</td>
+									<td>{$rate.company_rote}‰</td>
+									<td>{$rate.sell_rote}‰</td>
+									<td>{$rate.period}</td>
+								</tr>
+								</foreach>
+							</table>
+						</div>
+						</notempty>
+						</foreach>
+					</div>
+				</td>
+          </tr>		
+        </table>
+<script type="text/javascript">
+function slectTd(td){ 
+	var tdid = td.value;
+	var ajaxUrl = "{:U('Member/tdajax')}";
+    $.getJSON(ajaxUrl,{tdid:tdid},function(res){ 
+		//console.log(data);
+		$("#dataTbody  tr:not(:first)").empty(""); //清空原有的选项 
+		var period = res.draw_mode;
+		$("#period").val(period);
+		var data = res.info;
+		if(data.length==0){
+			var tTr ='<tr><td colspan="3">暂无产品</td></tr>';
+			$("#dataTbody").append(tTr);
+		}else{
+			$.each(data,function(index,array){ 
+				var tTr="<tr>"+
+					"<td>"+array.product_name+"</td>"+
+					"<td>"+array.rote+"</td>"+
+					"<td>"+
+					"<input type='text' name='company_rote[]' value='0' class='V_input'>"+
+					"</td>"+
+					"<td>"+
+					"<input type='text' name='sell_rote[]' value='' class='V_input'>"+
+					"</td>"+
+					"<td>"+
+					"<input type='text' name='period[]' class='V_input'>"+
+					"<input type='hidden' name='product_sid[]' value='"+array.product_id+"' class='V_input'>"+
+					"<input type='hidden' name='product_name[]' value='"+array.product_name+"' class='V_input'>"+
+					"<input type='hidden' name='rote[]' value='"+array.rote+"' class='V_input'>"+
+					"</td>"
+					"</tr>";
+				$("#dataTbody").append(tTr);
+			}); 		
+		}
+
+		
+    }); 
+}
+</script>
+<script type="text/javascript" src="__PUBLIC__/js/jquery.form.js"></script>
+<script type="text/javascript">  
+	$(function () {  
+		var ajaxurl="{:U('Member/channel_set')}";
+		$("#btnSubmit").click(function () { 
+				$('#rzform').ajaxForm({  
+					type: "post",  
+					url: ajaxurl,
+					dataType: 'json',  
+					beforeSend:function(result){ 
+						$("#btnSubmit").attr({ disabled: "disabled" });
+						//index = layer.load();	
+						index = layer.msg('提交中...', {icon: 16,shade: [0.5, '#f5f5f5'], time:20000}) ;						
+					}, 					
+					success: function (result) {  
+						if(result.status=='1'){
+						
+							layer.alert(result.info,{
+							   icon: 1,
+							   closeBtn: 0,
+							   btn: ['确定'],
+							   yes: function(index){
+								 //window.location.reload();
+								 window.location.href = result.url;
+							   }
+							});	
+							//alert(result.info);
+							//layer.alert(result.info, {icon: 1});
+							//window.location.href = result.url;
+						}else{
+							layer.alert(result.info, {icon: 2});
+						}
+					},
+					complete: function () {
+						$("#btnSubmit").removeAttr("disabled");
+						layer.close(index);
+					}					
+				});
+		});  
+	});  
+</script>
+<script type="text/javascript">  
+	$(function () {  
+		var ajaxurl="{:U('Member/status')}";
+		$("#btnSubmitA").click(function () { 
+				$('#rzformA').ajaxForm({  
+					type: "post",  
+					url: ajaxurl,
+					dataType: 'json',  
+					beforeSend:function(result){ 
+						$("#btnSubmit").attr({ disabled: "disabled" });
+						//index = layer.load();	
+						index = layer.msg('提交中...', {icon: 16,shade: [0.5, '#f5f5f5'], time:20000}) ;						
+					}, 					
+					success: function (result) {  
+						if(result.status=='1'){
+						
+							layer.alert(result.info,{
+							   icon: 1,
+							   closeBtn: 0,
+							   btn: ['确定'],
+							   yes: function(index){
+								 //window.location.reload();
+								 window.location.href = result.url;
+							   }
+							});	
+							//alert(result.info);
+							//layer.alert(result.info, {icon: 1});
+							//window.location.href = result.url;
+						}else{
+							layer.alert(result.info, {icon: 2});
+						}
+					},
+					complete: function () {
+						$("#btnSubmit").removeAttr("disabled");
+						layer.close(index);
+					}					
+				});
+		});  
+	});  
+</script>
+</block> 

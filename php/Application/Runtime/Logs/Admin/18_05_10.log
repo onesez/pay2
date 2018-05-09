@@ -1,0 +1,683 @@
+[ 2018-05-10T00:00:14+08:00 ] ::1 /pay2/index.php/Admin/Platform/add.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000011s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000225s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000282s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000313s ]
+SQL: SHOW COLUMNS FROM `user` [ RunTime:0.0008s ]
+SQL: SELECT * FROM `user` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0006s ]
+SQL: SHOW COLUMNS FROM `admin_log` [ RunTime:0.0006s ]
+SQL: SELECT `log_ip`,`log_time` FROM `admin_log` WHERE `user_id` = 1 ORDER BY log_id desc LIMIT 1,1   [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `orderlist` [ RunTime:0.0008s ]
+SQL: SELECT SUM(pay_to_member) AS tp_sum FROM `orderlist` WHERE ( 1=1 ) AND `creat_time` BETWEEN '1525795200' AND '1525881538' AND `pay_state` = '1' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `auth_rule` [ RunTime:0.0005s ]
+SQL: SELECT * FROM `auth_rule` WHERE ( ismenu = 1 ) ORDER BY id asc  [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `platform` [ RunTime:0.0007s ]
+SQL: SELECT * FROM `platform` WHERE `platform` = 'test' LIMIT 1   [ RunTime:0.0145s ]
+SQL: SELECT * FROM `platform` WHERE `controller` = 'test' LIMIT 1   [ RunTime:0.0006s ]
+NOTIC: [8] Undefined index: auto /Library/WebServer/Documents/pay2/ThinkPHP/Library/Think/Model.class.php 第 1128 行.
+ERR: 无法连接到FTP服务器：106.14.206.106
+
+[ 2018-05-10T00:00:14+08:00 ] ::1 /pay2/index.php/Admin/Platform/lst.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000018s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000350s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000385s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000432s ]
+SQL: SHOW COLUMNS FROM `user` [ RunTime:0.0008s ]
+SQL: SELECT * FROM `user` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `admin_log` [ RunTime:0.0006s ]
+SQL: SELECT `log_ip`,`log_time` FROM `admin_log` WHERE `user_id` = 1 ORDER BY log_id desc LIMIT 1,1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `orderlist` [ RunTime:0.0009s ]
+SQL: SELECT SUM(pay_to_member) AS tp_sum FROM `orderlist` WHERE ( 1=1 ) AND `creat_time` BETWEEN '1525881600' AND '1525881614' AND `pay_state` = '1' LIMIT 1   [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `auth_rule` [ RunTime:0.0006s ]
+SQL: SELECT * FROM `auth_rule` WHERE ( ismenu = 1 ) ORDER BY id asc  [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `platform` [ RunTime:0.0009s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `platform` WHERE `status` = '1' ORDER BY id asc LIMIT 1   [ RunTime:0.0069s ]
+SQL: SELECT * FROM `platform` WHERE `status` = '1' ORDER BY id asc LIMIT 0,100   [ RunTime:0.0007s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000127s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000184s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.017123s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.017173s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000136s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000160s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000679s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000761s ]
+
+[ 2018-05-10T00:00:14+08:00 ] ::1 /pay2/index.php/Admin/Main/login_task_ajax.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000012s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000288s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000369s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000411s ]
+SQL: SHOW COLUMNS FROM `user` [ RunTime:0.0009s ]
+SQL: SELECT * FROM `user` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `admin_log` [ RunTime:0.0006s ]
+SQL: SELECT `log_ip`,`log_time` FROM `admin_log` WHERE `user_id` = 1 ORDER BY log_id desc LIMIT 1,1   [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `orderlist` [ RunTime:0.0011s ]
+SQL: SELECT SUM(pay_to_member) AS tp_sum FROM `orderlist` WHERE ( 1=1 ) AND `creat_time` BETWEEN '1525881600' AND '1525881614' AND `pay_state` = '1' LIMIT 1   [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `auth_rule` [ RunTime:0.0005s ]
+SQL: SELECT * FROM `auth_rule` WHERE ( ismenu = 1 ) ORDER BY id asc  [ RunTime:0.0004s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000396s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000429s ]
+
+[ 2018-05-10T00:01:55+08:00 ] ::1 /pay2/index.php/Admin/Platform/add.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000030s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000479s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000416s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000471s ]
+SQL: SHOW COLUMNS FROM `user` [ RunTime:0.0009s ]
+SQL: SELECT * FROM `user` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0007s ]
+SQL: SHOW COLUMNS FROM `admin_log` [ RunTime:0.0006s ]
+SQL: SELECT `log_ip`,`log_time` FROM `admin_log` WHERE `user_id` = 1 ORDER BY log_id desc LIMIT 1,1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `orderlist` [ RunTime:0.0009s ]
+SQL: SELECT SUM(pay_to_member) AS tp_sum FROM `orderlist` WHERE ( 1=1 ) AND `creat_time` BETWEEN '1525881600' AND '1525881715' AND `pay_state` = '1' LIMIT 1   [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `auth_rule` [ RunTime:0.0005s ]
+SQL: SELECT * FROM `auth_rule` WHERE ( ismenu = 1 ) ORDER BY id asc  [ RunTime:0.0017s ]
+SQL: SHOW COLUMNS FROM `product` [ RunTime:0.0007s ]
+SQL: SELECT * FROM `product` ORDER BY id asc  [ RunTime:0.0004s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000077s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000118s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.010568s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.010632s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000126s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000151s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000440s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000491s ]
+
+[ 2018-05-10T00:01:55+08:00 ] ::1 /pay2/index.php/Admin/Main/login_task_ajax.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000012s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000285s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000374s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000416s ]
+SQL: SHOW COLUMNS FROM `user` [ RunTime:0.0009s ]
+SQL: SELECT * FROM `user` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0007s ]
+SQL: SHOW COLUMNS FROM `admin_log` [ RunTime:0.0009s ]
+SQL: SELECT `log_ip`,`log_time` FROM `admin_log` WHERE `user_id` = 1 ORDER BY log_id desc LIMIT 1,1   [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `orderlist` [ RunTime:0.0012s ]
+SQL: SELECT SUM(pay_to_member) AS tp_sum FROM `orderlist` WHERE ( 1=1 ) AND `creat_time` BETWEEN '1525881600' AND '1525881715' AND `pay_state` = '1' LIMIT 1   [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `auth_rule` [ RunTime:0.0005s ]
+SQL: SELECT * FROM `auth_rule` WHERE ( ismenu = 1 ) ORDER BY id asc  [ RunTime:0.0004s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000409s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000441s ]
+
+[ 2018-05-10T00:03:37+08:00 ] ::1 /pay2/index.php/Admin/Platform/add.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000025s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000353s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000794s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000873s ]
+SQL: SHOW COLUMNS FROM `user` [ RunTime:0.0007s ]
+SQL: SELECT * FROM `user` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `admin_log` [ RunTime:0.0004s ]
+SQL: SELECT `log_ip`,`log_time` FROM `admin_log` WHERE `user_id` = 1 ORDER BY log_id desc LIMIT 1,1   [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `orderlist` [ RunTime:0.0008s ]
+SQL: SELECT SUM(pay_to_member) AS tp_sum FROM `orderlist` WHERE ( 1=1 ) AND `creat_time` BETWEEN '1525881600' AND '1525881742' AND `pay_state` = '1' LIMIT 1   [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `auth_rule` [ RunTime:0.0006s ]
+SQL: SELECT * FROM `auth_rule` WHERE ( ismenu = 1 ) ORDER BY id asc  [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `platform` [ RunTime:0.0007s ]
+SQL: SELECT * FROM `platform` WHERE `platform` = 'test' LIMIT 1   [ RunTime:0.0005s ]
+SQL: SELECT * FROM `platform` WHERE `controller` = 'test' LIMIT 1   [ RunTime:0.0004s ]
+NOTIC: [8] Undefined index: auto /Library/WebServer/Documents/pay2/ThinkPHP/Library/Think/Model.class.php 第 1128 行.
+ERR: 无法连接到FTP服务器：106.14.206.106
+
+[ 2018-05-10T00:05:09+08:00 ] ::1 /pay2/index.php/Admin/Platform/add.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000010s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000225s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000285s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000317s ]
+SQL: SHOW COLUMNS FROM `user` [ RunTime:0.0009s ]
+SQL: SELECT * FROM `user` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0006s ]
+SQL: SHOW COLUMNS FROM `admin_log` [ RunTime:0.0005s ]
+SQL: SELECT `log_ip`,`log_time` FROM `admin_log` WHERE `user_id` = 1 ORDER BY log_id desc LIMIT 1,1   [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `orderlist` [ RunTime:0.0008s ]
+SQL: SELECT SUM(pay_to_member) AS tp_sum FROM `orderlist` WHERE ( 1=1 ) AND `creat_time` BETWEEN '1525881600' AND '1525881834' AND `pay_state` = '1' LIMIT 1   [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `auth_rule` [ RunTime:0.0005s ]
+SQL: SELECT * FROM `auth_rule` WHERE ( ismenu = 1 ) ORDER BY id asc  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `platform` [ RunTime:0.0004s ]
+SQL: SELECT * FROM `platform` WHERE `platform` = 'test' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `platform` WHERE `controller` = 'testContrller' LIMIT 1   [ RunTime:0.0003s ]
+NOTIC: [8] Undefined index: auto /Library/WebServer/Documents/pay2/ThinkPHP/Library/Think/Model.class.php 第 1128 行.
+ERR: 无法连接到FTP服务器：106.14.206.106
+
+[ 2018-05-10T00:15:36+08:00 ] ::1 /pay2/index.php/Admin/Member/detail.html?id=337
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000023s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000841s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001263s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001368s ]
+SQL: SHOW COLUMNS FROM `user` [ RunTime:0.0012s ]
+SQL: SELECT * FROM `user` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `admin_log` [ RunTime:0.0007s ]
+SQL: SELECT `log_ip`,`log_time` FROM `admin_log` WHERE `user_id` = 1 ORDER BY log_id desc LIMIT 1,1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `orderlist` [ RunTime:0.0010s ]
+SQL: SELECT SUM(pay_to_member) AS tp_sum FROM `orderlist` WHERE ( 1=1 ) AND `creat_time` BETWEEN '1525881600' AND '1525882536' AND `pay_state` = '1' LIMIT 1   [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `auth_rule` [ RunTime:0.0008s ]
+SQL: SELECT * FROM `auth_rule` WHERE ( ismenu = 1 ) ORDER BY id asc  [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `role` [ RunTime:0.0006s ]
+SQL: SELECT `id`,`title` FROM `role` ORDER BY id asc  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `user` [ RunTime:0.0007s ]
+SQL: SELECT a.id as id,`user_name`,`truename`,`company_name`,`balance`,`mobile`,`address`,`period`,`rate`,`id_card_num`,`title`,`md5key`,`is_lock`,`platform` FROM user a INNER JOIN auth_group_access b on a.id=b.uid INNER JOIN role c on b.group_id=c.id  WHERE a.id = 337 OR `user_name` = '' LIMIT 1   [ RunTime:0.0046s ]
+SQL: SHOW COLUMNS FROM `bank` [ RunTime:0.0005s ]
+SQL: SELECT * FROM `bank` WHERE `sid` = null  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `rate` [ RunTime:0.0006s ]
+SQL: SELECT `id`,`user_id`,`platform_id`,`platform_name`,`period` FROM `rate` WHERE `user_id` = null ORDER BY id asc  [ RunTime:0.0004s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000079s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000129s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.019531s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.019619s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000599s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000659s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000993s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001064s ]
+
+[ 2018-05-10T00:15:36+08:00 ] ::1 /pay2/index.php/Admin/Main/login_task_ajax.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000011s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000220s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000281s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000313s ]
+SQL: SHOW COLUMNS FROM `user` [ RunTime:0.0010s ]
+SQL: SELECT * FROM `user` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `admin_log` [ RunTime:0.0006s ]
+SQL: SELECT `log_ip`,`log_time` FROM `admin_log` WHERE `user_id` = 1 ORDER BY log_id desc LIMIT 1,1   [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `orderlist` [ RunTime:0.0008s ]
+SQL: SELECT SUM(pay_to_member) AS tp_sum FROM `orderlist` WHERE ( 1=1 ) AND `creat_time` BETWEEN '1525881600' AND '1525882536' AND `pay_state` = '1' LIMIT 1   [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `auth_rule` [ RunTime:0.0006s ]
+SQL: SELECT * FROM `auth_rule` WHERE ( ismenu = 1 ) ORDER BY id asc  [ RunTime:0.0006s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000486s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000532s ]
+
+[ 2018-05-10T00:26:12+08:00 ] ::1 /pay2/index.php/Admin/Member/detail.html?id=337
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000025s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000833s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001214s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001311s ]
+SQL: SHOW COLUMNS FROM `user` [ RunTime:0.0009s ]
+SQL: SELECT * FROM `user` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `admin_log` [ RunTime:0.0008s ]
+SQL: SELECT `log_ip`,`log_time` FROM `admin_log` WHERE `user_id` = 1 ORDER BY log_id desc LIMIT 1,1   [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `orderlist` [ RunTime:0.0011s ]
+SQL: SELECT SUM(pay_to_member) AS tp_sum FROM `orderlist` WHERE ( 1=1 ) AND `creat_time` BETWEEN '1525881600' AND '1525883172' AND `pay_state` = '1' LIMIT 1   [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `auth_rule` [ RunTime:0.0007s ]
+SQL: SELECT * FROM `auth_rule` WHERE ( ismenu = 1 ) ORDER BY id asc  [ RunTime:0.0007s ]
+SQL: SHOW COLUMNS FROM `role` [ RunTime:0.0005s ]
+SQL: SELECT `id`,`title` FROM `role` ORDER BY id asc  [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `user` [ RunTime:0.0005s ]
+SQL: SELECT a.id as id,`user_name`,`truename`,`company_name`,`balance`,`mobile`,`address`,`period`,`rate`,`id_card_num`,`title`,`md5key`,`is_lock`,`platform` FROM user a INNER JOIN auth_group_access b on a.id=b.uid INNER JOIN role c on b.group_id=c.id  WHERE a.id = 337 OR `user_name` = '' LIMIT 1   [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `bank` [ RunTime:0.0004s ]
+SQL: SELECT * FROM `bank` WHERE `sid` = null  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `rate` [ RunTime:0.0005s ]
+SQL: SELECT `id`,`user_id`,`platform_id`,`platform_name`,`period` FROM `rate` WHERE `user_id` = null ORDER BY id asc  [ RunTime:0.0003s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000050s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000093s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.017526s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.017578s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000563s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000622s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000894s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000953s ]
+
+[ 2018-05-10T00:26:13+08:00 ] ::1 /pay2/index.php/Admin/Main/login_task_ajax.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000009s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000220s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000280s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000313s ]
+SQL: SHOW COLUMNS FROM `user` [ RunTime:0.0008s ]
+SQL: SELECT * FROM `user` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `admin_log` [ RunTime:0.0005s ]
+SQL: SELECT `log_ip`,`log_time` FROM `admin_log` WHERE `user_id` = 1 ORDER BY log_id desc LIMIT 1,1   [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `orderlist` [ RunTime:0.0009s ]
+SQL: SELECT SUM(pay_to_member) AS tp_sum FROM `orderlist` WHERE ( 1=1 ) AND `creat_time` BETWEEN '1525881600' AND '1525883173' AND `pay_state` = '1' LIMIT 1   [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `auth_rule` [ RunTime:0.0005s ]
+SQL: SELECT * FROM `auth_rule` WHERE ( ismenu = 1 ) ORDER BY id asc  [ RunTime:0.0005s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000397s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000433s ]
+
+[ 2018-05-10T00:33:29+08:00 ] ::1 /pay2/index.php/Admin/Member/channel_set/id/337.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000023s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000776s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001003s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001085s ]
+SQL: SHOW COLUMNS FROM `user` [ RunTime:0.0011s ]
+SQL: SELECT * FROM `user` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `admin_log` [ RunTime:0.0008s ]
+SQL: SELECT `log_ip`,`log_time` FROM `admin_log` WHERE `user_id` = 1 ORDER BY log_id desc LIMIT 1,1   [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `orderlist` [ RunTime:0.0014s ]
+SQL: SELECT SUM(pay_to_member) AS tp_sum FROM `orderlist` WHERE ( 1=1 ) AND `creat_time` BETWEEN '1525881600' AND '1525883609' AND `pay_state` = '1' LIMIT 1   [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `auth_rule` [ RunTime:0.0007s ]
+SQL: SELECT * FROM `auth_rule` WHERE ( ismenu = 1 ) ORDER BY id asc  [ RunTime:0.0006s ]
+SQL: SELECT * FROM `user` WHERE `id` = 337 LIMIT 1   [ RunTime:0.0005s ]
+SQL: SELECT `id`,`truename` FROM `user` WHERE `id` = null LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `platform` [ RunTime:0.0005s ]
+SQL: SELECT * FROM `platform` WHERE `status` = 1 ORDER BY id asc  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `rate` [ RunTime:0.0006s ]
+ERR: 1054:Unknown column 'idasc' in 'order clause'
+ [ SQL语句 ] : SELECT rate.*,platform_profile.product_id,platform_profile.platform_id,platform_profile.is_run FROM `rate` left join platform_profile ON rate.platform_id = platform_profile.platform_id and rate.product_sid = platform_profile.product_id  WHERE platform_profile.is_run = 1 AND `user_id` = null ORDER BY idasc 
+ERR: 1054:Unknown column 'idasc' in 'order clause'
+ [ SQL语句 ] : SELECT rate.*,platform_profile.product_id,platform_profile.platform_id,platform_profile.is_run FROM `rate` left join platform_profile ON rate.platform_id = platform_profile.platform_id and rate.product_sid = platform_profile.product_id  WHERE platform_profile.is_run = 1 AND `user_id` = null ORDER BY idasc 
+
+[ 2018-05-10T00:34:05+08:00 ] ::1 /pay2/index.php/Admin/Member/channel_set/id/337.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000010s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000219s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000280s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000313s ]
+SQL: SHOW COLUMNS FROM `user` [ RunTime:0.0007s ]
+SQL: SELECT * FROM `user` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `admin_log` [ RunTime:0.0006s ]
+SQL: SELECT `log_ip`,`log_time` FROM `admin_log` WHERE `user_id` = 1 ORDER BY log_id desc LIMIT 1,1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `orderlist` [ RunTime:0.0008s ]
+SQL: SELECT SUM(pay_to_member) AS tp_sum FROM `orderlist` WHERE ( 1=1 ) AND `creat_time` BETWEEN '1525881600' AND '1525883644' AND `pay_state` = '1' LIMIT 1   [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `auth_rule` [ RunTime:0.0005s ]
+SQL: SELECT * FROM `auth_rule` WHERE ( ismenu = 1 ) ORDER BY id asc  [ RunTime:0.0005s ]
+SQL: SELECT * FROM `user` WHERE `id` = 337 LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT `id`,`truename` FROM `user` WHERE `id` = null LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `platform` [ RunTime:0.0005s ]
+SQL: SELECT * FROM `platform` WHERE `status` = 1 ORDER BY id asc  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `rate` [ RunTime:0.0008s ]
+SQL: SELECT rate.*,platform_profile.product_id,platform_profile.platform_id,platform_profile.is_run FROM `rate` left join platform_profile ON rate.platform_id = platform_profile.platform_id and rate.product_sid = platform_profile.product_id  WHERE platform_profile.is_run = 1 AND `user_id` = null ORDER BY id asc  [ RunTime:0.0107s ]
+SQL: SHOW COLUMNS FROM `product` [ RunTime:0.0008s ]
+SQL: SELECT * FROM `product` ORDER BY id asc  [ RunTime:0.0004s ]
+SQL: SELECT rate.*,platform_profile.product_id,platform_profile.platform_id,platform_profile.is_run FROM `rate` left join platform_profile ON rate.platform_id = platform_profile.platform_id and rate.product_sid = platform_profile.product_id  WHERE platform_profile.is_run = 1 AND `product_sid` = '1' AND `user_id` = null  [ RunTime:0.0006s ]
+SQL: SELECT rate.*,platform_profile.product_id,platform_profile.platform_id,platform_profile.is_run FROM `rate` left join platform_profile ON rate.platform_id = platform_profile.platform_id and rate.product_sid = platform_profile.product_id  WHERE platform_profile.is_run = 1 AND `product_sid` = '2' AND `user_id` = null  [ RunTime:0.0008s ]
+SQL: SELECT rate.*,platform_profile.product_id,platform_profile.platform_id,platform_profile.is_run FROM `rate` left join platform_profile ON rate.platform_id = platform_profile.platform_id and rate.product_sid = platform_profile.product_id  WHERE platform_profile.is_run = 1 AND `product_sid` = '3' AND `user_id` = null  [ RunTime:0.0006s ]
+SQL: SELECT rate.*,platform_profile.product_id,platform_profile.platform_id,platform_profile.is_run FROM `rate` left join platform_profile ON rate.platform_id = platform_profile.platform_id and rate.product_sid = platform_profile.product_id  WHERE platform_profile.is_run = 1 AND `product_sid` = '4' AND `user_id` = null  [ RunTime:0.0006s ]
+SQL: SELECT rate.*,platform_profile.product_id,platform_profile.platform_id,platform_profile.is_run FROM `rate` left join platform_profile ON rate.platform_id = platform_profile.platform_id and rate.product_sid = platform_profile.product_id  WHERE platform_profile.is_run = 1 AND `product_sid` = '5' AND `user_id` = null  [ RunTime:0.0006s ]
+SQL: SELECT rate.*,platform_profile.product_id,platform_profile.platform_id,platform_profile.is_run FROM `rate` left join platform_profile ON rate.platform_id = platform_profile.platform_id and rate.product_sid = platform_profile.product_id  WHERE platform_profile.is_run = 1 AND `product_sid` = '6' AND `user_id` = null  [ RunTime:0.0006s ]
+SQL: SELECT rate.*,platform_profile.product_id,platform_profile.platform_id,platform_profile.is_run FROM `rate` left join platform_profile ON rate.platform_id = platform_profile.platform_id and rate.product_sid = platform_profile.product_id  WHERE platform_profile.is_run = 1 AND `product_sid` = '7' AND `user_id` = null  [ RunTime:0.0005s ]
+SQL: SELECT rate.*,platform_profile.product_id,platform_profile.platform_id,platform_profile.is_run FROM `rate` left join platform_profile ON rate.platform_id = platform_profile.platform_id and rate.product_sid = platform_profile.product_id  WHERE platform_profile.is_run = 1 AND `product_sid` = '8' AND `user_id` = null  [ RunTime:0.0004s ]
+SQL: SELECT rate.*,platform_profile.product_id,platform_profile.platform_id,platform_profile.is_run FROM `rate` left join platform_profile ON rate.platform_id = platform_profile.platform_id and rate.product_sid = platform_profile.product_id  WHERE platform_profile.is_run = 1 AND `product_sid` = '9' AND `user_id` = null  [ RunTime:0.0005s ]
+SQL: SELECT rate.*,platform_profile.product_id,platform_profile.platform_id,platform_profile.is_run FROM `rate` left join platform_profile ON rate.platform_id = platform_profile.platform_id and rate.product_sid = platform_profile.product_id  WHERE platform_profile.is_run = 1 AND `product_sid` = '10' AND `user_id` = null  [ RunTime:0.0006s ]
+SQL: SELECT rate.*,platform_profile.product_id,platform_profile.platform_id,platform_profile.is_run FROM `rate` left join platform_profile ON rate.platform_id = platform_profile.platform_id and rate.product_sid = platform_profile.product_id  WHERE platform_profile.is_run = 1 AND `product_sid` = '11' AND `user_id` = null  [ RunTime:0.0005s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000102s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000147s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.026080s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.026155s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000567s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000634s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001037s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001111s ]
+
+[ 2018-05-10T00:34:05+08:00 ] ::1 /pay2/index.php/Admin/Main/login_task_ajax.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000019s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000433s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000386s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000427s ]
+SQL: SHOW COLUMNS FROM `user` [ RunTime:0.0010s ]
+SQL: SELECT * FROM `user` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0006s ]
+SQL: SHOW COLUMNS FROM `admin_log` [ RunTime:0.0006s ]
+SQL: SELECT `log_ip`,`log_time` FROM `admin_log` WHERE `user_id` = 1 ORDER BY log_id desc LIMIT 1,1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `orderlist` [ RunTime:0.0008s ]
+SQL: SELECT SUM(pay_to_member) AS tp_sum FROM `orderlist` WHERE ( 1=1 ) AND `creat_time` BETWEEN '1525881600' AND '1525883645' AND `pay_state` = '1' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `auth_rule` [ RunTime:0.0005s ]
+SQL: SELECT * FROM `auth_rule` WHERE ( ismenu = 1 ) ORDER BY id asc  [ RunTime:0.0005s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000616s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000663s ]
+
+[ 2018-05-10T00:34:11+08:00 ] ::1 /pay2/index.php/Admin/Member/tdajax.html?tdid=18
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000014s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000332s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000326s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000360s ]
+SQL: SHOW COLUMNS FROM `user` [ RunTime:0.0008s ]
+SQL: SELECT * FROM `user` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0006s ]
+SQL: SHOW COLUMNS FROM `admin_log` [ RunTime:0.0007s ]
+SQL: SELECT `log_ip`,`log_time` FROM `admin_log` WHERE `user_id` = 1 ORDER BY log_id desc LIMIT 1,1   [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `orderlist` [ RunTime:0.0011s ]
+SQL: SELECT SUM(pay_to_member) AS tp_sum FROM `orderlist` WHERE ( 1=1 ) AND `creat_time` BETWEEN '1525881600' AND '1525883651' AND `pay_state` = '1' LIMIT 1   [ RunTime:0.0009s ]
+SQL: SHOW COLUMNS FROM `auth_rule` [ RunTime:0.0011s ]
+SQL: SELECT * FROM `auth_rule` WHERE ( ismenu = 1 ) ORDER BY id asc  [ RunTime:0.0006s ]
+SQL: SHOW COLUMNS FROM `platform` [ RunTime:0.0006s ]
+SQL: SELECT `id`,`period` FROM `platform` WHERE `id` = 18 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `platform_profile` [ RunTime:0.0006s ]
+SQL: SELECT platform_profile.*,product.product_name FROM `platform_profile` left join product on platform_profile.product_id=product.id  WHERE `platform_id` = 18 ORDER BY id asc  [ RunTime:0.0006s ]
+
+[ 2018-05-10T00:34:24+08:00 ] ::1 /pay2/index.php/Admin/Member/channel_set.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000014s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000296s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000388s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000427s ]
+SQL: SHOW COLUMNS FROM `user` [ RunTime:0.0008s ]
+SQL: SELECT * FROM `user` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `admin_log` [ RunTime:0.0005s ]
+SQL: SELECT `log_ip`,`log_time` FROM `admin_log` WHERE `user_id` = 1 ORDER BY log_id desc LIMIT 1,1   [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `orderlist` [ RunTime:0.0010s ]
+SQL: SELECT SUM(pay_to_member) AS tp_sum FROM `orderlist` WHERE ( 1=1 ) AND `creat_time` BETWEEN '1525881600' AND '1525883664' AND `pay_state` = '1' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `auth_rule` [ RunTime:0.0004s ]
+SQL: SELECT * FROM `auth_rule` WHERE ( ismenu = 1 ) ORDER BY id asc  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `rate` [ RunTime:0.0006s ]
+SQL: DELETE FROM `rate` WHERE `user_id` = 0 AND `platform_id` = 18 [ RunTime:0.0112s ]
+SQL: SHOW COLUMNS FROM `platform` [ RunTime:0.0010s ]
+SQL: SELECT * FROM `platform` WHERE `id` = 18 LIMIT 1   [ RunTime:0.0004s ]
+ERR: 1136:Column count doesn't match value count at row 1
+ [ SQL语句 ] : INSERT INTO `rate` (`user_id`,`platform_id`,`draw_mode`,`platform_name`,`sell_rote`,`product_sid`,`platform_rote`,`product_name`,`period`,`company_rote`) VALUES ('0','18','溢美支付','5','9','8.0','QQ钱包扫码','1','5')
+ERR: 1136:Column count doesn't match value count at row 1
+ [ SQL语句 ] : INSERT INTO `rate` (`user_id`,`platform_id`,`draw_mode`,`platform_name`,`sell_rote`,`product_sid`,`platform_rote`,`product_name`,`period`,`company_rote`) VALUES ('0','18','溢美支付','5','9','8.0','QQ钱包扫码','1','5')
+
+[ 2018-05-10T00:35:07+08:00 ] ::1 /pay2/index.php/Admin/Member/channel_set.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000071s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002684s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001016s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001104s ]
+SQL: SHOW COLUMNS FROM `user` [ RunTime:0.0042s ]
+SQL: SELECT * FROM `user` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0084s ]
+SQL: SHOW COLUMNS FROM `admin_log` [ RunTime:0.0007s ]
+SQL: SELECT `log_ip`,`log_time` FROM `admin_log` WHERE `user_id` = 1 ORDER BY log_id desc LIMIT 1,1   [ RunTime:0.0023s ]
+SQL: SHOW COLUMNS FROM `orderlist` [ RunTime:0.0009s ]
+SQL: SELECT SUM(pay_to_member) AS tp_sum FROM `orderlist` WHERE ( 1=1 ) AND `creat_time` BETWEEN '1525881600' AND '1525883707' AND `pay_state` = '1' LIMIT 1   [ RunTime:0.0062s ]
+SQL: SHOW COLUMNS FROM `auth_rule` [ RunTime:0.0008s ]
+SQL: SELECT * FROM `auth_rule` WHERE ( ismenu = 1 ) ORDER BY id asc  [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `rate` [ RunTime:0.0006s ]
+SQL: DELETE FROM `rate` WHERE `user_id` = 0 AND `platform_id` = 18 [ RunTime:0.0013s ]
+SQL: SHOW COLUMNS FROM `platform` [ RunTime:0.0008s ]
+SQL: SELECT * FROM `platform` WHERE `id` = 18 LIMIT 1   [ RunTime:0.0003s ]
+ERR: 1136:Column count doesn't match value count at row 1
+ [ SQL语句 ] : INSERT INTO `rate` (`user_id`,`platform_id`,`draw_mode`,`platform_name`,`sell_rote`,`product_sid`,`platform_rote`,`product_name`,`period`,`company_rote`) VALUES ('0','18','溢美支付','5','9','8.0','QQ钱包扫码','1','5')
+ERR: 1136:Column count doesn't match value count at row 1
+ [ SQL语句 ] : INSERT INTO `rate` (`user_id`,`platform_id`,`draw_mode`,`platform_name`,`sell_rote`,`product_sid`,`platform_rote`,`product_name`,`period`,`company_rote`) VALUES ('0','18','溢美支付','5','9','8.0','QQ钱包扫码','1','5')
+
+[ 2018-05-10T00:35:35+08:00 ] ::1 /pay2/index.php/Admin/Member/channel_set.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000029s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000489s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000562s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000630s ]
+SQL: SHOW COLUMNS FROM `user` [ RunTime:0.0008s ]
+SQL: SELECT * FROM `user` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `admin_log` [ RunTime:0.0005s ]
+SQL: SELECT `log_ip`,`log_time` FROM `admin_log` WHERE `user_id` = 1 ORDER BY log_id desc LIMIT 1,1   [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `orderlist` [ RunTime:0.0008s ]
+SQL: SELECT SUM(pay_to_member) AS tp_sum FROM `orderlist` WHERE ( 1=1 ) AND `creat_time` BETWEEN '1525881600' AND '1525883735' AND `pay_state` = '1' LIMIT 1   [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `auth_rule` [ RunTime:0.0008s ]
+SQL: SELECT * FROM `auth_rule` WHERE ( ismenu = 1 ) ORDER BY id asc  [ RunTime:0.0007s ]
+SQL: SELECT * FROM `user` WHERE `id` = 0 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `id`,`truename` FROM `user` WHERE `id` = null LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `platform` [ RunTime:0.0005s ]
+SQL: SELECT * FROM `platform` WHERE `status` = 1 ORDER BY id asc  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `rate` [ RunTime:0.0006s ]
+SQL: SELECT rate.*,platform_profile.product_id,platform_profile.platform_id,platform_profile.is_run FROM `rate` left join platform_profile ON rate.platform_id = platform_profile.platform_id and rate.product_sid = platform_profile.product_id  WHERE platform_profile.is_run = 1 AND `user_id` = null ORDER BY id asc  [ RunTime:0.0011s ]
+SQL: SHOW COLUMNS FROM `product` [ RunTime:0.0008s ]
+SQL: SELECT * FROM `product` ORDER BY id asc  [ RunTime:0.0011s ]
+SQL: SELECT rate.*,platform_profile.product_id,platform_profile.platform_id,platform_profile.is_run FROM `rate` left join platform_profile ON rate.platform_id = platform_profile.platform_id and rate.product_sid = platform_profile.product_id  WHERE platform_profile.is_run = 1 AND `product_sid` = '1' AND `user_id` = null  [ RunTime:0.0006s ]
+SQL: SELECT rate.*,platform_profile.product_id,platform_profile.platform_id,platform_profile.is_run FROM `rate` left join platform_profile ON rate.platform_id = platform_profile.platform_id and rate.product_sid = platform_profile.product_id  WHERE platform_profile.is_run = 1 AND `product_sid` = '2' AND `user_id` = null  [ RunTime:0.0005s ]
+SQL: SELECT rate.*,platform_profile.product_id,platform_profile.platform_id,platform_profile.is_run FROM `rate` left join platform_profile ON rate.platform_id = platform_profile.platform_id and rate.product_sid = platform_profile.product_id  WHERE platform_profile.is_run = 1 AND `product_sid` = '3' AND `user_id` = null  [ RunTime:0.0005s ]
+SQL: SELECT rate.*,platform_profile.product_id,platform_profile.platform_id,platform_profile.is_run FROM `rate` left join platform_profile ON rate.platform_id = platform_profile.platform_id and rate.product_sid = platform_profile.product_id  WHERE platform_profile.is_run = 1 AND `product_sid` = '4' AND `user_id` = null  [ RunTime:0.0006s ]
+SQL: SELECT rate.*,platform_profile.product_id,platform_profile.platform_id,platform_profile.is_run FROM `rate` left join platform_profile ON rate.platform_id = platform_profile.platform_id and rate.product_sid = platform_profile.product_id  WHERE platform_profile.is_run = 1 AND `product_sid` = '5' AND `user_id` = null  [ RunTime:0.0004s ]
+SQL: SELECT rate.*,platform_profile.product_id,platform_profile.platform_id,platform_profile.is_run FROM `rate` left join platform_profile ON rate.platform_id = platform_profile.platform_id and rate.product_sid = platform_profile.product_id  WHERE platform_profile.is_run = 1 AND `product_sid` = '6' AND `user_id` = null  [ RunTime:0.0004s ]
+SQL: SELECT rate.*,platform_profile.product_id,platform_profile.platform_id,platform_profile.is_run FROM `rate` left join platform_profile ON rate.platform_id = platform_profile.platform_id and rate.product_sid = platform_profile.product_id  WHERE platform_profile.is_run = 1 AND `product_sid` = '7' AND `user_id` = null  [ RunTime:0.0004s ]
+SQL: SELECT rate.*,platform_profile.product_id,platform_profile.platform_id,platform_profile.is_run FROM `rate` left join platform_profile ON rate.platform_id = platform_profile.platform_id and rate.product_sid = platform_profile.product_id  WHERE platform_profile.is_run = 1 AND `product_sid` = '8' AND `user_id` = null  [ RunTime:0.0004s ]
+SQL: SELECT rate.*,platform_profile.product_id,platform_profile.platform_id,platform_profile.is_run FROM `rate` left join platform_profile ON rate.platform_id = platform_profile.platform_id and rate.product_sid = platform_profile.product_id  WHERE platform_profile.is_run = 1 AND `product_sid` = '9' AND `user_id` = null  [ RunTime:0.0004s ]
+SQL: SELECT rate.*,platform_profile.product_id,platform_profile.platform_id,platform_profile.is_run FROM `rate` left join platform_profile ON rate.platform_id = platform_profile.platform_id and rate.product_sid = platform_profile.product_id  WHERE platform_profile.is_run = 1 AND `product_sid` = '10' AND `user_id` = null  [ RunTime:0.0004s ]
+SQL: SELECT rate.*,platform_profile.product_id,platform_profile.platform_id,platform_profile.is_run FROM `rate` left join platform_profile ON rate.platform_id = platform_profile.platform_id and rate.product_sid = platform_profile.product_id  WHERE platform_profile.is_run = 1 AND `product_sid` = '11' AND `user_id` = null  [ RunTime:0.0005s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000084s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000126s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.020294s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.020353s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000524s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000577s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.006260s ]
+INFO: [ app_end ] --END-- [ RunTime:0.006318s ]
+
+[ 2018-05-10T00:35:36+08:00 ] ::1 /pay2/index.php/Admin/Main/login_task_ajax.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000044s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000492s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000605s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000687s ]
+SQL: SHOW COLUMNS FROM `user` [ RunTime:0.0012s ]
+SQL: SELECT * FROM `user` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0011s ]
+SQL: SHOW COLUMNS FROM `admin_log` [ RunTime:0.0008s ]
+SQL: SELECT `log_ip`,`log_time` FROM `admin_log` WHERE `user_id` = 1 ORDER BY log_id desc LIMIT 1,1   [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `orderlist` [ RunTime:0.0012s ]
+SQL: SELECT SUM(pay_to_member) AS tp_sum FROM `orderlist` WHERE ( 1=1 ) AND `creat_time` BETWEEN '1525881600' AND '1525883736' AND `pay_state` = '1' LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `auth_rule` [ RunTime:0.0007s ]
+SQL: SELECT * FROM `auth_rule` WHERE ( ismenu = 1 ) ORDER BY id asc  [ RunTime:0.0006s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000662s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000747s ]
+
+[ 2018-05-10T00:35:40+08:00 ] ::1 /pay2/index.php/Admin/Main/login_task_ajax.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000014s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000297s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000376s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000419s ]
+SQL: SHOW COLUMNS FROM `user` [ RunTime:0.0008s ]
+SQL: SELECT * FROM `user` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `admin_log` [ RunTime:0.0006s ]
+SQL: SELECT `log_ip`,`log_time` FROM `admin_log` WHERE `user_id` = 1 ORDER BY log_id desc LIMIT 1,1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `orderlist` [ RunTime:0.0007s ]
+SQL: SELECT SUM(pay_to_member) AS tp_sum FROM `orderlist` WHERE ( 1=1 ) AND `creat_time` BETWEEN '1525881600' AND '1525883740' AND `pay_state` = '1' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `auth_rule` [ RunTime:0.0007s ]
+SQL: SELECT * FROM `auth_rule` WHERE ( ismenu = 1 ) ORDER BY id asc  [ RunTime:0.0006s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000552s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000598s ]
+
+[ 2018-05-10T00:35:46+08:00 ] ::1 /pay2/index.php/Admin/Member/channel_set.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000015s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000253s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000281s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000312s ]
+SQL: SHOW COLUMNS FROM `user` [ RunTime:0.0010s ]
+SQL: SELECT * FROM `user` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `admin_log` [ RunTime:0.0006s ]
+SQL: SELECT `log_ip`,`log_time` FROM `admin_log` WHERE `user_id` = 1 ORDER BY log_id desc LIMIT 1,1   [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `orderlist` [ RunTime:0.0008s ]
+SQL: SELECT SUM(pay_to_member) AS tp_sum FROM `orderlist` WHERE ( 1=1 ) AND `creat_time` BETWEEN '1525881600' AND '1525883746' AND `pay_state` = '1' LIMIT 1   [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `auth_rule` [ RunTime:0.0006s ]
+SQL: SELECT * FROM `auth_rule` WHERE ( ismenu = 1 ) ORDER BY id asc  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `rate` [ RunTime:0.0005s ]
+SQL: DELETE FROM `rate` WHERE `user_id` = 0 AND `platform_id` = 18 [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `platform` [ RunTime:0.0005s ]
+SQL: SELECT * FROM `platform` WHERE `id` = 18 LIMIT 1   [ RunTime:0.0004s ]
+NOTIC: [8] Undefined index: sell_rote /Library/WebServer/Documents/pay2/Application/Admin/Controller/MemberController.class.php 第 364 行.
+NOTIC: [8] Undefined index: product_sid /Library/WebServer/Documents/pay2/Application/Admin/Controller/MemberController.class.php 第 365 行.
+NOTIC: [8] Undefined index: rote /Library/WebServer/Documents/pay2/Application/Admin/Controller/MemberController.class.php 第 366 行.
+NOTIC: [8] Undefined index: product_name /Library/WebServer/Documents/pay2/Application/Admin/Controller/MemberController.class.php 第 367 行.
+NOTIC: [8] Undefined index: company_rote /Library/WebServer/Documents/pay2/Application/Admin/Controller/MemberController.class.php 第 369 行.
+
+[ 2018-05-10T00:35:57+08:00 ] ::1 /pay2/index.php/Admin/Member/channel_set/id/337.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000019s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000328s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000382s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000427s ]
+SQL: SHOW COLUMNS FROM `user` [ RunTime:0.0007s ]
+SQL: SELECT * FROM `user` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `admin_log` [ RunTime:0.0005s ]
+SQL: SELECT `log_ip`,`log_time` FROM `admin_log` WHERE `user_id` = 1 ORDER BY log_id desc LIMIT 1,1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `orderlist` [ RunTime:0.0007s ]
+SQL: SELECT SUM(pay_to_member) AS tp_sum FROM `orderlist` WHERE ( 1=1 ) AND `creat_time` BETWEEN '1525881600' AND '1525883757' AND `pay_state` = '1' LIMIT 1   [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `auth_rule` [ RunTime:0.0006s ]
+SQL: SELECT * FROM `auth_rule` WHERE ( ismenu = 1 ) ORDER BY id asc  [ RunTime:0.0006s ]
+SQL: SELECT * FROM `user` WHERE `id` = 337 LIMIT 1   [ RunTime:0.0005s ]
+SQL: SELECT `id`,`truename` FROM `user` WHERE `id` = null LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `platform` [ RunTime:0.0008s ]
+SQL: SELECT * FROM `platform` WHERE `status` = 1 ORDER BY id asc  [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `rate` [ RunTime:0.0008s ]
+SQL: SELECT rate.*,platform_profile.product_id,platform_profile.platform_id,platform_profile.is_run FROM `rate` left join platform_profile ON rate.platform_id = platform_profile.platform_id and rate.product_sid = platform_profile.product_id  WHERE platform_profile.is_run = 1 AND `user_id` = null ORDER BY id asc  [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `product` [ RunTime:0.0004s ]
+SQL: SELECT * FROM `product` ORDER BY id asc  [ RunTime:0.0003s ]
+SQL: SELECT rate.*,platform_profile.product_id,platform_profile.platform_id,platform_profile.is_run FROM `rate` left join platform_profile ON rate.platform_id = platform_profile.platform_id and rate.product_sid = platform_profile.product_id  WHERE platform_profile.is_run = 1 AND `product_sid` = '1' AND `user_id` = null  [ RunTime:0.0004s ]
+SQL: SELECT rate.*,platform_profile.product_id,platform_profile.platform_id,platform_profile.is_run FROM `rate` left join platform_profile ON rate.platform_id = platform_profile.platform_id and rate.product_sid = platform_profile.product_id  WHERE platform_profile.is_run = 1 AND `product_sid` = '2' AND `user_id` = null  [ RunTime:0.0004s ]
+SQL: SELECT rate.*,platform_profile.product_id,platform_profile.platform_id,platform_profile.is_run FROM `rate` left join platform_profile ON rate.platform_id = platform_profile.platform_id and rate.product_sid = platform_profile.product_id  WHERE platform_profile.is_run = 1 AND `product_sid` = '3' AND `user_id` = null  [ RunTime:0.0004s ]
+SQL: SELECT rate.*,platform_profile.product_id,platform_profile.platform_id,platform_profile.is_run FROM `rate` left join platform_profile ON rate.platform_id = platform_profile.platform_id and rate.product_sid = platform_profile.product_id  WHERE platform_profile.is_run = 1 AND `product_sid` = '4' AND `user_id` = null  [ RunTime:0.0005s ]
+SQL: SELECT rate.*,platform_profile.product_id,platform_profile.platform_id,platform_profile.is_run FROM `rate` left join platform_profile ON rate.platform_id = platform_profile.platform_id and rate.product_sid = platform_profile.product_id  WHERE platform_profile.is_run = 1 AND `product_sid` = '5' AND `user_id` = null  [ RunTime:0.0005s ]
+SQL: SELECT rate.*,platform_profile.product_id,platform_profile.platform_id,platform_profile.is_run FROM `rate` left join platform_profile ON rate.platform_id = platform_profile.platform_id and rate.product_sid = platform_profile.product_id  WHERE platform_profile.is_run = 1 AND `product_sid` = '6' AND `user_id` = null  [ RunTime:0.0005s ]
+SQL: SELECT rate.*,platform_profile.product_id,platform_profile.platform_id,platform_profile.is_run FROM `rate` left join platform_profile ON rate.platform_id = platform_profile.platform_id and rate.product_sid = platform_profile.product_id  WHERE platform_profile.is_run = 1 AND `product_sid` = '7' AND `user_id` = null  [ RunTime:0.0005s ]
+SQL: SELECT rate.*,platform_profile.product_id,platform_profile.platform_id,platform_profile.is_run FROM `rate` left join platform_profile ON rate.platform_id = platform_profile.platform_id and rate.product_sid = platform_profile.product_id  WHERE platform_profile.is_run = 1 AND `product_sid` = '8' AND `user_id` = null  [ RunTime:0.0005s ]
+SQL: SELECT rate.*,platform_profile.product_id,platform_profile.platform_id,platform_profile.is_run FROM `rate` left join platform_profile ON rate.platform_id = platform_profile.platform_id and rate.product_sid = platform_profile.product_id  WHERE platform_profile.is_run = 1 AND `product_sid` = '9' AND `user_id` = null  [ RunTime:0.0005s ]
+SQL: SELECT rate.*,platform_profile.product_id,platform_profile.platform_id,platform_profile.is_run FROM `rate` left join platform_profile ON rate.platform_id = platform_profile.platform_id and rate.product_sid = platform_profile.product_id  WHERE platform_profile.is_run = 1 AND `product_sid` = '10' AND `user_id` = null  [ RunTime:0.0006s ]
+SQL: SELECT rate.*,platform_profile.product_id,platform_profile.platform_id,platform_profile.is_run FROM `rate` left join platform_profile ON rate.platform_id = platform_profile.platform_id and rate.product_sid = platform_profile.product_id  WHERE platform_profile.is_run = 1 AND `product_sid` = '11' AND `user_id` = null  [ RunTime:0.0006s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000162s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000213s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.032232s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.032296s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000618s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000678s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000636s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000700s ]
+
+[ 2018-05-10T00:35:58+08:00 ] ::1 /pay2/index.php/Admin/Main/login_task_ajax.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000010s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000220s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000281s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000312s ]
+SQL: SHOW COLUMNS FROM `user` [ RunTime:0.0009s ]
+SQL: SELECT * FROM `user` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `admin_log` [ RunTime:0.0006s ]
+SQL: SELECT `log_ip`,`log_time` FROM `admin_log` WHERE `user_id` = 1 ORDER BY log_id desc LIMIT 1,1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `orderlist` [ RunTime:0.0007s ]
+SQL: SELECT SUM(pay_to_member) AS tp_sum FROM `orderlist` WHERE ( 1=1 ) AND `creat_time` BETWEEN '1525881600' AND '1525883758' AND `pay_state` = '1' LIMIT 1   [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `auth_rule` [ RunTime:0.0005s ]
+SQL: SELECT * FROM `auth_rule` WHERE ( ismenu = 1 ) ORDER BY id asc  [ RunTime:0.0004s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000391s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000423s ]
+
+[ 2018-05-10T00:36:01+08:00 ] ::1 /pay2/index.php/Admin/Member/channel_set.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000010s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000214s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000273s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000304s ]
+SQL: SHOW COLUMNS FROM `user` [ RunTime:0.0009s ]
+SQL: SELECT * FROM `user` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `admin_log` [ RunTime:0.0006s ]
+SQL: SELECT `log_ip`,`log_time` FROM `admin_log` WHERE `user_id` = 1 ORDER BY log_id desc LIMIT 1,1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `orderlist` [ RunTime:0.0008s ]
+SQL: SELECT SUM(pay_to_member) AS tp_sum FROM `orderlist` WHERE ( 1=1 ) AND `creat_time` BETWEEN '1525881600' AND '1525883761' AND `pay_state` = '1' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `auth_rule` [ RunTime:0.0006s ]
+SQL: SELECT * FROM `auth_rule` WHERE ( ismenu = 1 ) ORDER BY id asc  [ RunTime:0.0006s ]
+
+[ 2018-05-10T00:36:05+08:00 ] ::1 /pay2/index.php/Admin/Member/tdajax.html?tdid=18
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000010s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000222s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000316s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000347s ]
+SQL: SHOW COLUMNS FROM `user` [ RunTime:0.0009s ]
+SQL: SELECT * FROM `user` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0006s ]
+SQL: SHOW COLUMNS FROM `admin_log` [ RunTime:0.0009s ]
+SQL: SELECT `log_ip`,`log_time` FROM `admin_log` WHERE `user_id` = 1 ORDER BY log_id desc LIMIT 1,1   [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `orderlist` [ RunTime:0.0008s ]
+SQL: SELECT SUM(pay_to_member) AS tp_sum FROM `orderlist` WHERE ( 1=1 ) AND `creat_time` BETWEEN '1525881600' AND '1525883765' AND `pay_state` = '1' LIMIT 1   [ RunTime:0.0006s ]
+SQL: SHOW COLUMNS FROM `auth_rule` [ RunTime:0.0012s ]
+SQL: SELECT * FROM `auth_rule` WHERE ( ismenu = 1 ) ORDER BY id asc  [ RunTime:0.0007s ]
+SQL: SHOW COLUMNS FROM `platform` [ RunTime:0.0007s ]
+SQL: SELECT `id`,`period` FROM `platform` WHERE `id` = 18 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `platform_profile` [ RunTime:0.0005s ]
+SQL: SELECT platform_profile.*,product.product_name FROM `platform_profile` left join product on platform_profile.product_id=product.id  WHERE `platform_id` = 18 ORDER BY id asc  [ RunTime:0.0083s ]
+
+[ 2018-05-10T00:36:07+08:00 ] ::1 /pay2/index.php/Admin/Member/channel_set.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000011s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000217s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000279s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000311s ]
+SQL: SHOW COLUMNS FROM `user` [ RunTime:0.0010s ]
+SQL: SELECT * FROM `user` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0084s ]
+SQL: SHOW COLUMNS FROM `admin_log` [ RunTime:0.0007s ]
+SQL: SELECT `log_ip`,`log_time` FROM `admin_log` WHERE `user_id` = 1 ORDER BY log_id desc LIMIT 1,1   [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `orderlist` [ RunTime:0.0011s ]
+SQL: SELECT SUM(pay_to_member) AS tp_sum FROM `orderlist` WHERE ( 1=1 ) AND `creat_time` BETWEEN '1525881600' AND '1525883767' AND `pay_state` = '1' LIMIT 1   [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `auth_rule` [ RunTime:0.0008s ]
+SQL: SELECT * FROM `auth_rule` WHERE ( ismenu = 1 ) ORDER BY id asc  [ RunTime:0.0007s ]
+SQL: SHOW COLUMNS FROM `rate` [ RunTime:0.0008s ]
+SQL: DELETE FROM `rate` WHERE `user_id` = 0 AND `platform_id` = 18 [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `platform` [ RunTime:0.0006s ]
+SQL: SELECT * FROM `platform` WHERE `id` = 18 LIMIT 1   [ RunTime:0.0003s ]
+
+[ 2018-05-10T00:36:17+08:00 ] ::1 /pay2/index.php/Admin/Member/channel_set.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000019s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000336s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000388s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000432s ]
+SQL: SHOW COLUMNS FROM `user` [ RunTime:0.0011s ]
+SQL: SELECT * FROM `user` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `admin_log` [ RunTime:0.0006s ]
+SQL: SELECT `log_ip`,`log_time` FROM `admin_log` WHERE `user_id` = 1 ORDER BY log_id desc LIMIT 1,1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `orderlist` [ RunTime:0.0008s ]
+SQL: SELECT SUM(pay_to_member) AS tp_sum FROM `orderlist` WHERE ( 1=1 ) AND `creat_time` BETWEEN '1525881600' AND '1525883777' AND `pay_state` = '1' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `auth_rule` [ RunTime:0.0005s ]
+SQL: SELECT * FROM `auth_rule` WHERE ( ismenu = 1 ) ORDER BY id asc  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `rate` [ RunTime:0.0005s ]
+SQL: DELETE FROM `rate` WHERE `user_id` = 0 AND `platform_id` = 18 [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `platform` [ RunTime:0.0007s ]
+SQL: SELECT * FROM `platform` WHERE `id` = 18 LIMIT 1   [ RunTime:0.0004s ]
+

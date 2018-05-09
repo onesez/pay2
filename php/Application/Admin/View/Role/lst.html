@@ -1,0 +1,146 @@
+<extend name="Public:base" />
+<block name="content">
+<script type="text/javascript" src="__PUBLIC__/js/myAjax.js"></script>
+        <div class="title02">角色列表</div>
+		<form id="search_form" action="{:U('Role/lst')}" method="POST">
+			<table width="100%" border="0" cellspacing="0" cellpadding="0" class="V_tb2">
+				<tr >
+					<td>
+					<!--  &nbsp;日期从:
+						<input name="ctl00$ContentPlaceHolder1$sdate" type="text" id="ctl00_ContentPlaceHolder1_sdate" class="V_input1" onfocus="HS_setDate(this)" style="width:95px;" size="12" value="2017-07-20" />
+						从:<input name="ctl00$ContentPlaceHolder1$edate" type="text" id="ctl00_ContentPlaceHolder1_edate" class="V_input1" onfocus="HS_setDate(this)" style="width:95px;" size="12" value="2017-07-20" />
+						&nbsp;类型:
+						<select name="ctl00$ContentPlaceHolder1$channelId" id="ctl00_ContentPlaceHolder1_channelId" class="V_input1" style="width:95px;">
+							<option selected="selected" value="0">所有通道</option>
+							<option value="102">在线银行</option>
+							<option value="101">支付宝</option>
+							<option value="100">财付通</option>
+							<option value="99">微信</option>
+						</select>
+						&nbsp;状态:
+						<select name="ctl00$ContentPlaceHolder1$Success" id="ctl00_ContentPlaceHolder1_Success" class="V_input1" style="width:95px;">
+							<option value="0">所有</option>
+							<option selected="selected" value="2">成功</option>
+							<option value="4">失败</option>
+							<option value="1">处理中</option>
+						</select>
+						&nbsp;下发状态:
+						<select name="ctl00$ContentPlaceHolder1$ddlNotifyStatus" id="ctl00_ContentPlaceHolder1_ddlNotifyStatus" class="V_input1" style="width:95px;">
+							<option selected="selected" value="所有">所有</option>
+							<option value="1">处理中</option>
+							<option value="2">已成功</option>
+							<option value="4">失败</option>
+
+						</select> 
+						&nbsp;客户姓名:
+						<label><input name="name" type="text" class="V_input1" value="{$name}"/></label>
+						&nbsp;客户手机号:
+						<label><input name="mobile" type="text" class="V_input1" value="{$mobile}"/></label>
+						&nbsp;录入人:
+						<label><input name="handler" type="text" class="V_input1" value="{$handler}" /></label>-->
+						&nbsp;所属角色:
+						<select name="status" class="V_input1">
+							<option selected="selected" value="">所有</option>
+							<foreach name='roleList' item='v'>
+							<option value="{$v.title}" <if condition="$title eq $v['title']">selected="selected"</if>>{$v.title}</option>
+							</foreach>
+						</select>						
+						&nbsp;
+							<input type="submit" name="" value="搜索" class="Annkeld1"/>
+							<input type="button" onclick="searchqk()" value="清空条件" class="Annkeld1"/>
+						</label>
+					</td>
+				</tr>
+			</table>
+		</form>	
+        </div>
+        <div class="block04">
+            <table id="dbTable" class="ipList" width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr class="title">
+                    <td width="20" class="icon"><input id="check_all" type="checkbox" name="del_system[]" value=""></td>
+                    <td>角色名称</td>
+                    <td>角色描述</td>
+                    <td>操作</td>
+                </tr>
+				<tbody id="check_list">
+				<foreach name = "memberlist" item = "vo">
+                <tr id="{$vo.id}" class="td1">
+                    <td width="20" class="icon"><input type="checkbox" name="del_system[]" value="{$vo.id}" ></td>
+					<td>{$vo.title}</td>
+					<td>{$vo.role_desc}</td>
+					<td>
+						<a href="{:U('Role/edit',array('id'=>$vo['id']))}" class="smallbtn">修改</a>						
+						<a class="smallbtn" onclick="delfunc(this)" data-url="{:U('Role/del')}" data-id="{$vo.id}">删除</a>
+					</td>
+                </tr>
+				</foreach>
+				</tbody>				
+                <!-- 隔行变色 -->
+                <script language="JavaScript">
+                    $(function() {
+                        $(".td1").each(function(i) { this.style.backgroundColor = ['#fff', '#fafafa'][i % 2] })
+                    })
+                </script>
+            </table>
+        </div>
+		<div style="clear: both;"></div>
+		<div style="margin-top: 10px;">
+			<a href="javascript:;" id="del_all" >删除</a>		
+		</div>
+		<div class="pagelist">
+			<div id="PageContent" class="scott">{$page}</div>
+		</div>
+<script>
+	$("#check_all").click(function(){ 
+		if(this.checked){   
+			$("#check_list :checkbox").prop("checked", true);  
+		}else{   
+			$("#check_list :checkbox").prop("checked", false);
+		}   
+	});
+</script>
+<script>
+$("#del_all").click(function(){ 
+	var chk_value =[]; 
+	$('input[name="del_system[]"]:checked').each(function(){ 
+		chk_value.push($(this).val()); 
+	});
+	if(chk_value==""){
+	   layer.alert('请选择删除的项目!', {icon: 2});
+	   return false;
+	}else{
+		layer.confirm('确认删除？', {
+			  btn: ['确定','取消'] //按钮
+			}, function(){
+				var ajaxurl="{:U('Role/delBatch')}";
+				$.ajax({
+					type:"POST",
+					url:ajaxurl,
+					data:{key:chk_value},
+					dataType: "json", 
+					success: function(result) {
+							if(result.status=='1'){					
+								layer.alert(result.info,{
+								   icon: 1,
+								   closeBtn: 0,
+								   btn: ['确定'],
+								   yes: function(index){
+									 //window.location.reload();
+									 window.location.href = result.url;
+								   }
+								});
+								//alert(result.info);
+								//layer.alert(result.info, {icon: 1});
+								//window.location.href = result.url;
+							}else{
+								layer.alert(result.info, {icon: 2});
+							}
+						}
+				});	
+			}
+		);
+
+	}		
+});
+</script>
+</block>		

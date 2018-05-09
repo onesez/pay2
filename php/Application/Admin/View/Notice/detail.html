@@ -1,0 +1,21 @@
+<extend name="Public:base" />
+<block name="content">
+<link href="__PUBLIC__/admin/skin/user/Css/withdrawal_apply.css" rel="stylesheet" type="text/css" media="screen,projection" />
+<div class="title02">公告详情</div>
+    <form id="rzform" >
+        <table class="V_tb2" style="white-space: normal;">
+          <tr class="td1">
+            <th>发布日期：</th>
+            <td>{$detaillist['create_date']?$detaillist['create_date']|date='Y-m-d H:i:s',###:''}</td>
+          </tr>
+          <tr class="td1">
+            <th>公告标题：</th>
+            <td>{$detaillist.title}</td>
+          </tr>
+          <tr class="td1" style="height: 160px;">
+            <th>公告内容：</th>
+            <td>{$detaillist.content}</td>
+          </tr>
+        </table>
+</form>
+</block> 

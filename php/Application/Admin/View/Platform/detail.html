@@ -1,0 +1,83 @@
+<extend name="Public:base" />
+<block name="content">
+<style> 
+.table-d table{ 
+	border: 1px solid #eee;
+    width: 30%;
+	text-align: center;
+} 
+.table-d table tr{
+	line-height: 36px;
+}
+ .table-d table td{
+	border: 1px solid #eee;
+	line-height: 36px;
+}
+ .V_input{
+    width: 188px;
+	height: 22px;
+    line-height: 22px;
+    color: #545454;
+    border: 1px solid #dedede;
+    margin: 5px 5px 5px 0;
+} 
+</style> 
+<script type="text/javascript" src="__PUBLIC__/js/myAjax.js"></script>
+        <div class="title02">通道设置</div>
+			<form id="rzform">
+				<table class="V_tb2">
+				  <tr class="td1">
+					<th>通道名称：</th>
+					<td>
+						{$detaillist.platform}
+					</td>
+				  </tr>
+				  <tr class="td1">
+					<th>控制器名称：</th>
+					<td>
+						{$detaillist.controller}
+					</td>
+				  </tr>
+				  <tr class="td1">
+					<th>结算属性：</th>
+					<td>
+						{$detaillist.period}
+					</td>
+				  </tr>	
+				  <tr class="td1">
+					<th>代付API：</th>
+					<td>
+					    {$detaillist['is_open']==1?'已开通':'未开通'}
+					</td>
+				  </tr>
+				  <tr class="td1">
+					<th>包含产品：</th>
+					<td style="padding: 10px;">
+						<div class="table-d">
+							<table class="table table-bordered table-striped dataTable">
+								<tr style="background: #b4b7b7;">
+									<td>产品名称</td>
+									<td>成本利率</td>
+									<td>运行/停止</td>
+								</tr>
+								<foreach name="productList" item="v">
+								<tr>
+									<td>{$v.product_name}<input type="hidden" name="canshu1[]" value="{$v.id}" class="V_input"/></td>
+									<td>{$v.rote}‰</td>
+									<td>{$v.is_run}</td>
+								</tr>
+								</foreach>
+							</table>
+						</div>
+					</td>
+				  </tr>
+<!-- 				  <tr class="td1">
+					<th>通道状态：</th>
+					<td>
+						{$detaillist['status']==1?'正常':'维护'}		
+					</td>
+				  </tr> -->
+				</table>
+			</form>
+        </div>
+</block>		

@@ -1,0 +1,202 @@
+<extend name="Public:base" />
+<block name="content">
+<link href="__PUBLIC__/admin/skin/user/Css/withdrawal_apply.css" rel="stylesheet" type="text/css" media="screen,projection" />
+<div class="title02">修改客户</div>
+    <form id="rzform" enctype="multipart/form-data">
+		<input name="id" type="hidden" value="{$editlist.id}"/>
+        <table class="V_tb2">
+          <tr class="td1">
+            <th>提交日期：</th>
+            <td><input type="text" name="create_date" class="V_input3" value="{$editlist.create_date}" id="create_date" onclick="laydate({istime: true, format: 'YYYY-MM-DD'})"/></td>
+          </tr>
+          <tr class="td1">
+            <th>客户姓名：</th>
+            <td>
+			<input type="text" name="name" class="V_input3" value="{$editlist.name}" id="name"/>
+			<span style="font-size: 12px;color: red;">*为保证代扣资料的准确性,同一客户(姓名、身份证号码相同)仅限提交1次</span>			
+			</td>
+          </tr>
+          <tr class="td1">
+            <th>客户手机：</th>
+            <td><input type="text" name="mobile" class="V_input3" value="{$editlist.mobile}" id="mobile"/></td>
+          </tr>
+          <tr class="td1">
+            <th>身份证号：</th>
+            <td><input type="text" name="id_card_num" class="V_input3" value="{$editlist.id_card_num}" id="id_card_num"/></td>
+          </tr>
+          <tr class="td1">
+            <th>银行信息：</th>
+            <td>
+				<div class="divall">
+				</div>
+				<img onclick="add()" src="__PUBLIC__/admin/skin/images/add.png" style="margin-bottom: 5px;">
+				<span style="font-size: 12px;color: red;">*同一客户,多张银行卡</span>
+			</td>
+          </tr>
+          <tr class="td1">
+            <th>授权金额：</th>
+            <td><input type="text" name="amount" class="V_input3" value="{$editlist.amount}" id="amount" onkeyup="value=value.replace(/[^\d\.]/g,'');"/></td>
+          </tr>
+          <tr class="td1">
+            <th>授权起止日期：</th>
+            <td>
+			<input type="text" name="pass_begin" class="V_input3" value="{$editlist.pass_begin}" id="pass_begin" onclick="laydate({istime: true, format: 'YYYY-MM-DD'})"/>-
+			<input type="text" name="pass_end" class="V_input3" value="{$editlist.pass_end}" id="pass_end" onclick="laydate({istime: true, format: 'YYYY-MM-DD'})"/>
+			</td>
+          </tr>
+          <tr class="td1">
+            <th>授权协议正面：</th>
+            <td>
+				<input id="up_img_WU_FILE_0" class="V_input3" type="file" name="url1" />
+				<input name="url1" type="hidden" value="{$editlist.url1}"/>
+				<empty name="editlist.url1">
+					暂无
+				<else/>
+					<?php showImage($editlist['url1'],'','','','','35px','35px'); ?>
+				</empty>				
+			</td>
+          </tr>
+          <tr class="td1">
+            <th>授权协议反面：</th>
+            <td>
+				<input id="up_img_WU_FILE_0" class="V_input3" type="file" name="url2" />
+				<input name="url2" type="hidden" value="{$editlist.url2}"/>					
+				<empty name="editlist.url2">
+					暂无
+				<else/>
+					<?php showImage($editlist['url2'],'','','','','35px','35px'); ?>
+				</empty>	
+			</td>
+          </tr>
+          <tr class="td1">
+            <th>手持证件协议：</th>
+            <td>
+				<input id="up_img_WU_FILE_0" class="V_input3" type="file" name="url3" />
+				<input name="url3" type="hidden" value="{$editlist.url3}"/>					
+				<empty name="editlist.url3">
+					暂无
+				<else/>
+					<?php showImage($editlist['url3'],'','','','','35px','35px'); ?>
+				</empty>		
+			</td>
+          </tr>
+          <tr class="td1">
+            <th>经办人合影：</th>
+            <td>
+				<input id="up_img_WU_FILE_0" class="V_input3" type="file" name="url4" />
+				<input name="url4" type="hidden" value="{$editlist.url4}"/>				
+				<empty name="editlist.url4">
+					暂无
+				<else/>
+					<?php showImage($editlist['url4'],'','','','','35px','35px'); ?>
+				</empty>			
+			</td>
+          </tr>
+          <tr class="td1">
+            <th>录入人：</th>
+            <td>
+			<input type="text" name="handler" class="V_input3" value="{$editlist.handler}" id="handler"/>
+			</td>
+          </tr>
+          <tr class="td1">
+            <th></th>
+            <td>
+			<button id="btnSubmit" class="V_btn4 submit ajaxSubmit_apply">确定修改</button>
+			</td>
+          </tr>
+        </table>
+</form>
+<script type="text/javascript">
+function getSelectVal(num,str){ 
+	var ajaxSelect = "{:U('Client/bankajax')}";
+	//alert(str);
+    $.getJSON(ajaxSelect,function(data){ 
+        var smallname = $("#smallname"+num); 
+        $("option",smallname).remove(); //清空原有的选项 
+        $.each(data,function(index,array){ 
+			(array['bankname']==str)?a='selected="selected"':a=''; //选中
+            var option = '<option value="'+array['bankname']+'" '+a+'>'+array['bankname']+'</option>'; 
+            smallname.append(option); 
+        }); 
+    }); 
+}
+</script>
+<script type="text/javascript"> 
+var num = 2;                 
+function add(){	
+	var bankname = arguments[0] ? arguments[0] :'';
+	var bank_card_num = arguments[1] ? arguments[1] : '';	
+	var str = '';
+		str +='<div id="divson'+num+'">'
+				+'银行名称:'
+				+'<select name="canshu1[]" id="smallname'+num+'" style="width:100px;">'
+				+'</select>'
+				+'银行卡号:'
+				+'<input type="text" name="canshu2[]" class="V_input3" id="canshu2'+num+'"/>'
+				+'<img onclick="del('+num+')"src="__PUBLIC__/admin/skin/images/jian.png">'
+			 +'</div>';	
+	$(".divall").append(str);
+	//alert(bankname);
+	$("#canshu1" + num).attr('value', bankname);
+	$("#canshu2" + num).attr('value', bank_card_num);
+	getSelectVal(num,bankname);
+	num++;
+
+}
+
+//历史记录批量添加
+function batchAddTable(list){
+	for(var i = 0;i < list.length; i++){
+		add(
+			list[i].bankname,
+			list[i].bank_card_num
+		);
+	}
+}
+
+function del(num){
+	  $("#divson"+num).remove();
+}
+</script>
+<script type="text/javascript" src="__PUBLIC__/js/jquery.form.js"></script>
+<script type="text/javascript">  
+	$(function () {  
+		var ajaxurl="{:U('Client/edit')}";
+		$("#btnSubmit").click(function () { 
+				$('#rzform').ajaxForm({  
+					type: "post",  
+					url: ajaxurl,
+					dataType: 'json',  
+					success: function (result) {  
+						if(result.status=='1'){
+						
+							layer.alert(result.info,{
+							   icon: 1,
+							   closeBtn: 0,
+							   btn: ['确定'],
+							   yes: function(index){
+								 //window.location.reload();
+								 window.location.href = result.url;
+							   }
+							});	
+							//alert(result.info);
+							//layer.alert(result.info, {icon: 1});
+							//window.location.href = result.url;
+						}else{
+							layer.alert(result.info, {icon: 2});
+						}
+					},
+					complete: function () {
+						$("#btnSubmit").removeAttr("disabled");
+						layer.close(index);
+					}					
+				});
+		});  
+	});  
+</script>
+<script type="text/javascript">
+	<?php if($editlist_edit){?>
+		batchAddTable(<?php echo json_encode($editlist_edit);?>);
+	<?php }?>
+</script>
+</block> 

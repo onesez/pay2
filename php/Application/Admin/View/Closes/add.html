@@ -1,0 +1,117 @@
+<extend name="Public:base" />
+<block name="content">
+<link href="__PUBLIC__/admin/skin/user/Css/withdrawal_apply.css" rel="stylesheet" type="text/css" media="screen,projection" />
+<div class="title02">申请提现</div>
+    <form id="rzform">
+        <table class="V_tb2">
+          <tr class="td1">
+            <th>申请日期：</th>
+            <td><input type="text" name="addtime" class="V_input3" value="{$addtime}" onclick="laydate({istime: true, format: 'YYYY-MM-DD'})"/></td>
+          </tr>
+          <tr class="td1">
+            <th>申请人姓名：</th>
+            <td>
+				<input type="text" name="user_name" class="V_input3" value="{$userData.truename}"/>
+				<span style="font-size: 12px;color: red;">*仅支持提现至本人名下银行卡</span>
+			</td>
+          </tr>
+          <tr class="td1">
+            <th>申请人手机：</th>
+            <td><input type="text" name="mobile" class="V_input3" value="{$userData.mobile}"/></td>
+          </tr>
+          <tr class="td1">
+            <th>银行资料：</th>
+            <td>
+				<table class="V_tb2" style="width:50%">
+					<tr style="line-height: 35px;background-color: #eaeaea;">
+						<td>序号</td>
+						<td>银行名称</td>
+						<td>银行卡号</td>
+					</tr>
+					<foreach name = "bankData" item = "vo">
+					<tr style="line-height: 30px;">
+						<td><input type="radio" name="bank_id" value="{$vo.id}" checked="checked"/></td>
+						<td>{$vo.bankname}</td>
+						<td>{$vo.bank_card_num}</td>
+					</tr>
+					</foreach>
+				</table>
+			</td>
+          </tr>
+          <tr class="td1">
+            <th>提现金额：</th>
+            <td>
+			<input type="text" name="amount" class="V_input3" onkeyup="value=value.replace(/[^\d\.]/g,'');total();"/>元
+			<span id="tips" style="font-size: 12px;color: red;"></span>
+			</td>
+          </tr>
+          <tr class="td1" style="height: 150px;">
+            <th>备注留言：</th>
+            <td><textarea name="remark" cols="" rows="" style="height: 90%;width: 50%;"></textarea></td>
+          </tr>
+          <tr class="td1">
+            <th></th>
+            <td>
+			<button id="btnSubmit" class="V_btn4 submit ajaxSubmit_apply">确认申请</button>
+			</td>
+          </tr>
+        </table>
+</form>
+<script type="text/javascript">  
+function total(){
+	var checkurl = "{:U('Draw/ajaxCanDraw')}";
+	$.ajax({  
+		type: "post",  
+		url: checkurl, 
+		dataType: 'json',		
+		//data: $("#frmUserInfo").serialize(),  
+		success: function (result) { 
+			if(result!=null){
+				$('#tips').html('当前可提现余额为'+result+'元');	
+			}
+		}  
+	});
+}
+</script>
+<script type="text/javascript" src="__PUBLIC__/js/jquery.form.js"></script>
+<script type="text/javascript">  
+	$(function () {  
+		var ajaxurl="{:U('Draw/add')}";
+		$("#btnSubmit").click(function () { 
+				$('#rzform').ajaxForm({  
+					type: "post",  
+					url: ajaxurl,
+					dataType: 'json',  
+					beforeSend:function(result){ 
+						$("#btnSubmit").attr({ disabled: "disabled" });
+						//index = layer.load();	
+						index = layer.msg('提交中...', {icon: 16,shade: [0.5, '#f5f5f5'], time:20000}) ;						
+					}, 					
+					success: function (result) {  
+						if(result.status=='1'){
+						
+							layer.alert(result.info,{
+							   icon: 1,
+							   closeBtn: 0,
+							   btn: ['确定'],
+							   yes: function(index){
+								 //window.location.reload();
+								 window.location.href = result.url;
+							   }
+							});	
+							//alert(result.info);
+							//layer.alert(result.info, {icon: 1});
+							//window.location.href = result.url;
+						}else{
+							layer.alert(result.info, {icon: 2});
+						}
+					},
+					complete: function () {
+						$("#btnSubmit").removeAttr("disabled");
+						layer.close(index);
+					}					
+				});
+		});  
+	});  
+</script>
+</block> 

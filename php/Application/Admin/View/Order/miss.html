@@ -1,0 +1,182 @@
+<extend name="Public:base" />
+<block name="content">
+<script type="text/javascript" src="__PUBLIC__/js/myAjax.js"></script>
+        <div class="title02">漏结算列表</div>
+		<form id="search_form" action="{:U('Order/miss')}" method="POST">
+			<table width="100%" border="0" cellspacing="0" cellpadding="0" class="V_tb2">
+				<tr >
+					<td>
+						&nbsp;商户ID:
+						<label><input name="user_id" type="text" class="V_input1" value="{$user_id}" /></label>					
+						&nbsp;
+							<div class="clear:both;"></div>
+							<input type="submit" name="" value="搜索" class="Annkeld1"/>
+							<input type="button" onclick="searchqk()" value="清空条件" class="Annkeld1"/>
+					</td>
+				</tr>
+			</table>
+		</form>	
+        </div>
+        <div class="block04">
+            <table id="dbTable" class="ipList" width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr class="title">
+                    <td width="20" class="icon"><input id="check_all" type="checkbox" name="del_system[]" value=""></td>
+					<td>商家订单提交日期</td>
+                    <td>商户ID</td>
+                    <td>商家订单号</td>
+                    <td>商家提交金额</td>
+                    <td>系统订单号</td>
+                    <td>支付状态</td>
+                    <td>成功支付时间</td>
+					<td>理论结算时间</td>
+                    <td>成功支付金额(元)</td>
+					<td>费率(‰)</td>
+					<td>手续费(元)</td>
+					<td>应结算金额</td>
+					<td style="width: 65px;">操作</td>
+                </tr>
+				<tbody id="check_list">
+				<foreach name = "memberlist" item = "vo">
+                <tr id="{$vo.id}" class="td1">
+                    <td width="20" class="icon">
+					<if condition="$vo.title neq '超级管理员'">
+						<input type="checkbox" name="del_system[]" value="{$vo.id}" >
+					</if>	
+					</td>				
+					<td>{$vo['pay_date']?$vo['pay_date']|date='Y-m-d H:i:s',###:''}</td>
+					<td>{$vo.user_id}</td>
+					<td>{$vo.pay_order_id}</td>
+					<td>{$vo.pay_amount}</td>
+					<td>{$vo.order_num}</td>
+					<td>{$vo['pay_state']==1?'支付成功':'待支付'}</td>
+					<td>{$vo['pay_time']?$vo['pay_time']|date='Y-m-d H:i:s',###:''}</td>
+					<td>{$vo['pay_time']?$vo['pay_time']|date='Y-m-d H:i:s',###:''}</td>	
+					<td>{$vo.pay_total}</td>					
+					<td>{$vo.pay_sell_rote}</td>
+					<td>{$vo.pay_sell_fee}</td>
+					<td>{$vo.pay_to_member}</td>
+					<td>
+					     <a class="smallbtn" onclick="closelist(this)" data-url="{:U('Order/bjs')}" data-id="{$vo.id}">补结</a>
+					</td>
+                </tr>
+				</foreach>
+                <tr class="td1">
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>			
+					<td></td>	
+					<td></td>					
+					<td></td>					
+					<td>{$total1}</td>
+					<td></td>			
+					<td>{$total2}</td>			
+					<td>{$total3}</td>					
+					<td></td>										
+                </tr>				
+				</tbody>				
+                <!-- 隔行变色 -->
+                <script language="JavaScript">
+                    $(function() {
+                        $(".td1").each(function(i) { this.style.backgroundColor = ['#fff', '#fafafa'][i % 2] })
+                    })
+                </script>
+            </table>
+        </div>
+		<div style="clear: both;"></div>
+		<div style="margin-top: 10px;">
+			<a href="javascript:;" id="del_all" >批量补结</a>		
+		</div>		
+		<div class="pagelist">
+			<div id="PageContent" class="scott">{$page}</div>
+		</div>
+<script>
+	$("#check_all").click(function(){ 
+		if(this.checked){   
+			$("#check_list :checkbox").prop("checked", true);  
+		}else{   
+			$("#check_list :checkbox").prop("checked", false);
+		}   
+	});
+</script>
+<script>
+$("#del_all").click(function(){ 
+	var chk_value =[]; 
+	$('input[name="del_system[]"]:checked').each(function(){ 
+		chk_value.push($(this).val()); 
+	});
+	if(chk_value==""){
+	   layer.alert('请选择补结的项目!', {icon: 2});
+	   return false;
+	}else{
+		layer.confirm('确认补结？', {
+			  btn: ['确定','取消'] //按钮
+			}, function(){
+				var ajaxurl="{:U('Order/bjs_Batch')}";
+				$.ajax({
+					type:"POST",
+					url:ajaxurl,
+					data:{key:chk_value},
+					dataType: "json", 
+					success: function(result) {
+							if(result.status=='1'){					
+								layer.alert(result.info,{
+								   icon: 1,
+								   closeBtn: 0,
+								   btn: ['确定'],
+								   yes: function(index){
+									 window.location.reload();
+									 //window.location.href = result.url;
+								   }
+								});
+								//alert(result.info);
+								//layer.alert(result.info, {icon: 1});
+								//window.location.href = result.url;
+							}else{
+								layer.alert(result.info, {icon: 2});
+							}
+						}
+				});	
+			}
+		);
+
+	}		
+});
+</script>
+<script>
+function closelist(obj){
+	layer.confirm('确认补结算？', {
+		  btn: ['确定','取消'] //按钮
+		}, function(){
+			$.ajax({
+				type : 'post',
+				url : $(obj).attr('data-url'),
+				data : {id:$(obj).attr('data-id')},
+				dataType : 'json',
+				success : function(result){
+					//console.log(result);
+					if(result.status=='1'){					
+						layer.alert(result.info,{
+						   icon: 1,
+						   closeBtn: 0,
+						   btn: ['确定'],
+						   yes: function(index){
+							 window.location.reload();
+							 //window.location.href = result.url;
+						   }
+						});
+						//alert(result.info);
+						//layer.alert(result.info, {icon: 1});
+						//window.location.href = result.url;
+					}else{
+						layer.alert(result.info, {icon: 2});
+					}
+				}
+			})
+		}
+	);
+}
+</script>
+</block>		

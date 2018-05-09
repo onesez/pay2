@@ -1,0 +1,53 @@
+<extend name="Public:base" />
+<block name="content">
+<link href="__PUBLIC__/admin/skin/user/Css/withdrawal_apply.css" rel="stylesheet" type="text/css" media="screen,projection" />
+<div class="title02">申请提现</div>
+    <form id="rzform" enctype="multipart/form-data">
+        <table class="V_tb2">
+          <tr class="td1">
+            <th>申请日期：</th>
+            <td>{$detaillist['addtime']?$detaillist['addtime']|date='Y-m-d H:i:s',###:''}</td>
+          </tr>
+          <tr class="td1">
+            <th>申请人姓名：</th>
+            <td>{$detaillist.user_name}</td>
+          </tr>
+          <tr class="td1">
+            <th>申请人手机：</th>
+            <td>{$detaillist.mobile}</td>
+          </tr>
+          <tr class="td1">
+            <th>开户名：</th>
+            <td>{$detaillist.bank_account}</td>
+          </tr>
+          <tr class="td1">
+            <th>银行名称：</th>
+            <td>{$detaillist.bank}</td>
+          </tr>
+          <tr class="td1">
+            <th>银行帐号：</th>
+            <td>{$detaillist.bank_card_num}</td>
+          </tr>
+          <tr class="td1">
+            <th>提现金额：</th>
+            <td>{$detaillist.amount}元</td>
+          </tr>
+          <tr class="td1">
+            <th>提现状态：</th>
+            <td>{$detaillist.status}</td>
+          </tr>
+          <tr class="td1">
+            <th>拒绝原因：</th>
+            <td>{$detaillist.reason}</td>
+          </tr>
+          <tr class="td1">
+            <th>支付时间：</th>
+            <td>{$detaillist['pay_time']?$detaillist['pay_time']|date='Y-m-d H:i:s',###:''}</td>
+          </tr>
+          <tr class="td1" style="height: 150px;">
+            <th>备注留言：</th>
+            <td>{$detaillist.remark}</td>
+          </tr>
+        </table>
+</form>
+</block> 

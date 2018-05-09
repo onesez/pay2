@@ -1,0 +1,167 @@
+<extend name="Public:base" />
+<block name="content">
+<link href="__PUBLIC__/admin/skin/user/Css/withdrawal_apply.css" rel="stylesheet" type="text/css" media="screen,projection" />
+<div class="title02">发起扣款</div>
+        <table class="V_tb2">
+          <tr class="td1">
+            <th>扣款通道：</th>
+            <td>
+				<select name="platform" style="width:100px;" onchange="ShowImage(parseInt(this.value));">
+					<option value="2" selected="selected">盛迪嘉</option>
+				</select>			
+			</td>
+          </tr>
+        </table>
+		<div style="display:block" id="image2">
+			<form id="rzform2">
+				<input type="hidden" name="id" value="{$koukData.id}"/>
+				<input type="hidden" name="platform" value="2"/>
+				<table class="V_tb2">
+				  <tr class="td1">
+					<th>扣款发起时间：</th>
+					<td><input type="text" name="action_time" class="V_input3" value="{$action_time}" onclick="laydate({istime: true, format: 'YYYY-MM-DD'})"/></td>
+				  </tr>
+				  <tr class="td1">
+					<th>订单编号：</th>
+					<td>
+						<input type="text" name="orderNo" class="V_input3" value="{$orderNo}"/>
+					</td>
+				  </tr>				  
+				  <tr class="td1">
+					<th>客户姓名：</th>
+					<td>
+						<input type="text" name="payerName" value="{$koukData.payment_name}" class="V_input3"/>
+					</td>
+				  </tr>
+				  <tr class="td1">
+					<th>身份证号：</th>
+					<td><input type="text" name="certNo" value="{$koukData.payment_id_card}" class="V_input3"/></td>
+				  </tr>
+				  <tr class="td1">
+					<th>银行卡号：</th>
+					<td><input type="text" name="payerAcc" class="V_input3" value="{$koukData.bank_card_num}" onkeyup="value=value.replace(/[^\d\.]/g,'');"/></td>
+				  </tr>
+				  <tr class="td1">
+					<th>扣款金额：</th>
+					<td><input type="text" name="payAmount" class="V_input3" value="{$koukData.amount}" onkeyup="value=value.replace(/[^\d\.]/g,'');"/></td>
+				  </tr>
+				  <tr class="td1">
+					<th>银行代码：</th>
+					<td>
+						<select name="bankCode" style="width:120px;">
+							<option value="">请选择银行代码</option>
+							<foreach name='bankList' item='v'>
+							<option value="{$v.bankcode}">{$v.bankname}</option>
+							</foreach>
+						</select>						
+					</td>
+				  </tr>				  
+				  <tr class="td1">
+					<th>扣款申请人：</th>
+					<td>
+					<input type="text" name="deductor_name" class="V_input3" value="{$koukData.deductor_name}" />
+					</td>
+				  </tr>
+				  <tr class="td1">
+					<th></th>
+					<td>
+					<button id="btnSubmit2" class="V_btn4 submit ajaxSubmit_apply">确定扣款</button>
+					</td>
+				  </tr>
+				</table>
+			</form>
+		</div>
+<script type="text/javascript">  
+function ShowImage(page){
+    if(page==1){
+		$("#image1").show();
+        $("#image2").hide();
+    }
+    if(page==2){
+		$("#image2").show();
+		$("#image1").hide();
+    }
+}
+</script>  		
+<script type="text/javascript" src="__PUBLIC__/js/jquery.form.js"></script>
+<script type="text/javascript">  
+	$(function () {  
+		var ajaxurl="{:U('Deduct/kouk')}";
+		$("#btnSubmit").click(function () { 
+				$('#rzform').ajaxForm({  
+					type: "post",  
+					url: ajaxurl,
+					dataType: 'json',  
+					beforeSend:function(result){ 
+						$("#btnSubmit").attr({ disabled: "disabled" });
+						//index = layer.load();	
+						index = layer.msg('提交中...', {icon: 16,shade: [0.5, '#f5f5f5'], time:20000}) ;						
+					}, 					
+					success: function (result) {  
+						if(result.status=='1'){
+						
+							layer.alert(result.info,{
+							   icon: 1,
+							   closeBtn: 0,
+							   btn: ['确定'],
+							   yes: function(index){
+								 //window.location.reload();
+								 window.location.href = result.url;
+							   }
+							});	
+							//alert(result.info);
+							//layer.alert(result.info, {icon: 1});
+							//window.location.href = result.url;
+						}else{
+							layer.alert(result.info, {icon: 2});
+						}
+					},
+					complete: function () {
+						$("#btnSubmit").removeAttr("disabled");
+						layer.close(index);
+					}					
+				});
+		});  
+	});  
+</script>
+<script type="text/javascript">  
+	$(function () {  
+		var ajaxurl="{:U('Deduct/kouk')}";
+		$("#btnSubmit2").click(function () { 
+				$('#rzform2').ajaxForm({  
+					type: "post",  
+					url: ajaxurl,
+					dataType: 'json',  
+					beforeSend:function(result){ 
+						$("#btnSubmit2").attr({ disabled: "disabled" });
+						//index = layer.load();	
+						index = layer.msg('提交中...', {icon: 16,shade: [0.5, '#f5f5f5'], time:20000}) ;						
+					}, 					
+					success: function (result) {  
+						if(result.status=='1'){
+						
+							layer.alert(result.info,{
+							   icon: 1,
+							   closeBtn: 0,
+							   btn: ['确定'],
+							   yes: function(index){
+								 //window.location.reload();
+								 window.location.href = result.url;
+							   }
+							});	
+							//alert(result.info);
+							//layer.alert(result.info, {icon: 1});
+							//window.location.href = result.url;
+						}else{
+							layer.alert(result.info, {icon: 2});
+						}
+					},
+					complete: function () {
+						$("#btnSubmit2").removeAttr("disabled");
+						layer.close(index);
+					}					
+				});
+		});  
+	});  
+</script>
+</block> 

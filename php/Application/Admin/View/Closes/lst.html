@@ -1,0 +1,148 @@
+<extend name="Public:base" />
+<block name="content">
+<script type="text/javascript" src="__PUBLIC__/js/myAjax.js"></script>
+        <div class="title02">结算记录</div>
+		<form id="search_form" action="{:U('Closes/lst')}" method="POST">
+			<table width="100%" border="0" cellspacing="0" cellpadding="0" class="V_tb2">
+				<tr >
+					<td>
+						日期从:
+						<input name="start" value="{$start}" type="text" class="V_input1" style="width:128px;" size="12" onclick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})" />至:<input name="end" value="{$end}" type="text" class="V_input1" style="width:128px;" size="12" onclick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})" />
+						<!--&nbsp;类型:
+						<select name="ctl00$ContentPlaceHolder1$channelId" id="ctl00_ContentPlaceHolder1_channelId" class="V_input1" style="width:95px;">
+							<option selected="selected" value="0">所有通道</option>
+							<option value="102">在线银行</option>
+							<option value="101">支付宝</option>
+							<option value="100">财付通</option>
+							<option value="99">微信</option>
+						</select>
+						&nbsp;状态:
+						<select name="ctl00$ContentPlaceHolder1$Success" id="ctl00_ContentPlaceHolder1_Success" class="V_input1" style="width:95px;">
+							<option value="0">所有</option>
+							<option selected="selected" value="2">成功</option>
+							<option value="4">失败</option>
+							<option value="1">处理中</option>
+						</select>
+						&nbsp;下发状态:
+						<select name="ctl00$ContentPlaceHolder1$ddlNotifyStatus" id="ctl00_ContentPlaceHolder1_ddlNotifyStatus" class="V_input1" style="width:95px;">
+							<option selected="selected" value="所有">所有</option>
+							<option value="1">处理中</option>
+							<option value="2">已成功</option>
+							<option value="4">失败</option>
+
+						</select> -->
+						&nbsp;结算订单号:
+						<label><input name="order_num" type="text" class="V_input1" value="{$order_num}"/></label>
+						&nbsp;结算商户id:
+						<label><input name="username" type="text" class="V_input1" value="{$username}"/></label>
+						&nbsp;商户名称:
+						<label><input name="company_name" type="text" class="V_input1" value="{$company_name}"/></label>					
+						&nbsp;
+						<div class="clear:both;"></div>
+							<input type="submit" name="" value="搜索" class="Annkeld1"/>
+							<input type="button" onclick="searchqk()" value="清空条件" class="Annkeld1"/>
+							<a class="Annkeld1" href="{:U('Closes/expCloses')}">导出搜索结果</a>	
+					</td>
+				</tr>
+			</table>
+		</form>	
+        </div>
+        <div class="block04">
+            <table id="dbTable" class="ipList" width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr class="title">
+                    <td>时间</td>
+                    <td>商户id</td>
+                    <td>商户名称</td>
+                    <td>付款金额(元)</td>
+                    <td>手续费(元)</td>
+                    <td>结算金额(元)</td>
+                    <td>摘要</td>
+                </tr>
+				<tbody id="check_list">
+				<foreach name = "memberlist" item = "vo">
+                <tr id="{$vo.id}" class="td1">
+					<td>{$vo['addtime']?$vo['addtime']|date='Y-m-d H:i:s',###:''}</td>
+					<td>{$vo.username}</td>
+					<td>{$vo.company_name}</td>
+					<td>{$vo.amount}</td>
+					<td>{$vo.pay_fee}</td>
+					<td>{$vo.real_amount}</td>
+					<td>{$vo.remark}</td>
+                </tr>
+				</foreach>
+	            <tr class="td1">
+					<td>　</td>
+					<td>　</td>
+					<td>　</td>
+					<td>{$total1}</td>
+					<td>{$total2}</td>
+					<td>{$total3}</td>
+					<td></td>
+                </tr>			
+				</tbody>				
+                <!-- 隔行变色 -->
+                <script language="JavaScript">
+                    $(function() {
+                        $(".td1").each(function(i) { this.style.backgroundColor = ['#fff', '#fafafa'][i % 2] })
+                    })
+                </script>
+            </table>
+        </div>
+		<div style="clear: both;"></div>
+		<div class="pagelist">
+			<div id="PageContent" class="scott">{$page}</div>
+		</div>
+<script>
+	$("#check_all").click(function(){ 
+		if(this.checked){   
+			$("#check_list :checkbox").prop("checked", true);  
+		}else{   
+			$("#check_list :checkbox").prop("checked", false);
+		}   
+	});
+</script>
+<script>
+$("#del_all").click(function(){ 
+	var chk_value =[]; 
+	$('input[name="del_system[]"]:checked').each(function(){ 
+		chk_value.push($(this).val()); 
+	});
+	if(chk_value==""){
+	   layer.alert('请选择删除的项目!', {icon: 2});
+	   return false;
+	}else{
+		layer.confirm('确认删除？', {
+			  btn: ['确定','取消'] //按钮
+			}, function(){
+				var ajaxurl="{:U('Closes/delBatch')}";
+				$.ajax({
+					type:"POST",
+					url:ajaxurl,
+					data:{key:chk_value},
+					dataType: "json", 
+					success: function(result) {
+							if(result.status=='1'){					
+								layer.alert(result.info,{
+								   icon: 1,
+								   closeBtn: 0,
+								   btn: ['确定'],
+								   yes: function(index){
+									 //window.location.reload();
+									 window.location.href = result.url;
+								   }
+								});
+								//alert(result.info);
+								//layer.alert(result.info, {icon: 1});
+								//window.location.href = result.url;
+							}else{
+								layer.alert(result.info, {icon: 2});
+							}
+						}
+				});	
+			}
+		);
+
+	}		
+});
+</script>
+</block>		

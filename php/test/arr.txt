@@ -1,0 +1,90 @@
+'签名前原始串body=iphone6s手机配件&notify_url=http://www.fashionweddress.top/globalspay.php&out_order_no=201242555&user_id=362065605607332&return_url=http://www.fashionweddress.top/globalspay.php&subject=购买&total_fee=3&user_seller=662040FxVAvcaCZ9tSr5MfpeXCsnXI7gjksFHh'
+'请求数组：'
+array (
+  'user_id' => '362065605607332',
+  'user_seller' => '662040',
+  'out_order_no' => '201242555',
+  'subject' => '购买',
+  'total_fee' => '3',
+  'body' => 'iphone6s手机配件',
+  'notify_url' => 'http://www.fashionweddress.top/globalspay.php',
+  'return_url' => 'http://www.fashionweddress.top/globalspay.php',
+  'sign' => 'cf7586b3d6bd873d6787b254ee2996f0',
+  'pay_type' => '3',
+  'banktype' => '',
+)
+'签名前原始串body=iphone6s手机配件&notify_url=http://www.fashionweddress.top/globalspay.php&out_order_no=201242555&user_id=362065605607332&return_url=http://www.fashionweddress.top/globalspay.php&subject=购买&total_fee=3&user_seller=662040FxVAvcaCZ9tSr5MfpeXCsnXI7gjksFHh'
+'请求数组：'
+array (
+  'user_id' => '362065605607332',
+  'user_seller' => '662040',
+  'out_order_no' => '201242555',
+  'subject' => '购买',
+  'total_fee' => '3',
+  'body' => 'iphone6s手机配件',
+  'notify_url' => 'http://www.fashionweddress.top/globalspay.php',
+  'return_url' => 'http://www.fashionweddress.top/globalspay.php',
+  'sign' => 'cf7586b3d6bd873d6787b254ee2996f0',
+  'pay_type' => '3',
+  'banktype' => '',
+)
+'签名前原始串body=iphone6s手机配件&notify_url=http://www.fashionweddress.top/globalspay.php&out_order_no=201242555&user_id=362065605607332&return_url=http://www.fashionweddress.top/globalspay.php&subject=购买&total_fee=3&user_seller=662040FxVAvcaCZ9tSr5MfpeXCsnXI7gjksFHh'
+'请求数组：'
+array (
+  'user_id' => '362065605607332',
+  'user_seller' => '662040',
+  'out_order_no' => '201242555',
+  'subject' => '购买',
+  'total_fee' => '3',
+  'body' => 'iphone6s手机配件',
+  'notify_url' => 'http://www.fashionweddress.top/globalspay.php',
+  'return_url' => 'http://www.fashionweddress.top/globalspay.php',
+  'sign' => 'cf7586b3d6bd873d6787b254ee2996f0',
+  'pay_type' => '3',
+  'banktype' => '',
+)
+'签名前原始串body=iphone6s手机配件&notify_url=http://www.fashionweddress.top/globalspay.php&out_order_no=201242555&user_id=362065605607332&return_url=http://www.fashionweddress.top/globalspay.php&subject=购买&total_fee=3&user_seller=662040FxVAvcaCZ9tSr5MfpeXCsnXI7gjksFHh'
+'请求数组：'
+array (
+  'user_id' => '362065605607332',
+  'user_seller' => '662040',
+  'out_order_no' => '201242555',
+  'subject' => '购买',
+  'total_fee' => '3',
+  'body' => 'iphone6s手机配件',
+  'notify_url' => 'http://www.fashionweddress.top/globalspay.php',
+  'return_url' => 'http://www.fashionweddress.top/globalspay.php',
+  'sign' => 'cf7586b3d6bd873d6787b254ee2996f0',
+  'pay_type' => '3',
+  'banktype' => '',
+)
+'签名前原始串body=iphone6s手机配件&notify_url=http://www.fashionweddress.top/globalspay.php&out_order_no=201242555&user_id=362065605607332&return_url=http://www.fashionweddress.top/globalspay.php&subject=购买&total_fee=3&user_seller=662040FxVAvcaCZ9tSr5MfpeXCsnXI7gjksFHh'
+'请求数组：'
+array (
+  'user_id' => '362065605607332',
+  'user_seller' => '662040',
+  'out_order_no' => '201242555',
+  'subject' => '购买',
+  'total_fee' => '3',
+  'body' => 'iphone6s手机配件',
+  'notify_url' => 'http://www.fashionweddress.top/globalspay.php',
+  'return_url' => 'http://www.fashionweddress.top/globalspay.php',
+  'sign' => 'cf7586b3d6bd873d6787b254ee2996f0',
+  'pay_type' => '3',
+  'banktype' => '',
+)
+'签名前原始串body=iphone6s手机配件&notify_url=http://www.fashionweddress.top/globalspay.php&out_order_no=201242555&user_id=362065605607332&return_url=http://www.fashionweddress.top/globalspay.php&subject=购买&total_fee=3&user_seller=662040FxVAvcaCZ9tSr5MfpeXCsnXI7gjksFHh'
+'请求数组：'
+array (
+  'user_id' => '362065605607332',
+  'user_seller' => '662040',
+  'out_order_no' => '201242555',
+  'subject' => '购买',
+  'total_fee' => '3',
+  'body' => 'iphone6s手机配件',
+  'notify_url' => 'http://www.fashionweddress.top/globalspay.php',
+  'return_url' => 'http://www.fashionweddress.top/globalspay.php',
+  'sign' => 'cf7586b3d6bd873d6787b254ee2996f0',
+  'pay_type' => '3',
+  'banktype' => '',
+)

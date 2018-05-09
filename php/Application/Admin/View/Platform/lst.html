@@ -1,0 +1,125 @@
+<extend name="Public:base" />
+<block name="content">
+<style> 
+.table-d table{ 
+	border: 1px solid #eee;
+    width: 30%;
+} 
+.table-d table tr{
+	line-height: 25px;
+}
+ .table-d table td{
+	border: 1px solid #eee;
+	line-height: 25px;
+}
+ .V_input{
+    width: 188px;
+	height: 22px;
+    line-height: 22px;
+    color: #545454;
+    border: 1px solid #dedede;
+    margin: 5px 5px 5px 0;
+} 
+</style> 
+<script type="text/javascript" src="__PUBLIC__/js/myAjax.js"></script>
+        <div class="title02">通道列表</div>
+        <div class="block04">
+            <table id="dbTable" class="ipList" width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr class="title">
+                    <td width="20" class="icon"><input id="check_all" type="checkbox" name="del_system[]" value=""></td>
+                    <td>通道编号</td>
+                    <td>通道名称</td>
+                    <td>结算属性</td>
+                    <td>通道控制器</td>
+                    <td>代付API</td>
+                    <td>操作</td>
+                </tr>
+				<tbody id="check_list">
+				<foreach name = "memberlist" item = "vo">
+                <tr id="{$vo.id}" class="td1">
+                    <td width="20" class="icon"><input type="checkbox" name="del_system[]" value="{$vo.id}" ></td>
+					<td>{$vo.id}</td>
+					<td>{$vo.platform}</td>
+					<td>{$vo.period}</td>
+					<td>{$vo.controller}</td>
+					<td>{$vo['is_open']==1?'已开通':'未开通'}</td>
+					<td>						
+						<a href="{:U('Platform/detail',array('id'=>$vo['id']))}" class="smallbtn">详情</a>
+						<a href="{:U('Platform/edit',array('id'=>$vo['id']))}" class="smallbtn">编辑</a>						
+						<a class="smallbtn" onclick="delfunc(this)" data-url="{:U('Platform/del')}" data-id="{$vo.id}">删除</a>
+					</td>
+                </tr>
+				</foreach>
+				</tbody>				
+                <!-- 隔行变色 -->
+                <script language="JavaScript">
+                    $(function() {
+                        $(".td1").each(function(i) { this.style.backgroundColor = ['#fff', '#fafafa'][i % 2] })
+                    })
+                </script>
+            </table>
+        </div>
+		<div style="clear: both;"></div>
+		<div style="margin-top: 10px;">
+			<a href="javascript:;" id="del_all" >删除</a>		
+		</div>
+		<div class="pagelist">
+			<div id="PageContent" class="scott">{$page}</div>
+		</div>
+		
+<script type="text/javascript" src="__PUBLIC__/js/jquery.form.js"></script>		
+<script>
+	$("#check_all").click(function(){ 
+		if(this.checked){   
+			$("#check_list :checkbox").prop("checked", true);  
+		}else{   
+			$("#check_list :checkbox").prop("checked", false);
+		}   
+	});
+</script>
+<script>
+$("#del_all").click(function(){ 
+	var chk_value =[]; 
+	$('input[name="del_system[]"]:checked').each(function(){ 
+		chk_value.push($(this).val()); 
+	});
+	if(chk_value==""){
+	   layer.alert('请选择删除的项目!', {icon: 2});
+	   return false;
+	}else{
+		layer.confirm('确认删除？', {
+			  btn: ['确定','取消'] //按钮
+			}, function(){
+				var ajaxurl="{:U('Platform/delBatch')}";
+				$.ajax({
+					type:"POST",
+					url:ajaxurl,
+					data:{key:chk_value},
+					dataType: "json", 
+					success: function(result) {
+							if(result.status=='1'){					
+								layer.alert(result.info,{
+								   icon: 1,
+								   closeBtn: 0,
+								   btn: ['确定'],
+								   yes: function(index){
+									 //window.location.reload();
+									 window.location.href = result.url;
+								   }
+								});
+								//alert(result.info);
+								//layer.alert(result.info, {icon: 1});
+								//window.location.href = result.url;
+							}else{
+								layer.alert(result.info, {icon: 2});
+							}
+						}
+				});	
+			}
+		);
+
+	}		
+});
+</script>
+
+</block>		

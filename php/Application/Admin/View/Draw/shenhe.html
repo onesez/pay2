@@ -1,0 +1,123 @@
+<script type="text/javascript" src="__PUBLIC__/js/jquery.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/layer/layer.js"></script>
+<script language="JavaScript" src="__PUBLIC__/js/laydate/laydate.js"></script>
+<script type="text/javascript" src="__PUBLIC__/admin/static/js/jquery.cookie.js"></script>
+<script type="text/javascript" src="__PUBLIC__/admin/skin/js/jquery.treeview.js"></script>
+<script type="text/javascript" src="__PUBLIC__/admin/skin/user/js/menu.js"></script>
+<link href="__PUBLIC__/admin/skin/css/common.css" rel="stylesheet" type="text/css" media="screen,projection" />
+<link href="__PUBLIC__/admin/skin/user/user.css" rel="stylesheet" type="text/css" media="screen,projection" />
+<link href="__PUBLIC__/admin/skin/css/page.css" rel="stylesheet" type="text/css" />
+<link href="__PUBLIC__/admin/skin/user/Css/style.css" rel="stylesheet" type="text/css" />
+<link href="__PUBLIC__/admin/skin/user/Css/Index.css" rel="stylesheet" type="text/css" />
+<link href="__PUBLIC__/admin/skin/user/Css/withdrawal_apply.css" rel="stylesheet" type="text/css" media="screen,projection" />
+<link href="__PUBLIC__/admin/skin/css/common.css" rel="stylesheet" type="text/css" media="screen,projection" />
+<link href="__PUBLIC__/admin/skin/user/user.css" rel="stylesheet" type="text/css" media="screen,projection" />
+<link href="__PUBLIC__/admin/skin/css/page.css" rel="stylesheet" type="text/css" />
+<link href="__PUBLIC__/admin/skin/user/Css/style.css" rel="stylesheet" type="text/css" />
+<link href="__PUBLIC__/admin/skin/user/Css/Index.css" rel="stylesheet" type="text/css" />
+<script>
+function to_change(){
+	var obj  = document.getElementsByName('status');
+	for(var i=0;i<obj.length;i++){
+		if(obj[i].checked==true){
+			if(obj[i].value=='已支付'){
+				var str='';
+				$('#content_info').html(str);
+			}else if(obj[i].value=='拒绝'){
+				var str='';	
+					str+='<tr class="td1">'+
+						'<th>拒绝原因：</th>'+
+						'<td style="width: 256px;height: 116px;"><textarea name="description" cols="" rows="" style="height: 90%;margin-top: 10px;width: 150%;"></textarea></td>'+
+					'</tr>';			
+				//document.getElementById('content_info').innerHTML=str;	
+				$('#content_info').html(str);					
+			}
+		}
+	}
+}
+</script>
+<form id="rzform">
+	<input name="id" type="hidden" value="{$tixianData.id}"/>
+	<input name="user_id" type="hidden" value="{$tixianData.user_id}"/>
+	<input name="amount" type="hidden" value="{$tixianData.amount}"/>
+	<table class="V_tb2" style="width: 92%;float: none;margin: 10px auto;">
+	  <tr class="td1">
+		<th colspan="2" style="text-align: center;color: red;font-size: 18px;font-weight: 600;">提现通过前,请确认以下资料</th>
+	  </tr>
+	  <tr class="td1">
+		<th>*申请人姓名：</th>
+		<td>{$tixianData.user_name}</td>				
+	  </tr>
+	  <tr class="td1">
+		<th>*申请人手机号：</th>
+		<td>{$tixianData.mobile}</td>				
+	  </tr>
+	  <tr class="td1">
+		<th>*提现金额：</th>
+		<td>{$tixianData.amount}元</td>				
+	  </tr>
+	  <tr class="td1">
+		<th>*银行信息：</th>
+		<td>{$tixianData.bank},{$tixianData.bank_account},{$tixianData.bank_card_num}</td>				
+	  </tr>	  
+	  <tr class="td1">
+		<th>审核状态：</th>
+		<td>
+		    <input name="status" type="radio" value="拒绝" onclick="to_change()" />拒绝&nbsp;&nbsp;&nbsp;&nbsp;	
+			<input name="status" type="radio" value="已支付" checked="checked" onclick="to_change()"/>已支付
+		</td>
+	  </tr>
+	  <tr class="td1">
+		 <th colspan="2" style="text-align: center;padding-right: 0;">
+			<div id="content_info"></div>
+		 </th>
+	  </tr>	  
+	  <tr class="td1">
+		<th></th>
+		<td>
+		<button id="btnSubmit" class="V_btn4 submit ajaxSubmit_apply">确定</button>
+		</td>
+	  </tr>
+	</table>
+</form>
+<script language="javascript">
+//function send(){
+	//$.post("{:U('Closes/passsms')}",function(result){
+
+	//});
+//}
+</script>
+<script type="text/javascript" src="__PUBLIC__/js/jquery.form.js"></script>
+<script type="text/javascript">  
+	$(function () {  
+		var ajaxurl="{:U('Draw/pass')}";
+		$("#btnSubmit").click(function () { 
+				$('#rzform').ajaxForm({  
+					type: "post",  
+					url: ajaxurl,
+					dataType: 'json',  
+					success: function (result) {  
+						if(result.status=='1'){
+						
+							layer.alert(result.info,{
+							   icon: 1,
+							   closeBtn: 0,
+							   btn: ['确定'],
+							   yes: function(index){
+								  window.parent.location.reload(); //刷新父页面
+								 //window.location.reload();
+								 //window.location.href = result.url;
+							   }
+							});	
+							//alert(result.info);
+							//layer.alert(result.info, {icon: 1});
+							//window.location.href = result.url;
+						}else{
+							layer.alert(result.info, {icon: 2});
+						}
+					}   
+				});
+		});  
+	});  
+</script>

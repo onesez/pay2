@@ -1,0 +1,90 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>后台</title>
+<meta name="keywords" /><meta name="description" />
+<script type="text/javascript" src="__PUBLIC__/js/jquery.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/layer/layer.js"></script>
+<script language="JavaScript" src="__PUBLIC__/js/laydate/laydate.js"></script>
+<script type="text/javascript" src="__PUBLIC__/admin/static/js/jquery.cookie.js"></script>
+<script type="text/javascript" src="__PUBLIC__/admin/skin/js/jquery.treeview.js"></script>
+<script type="text/javascript" src="__PUBLIC__/admin/skin/user/js/menu.js"></script>
+<link href="__PUBLIC__/admin/skin/css/common.css" rel="stylesheet" type="text/css" media="screen,projection" />
+<link href="__PUBLIC__/admin/skin/user/user.css" rel="stylesheet" type="text/css" media="screen,projection" />
+<link href="__PUBLIC__/admin/skin/css/page.css" rel="stylesheet" type="text/css" />
+<link href="__PUBLIC__/admin/skin/user/Css/style.css" rel="stylesheet" type="text/css" />
+<link href="__PUBLIC__/admin/skin/user/Css/Index.css" rel="stylesheet" type="text/css" />
+<!--改动 引用样式 结束-->
+    
+</head>
+<body scroll="no">
+<table class="tab" width="100%" border="0" cellspacing="0" cellpadding="0">
+	<tr>
+		<td height="64" colspan="2">
+			<block name="top">	
+				<div class="head">
+					<a class="logo" href="{:U('Main/index')}" onfocus="this.blur();">支付平台</a>
+					<ul class="nav">
+						<li><a href="{:U('Main/index')}">商户首页</a></li>
+						<if condition="($_SESSION['user_name'] eq 'admin')"> 
+						<li><a href="http://106.14.206.106/logs.txt" target="_blank">请求日志</a></li>
+						</if>
+						<li>上次登录时间：{$lastData[0]['log_time']|default=time()|date='Y-m-d H:i:s',###} 上次登录IP：{$lastData[0]['log_ip']|default="首次登录"} </li>
+						<li>欢迎您，{$_SESSION['user_name']}</li>
+						<li><a class="mess1">可提现余额：{$userData.balance}元</a><a id= "money"></a>&nbsp;</li>
+						<li><a class="messHov" href="{:U('Notice/lst')}">站内公告</a></li>
+						<li><a href="javascript:;" id="ctl00_logout" class="mess2">退 出</a></li>
+					</ul>
+				</div>
+			</block>
+		</td>
+	</tr>
+	<tr>
+		<td class="l" width="180" valign="top">	
+			<block name="left">
+				<include file="Public/left"/>
+			</block>
+		</td>
+		<td valign="top" class="r">
+			<!--改动-->
+			<block name="content"></block>
+			<!--结束-->
+		</td>
+	</tr>
+</table>
+</body>
+<script>  
+var timestamp = Date.parse(new Date());
+$.ajax({
+            type:'post',
+            url:"{:U('Admin/Main/login_task_ajax')}",
+            data:{timestamp:timestamp},
+            timeout : 100000000, //超时时间设置，单位毫秒
+            success:function(){
+                // 执行定时任务
+            }
+        });    
+</script> 
+<script type="text/javascript">  
+$("#ctl00_logout").click(function () {  
+	$.post("{:U('Home/Index/login_out')}",function(result){
+		if(result.status=='1'){
+			layer.alert(result.info,{
+			   icon: 1,
+			   closeBtn: 0,
+			   btn: ['确定'],
+			   yes: function(index){
+				 //window.location.reload();
+				 window.location.href = result.url;
+			   }
+			});	
+		}else{
+			layer.alert(result.info, {icon: 2});
+		}
+	});
+}); 
+</script>
+</html>

@@ -1,0 +1,113 @@
+<extend name="Public:base" />
+<block name="content">
+<link href="__PUBLIC__/admin/skin/user/Css/withdrawal_apply.css" rel="stylesheet" type="text/css" media="screen,projection" />
+<div class="title02">修改订单</div>
+    <form id="rzform" enctype="multipart/form-data">
+		<input name="id" type="hidden" value="{$editlist.id}"/>
+        <table class="V_tb2">
+          <tr class="td1">	 	 	 	 	 	 	
+            <th>提交时间：</th>
+            <td><input type="text" name="addtime" class="V_input3" value="{$editlist['addtime']?$editlist['addtime']|date='Y-m-d H:i:s',###:''}" id="addtime" onclick="laydate({istime: true, format: 'YYYY-MM-DD'})"/></td>
+          </tr>
+          <tr class="td1">
+            <th>缴费人姓名：</th>
+            <td><input type="text" name="payment_name" class="V_input3" value="{$editlist.payment_name}" id="payment_name"/></td>
+          </tr>
+          <tr class="td1">
+            <th>手机号：</th>
+            <td><input type="text" name="payment_mobile" class="V_input3" value="{$editlist.payment_mobile}" id="payment_mobile"/></td>
+          </tr>
+          <tr class="td1">
+            <th>身份证号码：</th>
+            <td><input type="text" name="payment_id_card" class="V_input3" value="{$editlist.payment_id_card}" id="payment_id_card"/></td>
+          </tr>
+          <tr class="td1">
+            <th>扣款银行：</th>
+            <td><input type="text" name="bank" class="V_input3" value="{$editlist.bank}" id="bank"/></td>
+          </tr>
+          <tr class="td1">
+            <th>银行卡号：</th>
+            <td><input type="text" name="bank_card_num" class="V_input3" value="{$editlist.bank_card_num}" id="bank_card_num" onkeyup="value=value.replace(/[^\d\.]/g,'');"/></td>
+          </tr>
+          <tr class="td1">
+            <th>扣款金额(元)：</th>
+            <td><input type="text" name="amount" class="V_input3" value="{$editlist.amount}" id="amount" onkeyup="value=value.replace(/[^\d\.]/g,'');"/></td>
+          </tr>
+          <tr class="td1">
+            <th>提交人：</th>
+            <td><input type="text" name="deductor_name" class="V_input3" value="{$editlist.deductor_name}" id="deductor_name"/></td>
+          </tr>
+          <tr class="td1">
+            <th>扣款状态：</th>
+			<td>
+				<select name="status" style="width:100px;" >
+					<option value="成功" selected="selected">成功</option>
+					<option value="失败" >失败</option>
+				</select>			
+			</td>
+          </tr>
+          <tr class="td1">
+            <th>失败原因：</th>
+            <td><input type="text" name="description" class="V_input3" value="{$editlist.description}" id="description" /></td>
+          </tr>
+          <tr class="td1">
+            <th>扣款发起时间：</th>
+            <td><input type="text" name="action_time" class="V_input3" value="{$editlist['action_time']?$editlist['action_time']|date='Y-m-d H:i:s',###:''}" id="action_time" onclick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})"/></td>
+          </tr>
+          <tr class="td1">
+            <th>结算状态：</th>
+            <td><input type="text" name="close_state" class="V_input3" value="{$editlist.close_state}" id="close_state"/></td>
+          </tr>
+          <tr class="td1">
+            <th>预计结算时间：</th>
+			<td><input type="text" name="pre_close_time" class="V_input3" value="{$editlist['pre_close_time']?$editlist['pre_close_time']|date='Y-m-d H:i:s',###:''}" id="pre_close_time" onclick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})"/></td>
+          </tr>
+          <tr class="td1">
+            <th>待结算金额(元)：</th>
+            <td><input type="text" name="sjtotal" class="V_input3" value="{$editlist.sjtotal}" id="sjtotal" onkeyup="value=value.replace(/[^\d\.]/g,'');"/></td>
+          </tr>		  
+          <tr class="td1">
+            <th>实际结算时间：</th>
+            <td><input type="text" name="close_time" class="V_input3" value="{$editlist['close_time']?$editlist['close_time']|date='Y-m-d H:i:s',###:''}" id="close_time" onclick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})"/></td>
+          </tr>
+          <tr class="td1">
+            <th></th>
+            <td>
+			<button id="btnSubmit" class="V_btn4 submit ajaxSubmit_apply">确认修改</button>
+			</td>
+          </tr>
+        </table>
+</form>
+<script type="text/javascript" src="__PUBLIC__/js/jquery.form.js"></script>
+<script type="text/javascript">  
+	$(function () {  
+		var ajaxurl="{:U('Deduct/edit')}";
+		$("#btnSubmit").click(function () { 
+				$('#rzform').ajaxForm({  
+					type: "post",  
+					url: ajaxurl,
+					dataType: 'json',  
+					success: function (result) {  
+						if(result.status=='1'){
+						
+							layer.alert(result.info,{
+							   icon: 1,
+							   closeBtn: 0,
+							   btn: ['确定'],
+							   yes: function(index){
+								 //window.location.reload();
+								 window.location.href = result.url;
+							   }
+							});	
+							//alert(result.info);
+							//layer.alert(result.info, {icon: 1});
+							//window.location.href = result.url;
+						}else{
+							layer.alert(result.info, {icon: 2});
+						}
+					}   
+				});
+		});  
+	});  
+</script>
+</block> 

@@ -1,0 +1,118 @@
+<extend name="Public:base" />
+<block name="content">
+<link href="__PUBLIC__/admin/skin/user/Css/withdrawal_apply.css" rel="stylesheet" type="text/css" media="screen,projection" />
+<div class="title02">添加角色</div>
+    <form id="rzform">
+        <table class="V_tb2">
+          <tr class="td1">
+            <th>角色名称：</th>
+            <td>
+				<input type="text" name="title" class="V_input3" id="title"/>
+			</td>
+          </tr>
+          <tr class="td1">
+            <th>角色描述：</th>
+            <td><input type="text" name="role_desc" class="V_input3" id="role_desc"/></td>
+          </tr>
+          <tr class="td1">
+            <th>角色权限：</th>
+            <td>
+				<table class="table table-bordered table-striped dataTable" style="width: 100%;">
+					<tbody id="checkAll">						
+					<foreach name="roleList" item="vo" key="k">			
+							<tr>
+								<td class="title left" style="padding-right:50px;">
+									<b style="color: #000;">{$vo.title}<input onclick="check(this)" data-id="{$k}" type="checkbox"/></b>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<ul class="check_list" id="checkList_{$k}" >										
+									<foreach name="vo.child" item="vv" key="kk">											
+										<li><input type="checkbox" name="rules[]" value="{$vv.id}"/>{$vv.title}</li>											
+									</foreach>
+									<div class="clear-both"></div>
+									</ul>
+								</td>
+							</tr>
+					</foreach>
+					</tbody>
+				</table>
+			</td>
+          </tr>
+          <tr class="td1">
+            <th></th>
+            <td>
+				<div style="clear: both;"></div>
+				<div style="width: 70px;margin-left: 40px;"><input id="check_all" type="checkbox">全选</div>
+			</td>
+          </tr>
+          <tr class="td1">
+            <th></th>
+            <td>
+			<button id="btnSubmit" class="V_btn4 submit ajaxSubmit_apply">确认添加</button>
+			</td>
+          </tr>
+        </table>
+</form>
+<script>
+	$("#check_all").click(function(){ 
+		if(this.checked){   
+			$("#checkAll :checkbox").prop("checked", true);  
+		}else{   
+			$("#checkAll :checkbox").prop("checked", false);
+		}   
+	});
+</script>
+<script>
+function check(obj){ 
+	id = $(obj).attr('data-id'); 
+	if(obj.checked){ 
+		$('#checkList_'+id+' :checkbox').prop('checked', true);  
+	}else{ 
+		$('#checkList_'+id+' :checkbox').prop('checked', false);
+	} 	
+} 
+</script>
+<script type="text/javascript" src="__PUBLIC__/js/jquery.form.js"></script>
+<script type="text/javascript">  
+	$(function () {  
+		var ajaxurl="{:U('Role/add')}";
+		$("#btnSubmit").click(function () { 
+				$('#rzform').ajaxForm({  
+					type: "post",  
+					url: ajaxurl,
+					dataType: 'json',  
+					beforeSend:function(result){ 
+						$("#btnSubmit").attr({ disabled: "disabled" });
+						//index = layer.load();	
+						index = layer.msg('提交中...', {icon: 16,shade: [0.5, '#f5f5f5'], time:20000}) ;						
+					}, 					
+					success: function (result) {  
+						if(result.status=='1'){
+						
+							layer.alert(result.info,{
+							   icon: 1,
+							   closeBtn: 0,
+							   btn: ['确定'],
+							   yes: function(index){
+								 //window.location.reload();
+								 window.location.href = result.url;
+							   }
+							});	
+							//alert(result.info);
+							//layer.alert(result.info, {icon: 1});
+							//window.location.href = result.url;
+						}else{
+							layer.alert(result.info, {icon: 2});
+						}
+					},
+					complete: function () {
+						$("#btnSubmit").removeAttr("disabled");
+						layer.close(index);
+					}					
+				});
+		});  
+	});  
+</script>
+</block> 

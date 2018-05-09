@@ -1,0 +1,86 @@
+<extend name="Public:base" />
+<block name="content">
+<link href="__PUBLIC__/admin/skin/user/Css/withdrawal_apply.css" rel="stylesheet" type="text/css" media="screen,projection" />
+<div class="title02">账户入金</div>
+    <form action="{:U('Acount/pay')}" method="POST" target="_blank">
+        <table class="V_tb2">
+          <tr class="td1">
+            <th>商户号：</th>
+            <td>{$userData.user_name}</td>
+          </tr>
+          <tr class="td1">
+            <th>商户名称：</th>
+            <td>{$userData.company_name}</td>
+          </tr> 
+		  <tr class="td1">
+            <th>入金金额：</th>
+            <td><input type="text" name="pay_total" class="V_input3"/><span style="color: Red;">单位 , 分</span></td>
+          </tr>
+		  <tr class="td1">
+            <th>业务类型：</th>
+            <td>
+                <select name="product_sid">
+                    <option value="1">PC网银收银台</option>
+                    <option value="2">PC网银直连</option>
+                    <option value="3">wap网银</option>
+                    <option value="4">微信扫码</option>
+                    <option value="5">支付宝扫码</option>
+                    <option value="6">微信WAP支付</option>
+                    <option value="7">支付宝WAP支付</option>
+                    <option value="8">微信公众号支付</option>
+                    <option value="9">QQ钱包扫码</option>
+                    <option value="10">QQ钱包WAP支付</option>
+                    <option value="11">银联二维码</option>
+                </select>
+			</td>
+          </tr>	
+		  <tr class="td1">
+            <th>银行编码：</th>
+            <td><input type="text" name="pay_bank_code" class="V_input3" value="CCB"/></td>
+          </tr>		  
+          <tr class="td1">
+            <th></th>
+            <td>
+			 <input type="submit" value="确定入金" class="V_btn4 submit ajaxSubmit_apply"/>
+			</td>
+          </tr>		  
+        </table>
+	</form>
+<script type="text/javascript" src="__PUBLIC__/js/jquery.form.js"></script>
+<script type="text/javascript">  
+	$(function () {  
+		var ajaxurl="{:U('Acount/pay')}";
+		$("#btnSubmit").click(function () { 
+				$('#rzform').ajaxForm({  
+					type: "post",  
+					url: ajaxurl,
+					dataType: 'json', 
+					beforeSend:function(result){ 
+						$("#btnSubmit").attr({ disabled: "disabled" });
+						//index = layer.load();	
+						index = layer.msg('提交中...', {icon: 16,shade: [0.5, '#f5f5f5'], time:20000}) ;						
+					}, 						
+					success: function (result) {  
+						if(result.status=='1'){
+						
+							layer.alert(result.info,{
+							   icon: 1,
+							   closeBtn: 0,
+							   btn: ['确定'],
+							   yes: function(index){
+								 //window.location.reload();
+								 window.location.href = result.url;
+							   }
+							});	
+							//alert(result.info);
+							//layer.alert(result.info, {icon: 1});
+							//window.location.href = result.url;
+						}else{
+							layer.alert(result.info, {icon: 2});
+						}
+					}   
+				});
+		});  
+	});  
+</script>
+</block> 

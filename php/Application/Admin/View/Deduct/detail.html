@@ -1,0 +1,65 @@
+<extend name="Public:base" />
+<block name="content">
+<link href="__PUBLIC__/admin/skin/user/Css/withdrawal_apply.css" rel="stylesheet" type="text/css" media="screen,projection" />
+<div class="title02">客户详情</div>
+    <form id="rzform" enctype="multipart/form-data">
+        <table class="V_tb2">
+          <tr class="td1">													
+            <th>提交时间：</th>
+            <td>{$detaillist['addtime']?$detaillist['addtime']|date='Y-m-d H:i:s',###:''}</td>
+          </tr>
+          <tr class="td1">
+            <th>缴费人姓名：</th>
+            <td>{$detaillist.payment_name}</td>
+          </tr>
+          <tr class="td1">
+            <th>手机号：</th>
+            <td>{$detaillist.payment_mobile}</td>
+          </tr>
+          <tr class="td1">
+            <th>身份证号码：</th>
+            <td>{$detaillist.payment_id_card}</td>
+          </tr>
+          <tr class="td1">
+            <th>扣款银行：</th>
+            <td>{$detaillist.bank}</td>
+          </tr>
+          <tr class="td1">
+            <th>银行卡号：</th>
+            <td>{$detaillist.bank_card_num}</td>
+          </tr>
+          <tr class="td1">
+            <th>扣款金额(元)：</th>
+            <td>{$detaillist.amount}元</td>
+          </tr> 
+		  <tr class="td1">
+            <th>扣款状态：</th>
+            <td>{$detaillist.status}</td>
+          </tr>
+          <tr class="td1">
+            <th>失败原因：</th>
+            <td>{$detaillist.description}</td>
+          </tr>
+          <tr class="td1">
+            <th>扣款发起时间：</th>
+            <td>{$detaillist['action_time']?$detaillist['action_time']|date='Y-m-d H:i:s',###:''}</td>
+          </tr>
+          <tr class="td1">
+            <th>结算状态：</th>
+            <td>{$detaillist.close_state}</td>
+          </tr>
+          <tr class="td1">
+            <th>预计结算时间：</th>
+            <td>{$detaillist['pre_close_time']?$detaillist['pre_close_time']|date='Y-m-d H:i:s',###:''}</td>
+          </tr>
+          <tr class="td1">
+            <th>实际结算时间：</th>
+            <td>{$detaillist['close_time']?$detaillist['close_time']|date='Y-m-d H:i:s',###:''}</td>
+          </tr>
+          <tr class="td1">
+            <th>提交人：</th>
+            <td>{$detaillist.deductor_name}</td>
+          </tr>
+        </table>
+</form> 
+</block> 
