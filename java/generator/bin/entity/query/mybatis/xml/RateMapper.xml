@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="entity.query.mybatis.map.RateMapper" >
+  <resultMap id="BaseResultMap" type="entity.query.entites.Rate" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="user_id" property="userId" jdbcType="SMALLINT" />
+    <result column="platform_id" property="platformId" jdbcType="SMALLINT" />
+    <result column="draw_mode" property="drawMode" jdbcType="VARCHAR" />
+    <result column="product_sid" property="productSid" jdbcType="SMALLINT" />
+    <result column="platform_rote" property="platformRote" jdbcType="DECIMAL" />
+    <result column="company_rote" property="companyRote" jdbcType="DECIMAL" />
+    <result column="sell_rote" property="sellRote" jdbcType="DECIMAL" />
+    <result column="platform_name" property="platformName" jdbcType="VARCHAR" />
+    <result column="product_name" property="productName" jdbcType="VARCHAR" />
+    <result column="period" property="period" jdbcType="INTEGER" />
+    <result column="is_use" property="isUse" jdbcType="BIT" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, user_id, platform_id, draw_mode, product_sid, platform_rote, company_rote, sell_rote, 
+    platform_name, product_name, period, is_use
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="entity.query.entites.RateExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from rate
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from rate
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from rate
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="entity.query.entites.RateExample" >
+    delete from rate
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="entity.query.entites.Rate" >
+    insert into rate (id, user_id, platform_id, 
+      draw_mode, product_sid, platform_rote, 
+      company_rote, sell_rote, platform_name, 
+      product_name, period, is_use
+      )
+    values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=SMALLINT}, #{platformId,jdbcType=SMALLINT}, 
+      #{drawMode,jdbcType=VARCHAR}, #{productSid,jdbcType=SMALLINT}, #{platformRote,jdbcType=DECIMAL}, 
+      #{companyRote,jdbcType=DECIMAL}, #{sellRote,jdbcType=DECIMAL}, #{platformName,jdbcType=VARCHAR}, 
+      #{productName,jdbcType=VARCHAR}, #{period,jdbcType=INTEGER}, #{isUse,jdbcType=BIT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="entity.query.entites.Rate" >
+    insert into rate
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="platformId != null" >
+        platform_id,
+      </if>
+      <if test="drawMode != null" >
+        draw_mode,
+      </if>
+      <if test="productSid != null" >
+        product_sid,
+      </if>
+      <if test="platformRote != null" >
+        platform_rote,
+      </if>
+      <if test="companyRote != null" >
+        company_rote,
+      </if>
+      <if test="sellRote != null" >
+        sell_rote,
+      </if>
+      <if test="platformName != null" >
+        platform_name,
+      </if>
+      <if test="productName != null" >
+        product_name,
+      </if>
+      <if test="period != null" >
+        period,
+      </if>
+      <if test="isUse != null" >
+        is_use,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=SMALLINT},
+      </if>
+      <if test="platformId != null" >
+        #{platformId,jdbcType=SMALLINT},
+      </if>
+      <if test="drawMode != null" >
+        #{drawMode,jdbcType=VARCHAR},
+      </if>
+      <if test="productSid != null" >
+        #{productSid,jdbcType=SMALLINT},
+      </if>
+      <if test="platformRote != null" >
+        #{platformRote,jdbcType=DECIMAL},
+      </if>
+      <if test="companyRote != null" >
+        #{companyRote,jdbcType=DECIMAL},
+      </if>
+      <if test="sellRote != null" >
+        #{sellRote,jdbcType=DECIMAL},
+      </if>
+      <if test="platformName != null" >
+        #{platformName,jdbcType=VARCHAR},
+      </if>
+      <if test="productName != null" >
+        #{productName,jdbcType=VARCHAR},
+      </if>
+      <if test="period != null" >
+        #{period,jdbcType=INTEGER},
+      </if>
+      <if test="isUse != null" >
+        #{isUse,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="entity.query.entites.RateExample" resultType="java.lang.Integer" >
+    select count(*) from rate
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update rate
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.userId != null" >
+        user_id = #{record.userId,jdbcType=SMALLINT},
+      </if>
+      <if test="record.platformId != null" >
+        platform_id = #{record.platformId,jdbcType=SMALLINT},
+      </if>
+      <if test="record.drawMode != null" >
+        draw_mode = #{record.drawMode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.productSid != null" >
+        product_sid = #{record.productSid,jdbcType=SMALLINT},
+      </if>
+      <if test="record.platformRote != null" >
+        platform_rote = #{record.platformRote,jdbcType=DECIMAL},
+      </if>
+      <if test="record.companyRote != null" >
+        company_rote = #{record.companyRote,jdbcType=DECIMAL},
+      </if>
+      <if test="record.sellRote != null" >
+        sell_rote = #{record.sellRote,jdbcType=DECIMAL},
+      </if>
+      <if test="record.platformName != null" >
+        platform_name = #{record.platformName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.productName != null" >
+        product_name = #{record.productName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.period != null" >
+        period = #{record.period,jdbcType=INTEGER},
+      </if>
+      <if test="record.isUse != null" >
+        is_use = #{record.isUse,jdbcType=BIT},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update rate
+    set id = #{record.id,jdbcType=INTEGER},
+      user_id = #{record.userId,jdbcType=SMALLINT},
+      platform_id = #{record.platformId,jdbcType=SMALLINT},
+      draw_mode = #{record.drawMode,jdbcType=VARCHAR},
+      product_sid = #{record.productSid,jdbcType=SMALLINT},
+      platform_rote = #{record.platformRote,jdbcType=DECIMAL},
+      company_rote = #{record.companyRote,jdbcType=DECIMAL},
+      sell_rote = #{record.sellRote,jdbcType=DECIMAL},
+      platform_name = #{record.platformName,jdbcType=VARCHAR},
+      product_name = #{record.productName,jdbcType=VARCHAR},
+      period = #{record.period,jdbcType=INTEGER},
+      is_use = #{record.isUse,jdbcType=BIT}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="entity.query.entites.Rate" >
+    update rate
+    <set >
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=SMALLINT},
+      </if>
+      <if test="platformId != null" >
+        platform_id = #{platformId,jdbcType=SMALLINT},
+      </if>
+      <if test="drawMode != null" >
+        draw_mode = #{drawMode,jdbcType=VARCHAR},
+      </if>
+      <if test="productSid != null" >
+        product_sid = #{productSid,jdbcType=SMALLINT},
+      </if>
+      <if test="platformRote != null" >
+        platform_rote = #{platformRote,jdbcType=DECIMAL},
+      </if>
+      <if test="companyRote != null" >
+        company_rote = #{companyRote,jdbcType=DECIMAL},
+      </if>
+      <if test="sellRote != null" >
+        sell_rote = #{sellRote,jdbcType=DECIMAL},
+      </if>
+      <if test="platformName != null" >
+        platform_name = #{platformName,jdbcType=VARCHAR},
+      </if>
+      <if test="productName != null" >
+        product_name = #{productName,jdbcType=VARCHAR},
+      </if>
+      <if test="period != null" >
+        period = #{period,jdbcType=INTEGER},
+      </if>
+      <if test="isUse != null" >
+        is_use = #{isUse,jdbcType=BIT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="entity.query.entites.Rate" >
+    update rate
+    set user_id = #{userId,jdbcType=SMALLINT},
+      platform_id = #{platformId,jdbcType=SMALLINT},
+      draw_mode = #{drawMode,jdbcType=VARCHAR},
+      product_sid = #{productSid,jdbcType=SMALLINT},
+      platform_rote = #{platformRote,jdbcType=DECIMAL},
+      company_rote = #{companyRote,jdbcType=DECIMAL},
+      sell_rote = #{sellRote,jdbcType=DECIMAL},
+      platform_name = #{platformName,jdbcType=VARCHAR},
+      product_name = #{productName,jdbcType=VARCHAR},
+      period = #{period,jdbcType=INTEGER},
+      is_use = #{isUse,jdbcType=BIT}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="entity.query.mybatis.map.PlatformMapper" >
+  <resultMap id="BaseResultMap" type="entity.query.entites.Platform" >
+    <id column="id" property="id" jdbcType="SMALLINT" />
+    <result column="platform" property="platform" jdbcType="VARCHAR" />
+    <result column="controller" property="controller" jdbcType="VARCHAR" />
+    <result column="period" property="period" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="BIT" />
+    <result column="is_open" property="isOpen" jdbcType="BIT" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, platform, controller, period, status, is_open
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="entity.query.entites.PlatformExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from platform
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Short" >
+    select 
+    <include refid="Base_Column_List" />
+    from platform
+    where id = #{id,jdbcType=SMALLINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Short" >
+    delete from platform
+    where id = #{id,jdbcType=SMALLINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="entity.query.entites.PlatformExample" >
+    delete from platform
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="entity.query.entites.Platform" >
+    insert into platform (id, platform, controller, 
+      period, status, is_open)
+    values (#{id,jdbcType=SMALLINT}, #{platform,jdbcType=VARCHAR}, #{controller,jdbcType=VARCHAR}, 
+      #{period,jdbcType=VARCHAR}, #{status,jdbcType=BIT}, #{isOpen,jdbcType=BIT})
+  </insert>
+  <insert id="insertSelective" parameterType="entity.query.entites.Platform" >
+    insert into platform
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="platform != null" >
+        platform,
+      </if>
+      <if test="controller != null" >
+        controller,
+      </if>
+      <if test="period != null" >
+        period,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="isOpen != null" >
+        is_open,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=SMALLINT},
+      </if>
+      <if test="platform != null" >
+        #{platform,jdbcType=VARCHAR},
+      </if>
+      <if test="controller != null" >
+        #{controller,jdbcType=VARCHAR},
+      </if>
+      <if test="period != null" >
+        #{period,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=BIT},
+      </if>
+      <if test="isOpen != null" >
+        #{isOpen,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="entity.query.entites.PlatformExample" resultType="java.lang.Integer" >
+    select count(*) from platform
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update platform
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=SMALLINT},
+      </if>
+      <if test="record.platform != null" >
+        platform = #{record.platform,jdbcType=VARCHAR},
+      </if>
+      <if test="record.controller != null" >
+        controller = #{record.controller,jdbcType=VARCHAR},
+      </if>
+      <if test="record.period != null" >
+        period = #{record.period,jdbcType=VARCHAR},
+      </if>
+      <if test="record.status != null" >
+        status = #{record.status,jdbcType=BIT},
+      </if>
+      <if test="record.isOpen != null" >
+        is_open = #{record.isOpen,jdbcType=BIT},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update platform
+    set id = #{record.id,jdbcType=SMALLINT},
+      platform = #{record.platform,jdbcType=VARCHAR},
+      controller = #{record.controller,jdbcType=VARCHAR},
+      period = #{record.period,jdbcType=VARCHAR},
+      status = #{record.status,jdbcType=BIT},
+      is_open = #{record.isOpen,jdbcType=BIT}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="entity.query.entites.Platform" >
+    update platform
+    <set >
+      <if test="platform != null" >
+        platform = #{platform,jdbcType=VARCHAR},
+      </if>
+      <if test="controller != null" >
+        controller = #{controller,jdbcType=VARCHAR},
+      </if>
+      <if test="period != null" >
+        period = #{period,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=BIT},
+      </if>
+      <if test="isOpen != null" >
+        is_open = #{isOpen,jdbcType=BIT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=SMALLINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="entity.query.entites.Platform" >
+    update platform
+    set platform = #{platform,jdbcType=VARCHAR},
+      controller = #{controller,jdbcType=VARCHAR},
+      period = #{period,jdbcType=VARCHAR},
+      status = #{status,jdbcType=BIT},
+      is_open = #{isOpen,jdbcType=BIT}
+    where id = #{id,jdbcType=SMALLINT}
+  </update>
+</mapper>

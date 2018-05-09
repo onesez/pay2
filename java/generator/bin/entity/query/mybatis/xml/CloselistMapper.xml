@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="entity.query.mybatis.map.CloselistMapper" >
+  <resultMap id="BaseResultMap" type="entity.query.entites.Closelist" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="addtime" property="addtime" jdbcType="INTEGER" />
+    <result column="username" property="username" jdbcType="VARCHAR" />
+    <result column="order_num" property="orderNum" jdbcType="VARCHAR" />
+    <result column="amount" property="amount" jdbcType="DECIMAL" />
+    <result column="pay_fee" property="payFee" jdbcType="DECIMAL" />
+    <result column="real_amount" property="realAmount" jdbcType="DECIMAL" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, addtime, username, order_num, amount, pay_fee, real_amount, remark
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="entity.query.entites.CloselistExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from closelist
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from closelist
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from closelist
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="entity.query.entites.CloselistExample" >
+    delete from closelist
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="entity.query.entites.Closelist" >
+    insert into closelist (id, addtime, username, 
+      order_num, amount, pay_fee, 
+      real_amount, remark)
+    values (#{id,jdbcType=INTEGER}, #{addtime,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, 
+      #{orderNum,jdbcType=VARCHAR}, #{amount,jdbcType=DECIMAL}, #{payFee,jdbcType=DECIMAL}, 
+      #{realAmount,jdbcType=DECIMAL}, #{remark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="entity.query.entites.Closelist" >
+    insert into closelist
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="addtime != null" >
+        addtime,
+      </if>
+      <if test="username != null" >
+        username,
+      </if>
+      <if test="orderNum != null" >
+        order_num,
+      </if>
+      <if test="amount != null" >
+        amount,
+      </if>
+      <if test="payFee != null" >
+        pay_fee,
+      </if>
+      <if test="realAmount != null" >
+        real_amount,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="addtime != null" >
+        #{addtime,jdbcType=INTEGER},
+      </if>
+      <if test="username != null" >
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="orderNum != null" >
+        #{orderNum,jdbcType=VARCHAR},
+      </if>
+      <if test="amount != null" >
+        #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="payFee != null" >
+        #{payFee,jdbcType=DECIMAL},
+      </if>
+      <if test="realAmount != null" >
+        #{realAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="entity.query.entites.CloselistExample" resultType="java.lang.Integer" >
+    select count(*) from closelist
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update closelist
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.addtime != null" >
+        addtime = #{record.addtime,jdbcType=INTEGER},
+      </if>
+      <if test="record.username != null" >
+        username = #{record.username,jdbcType=VARCHAR},
+      </if>
+      <if test="record.orderNum != null" >
+        order_num = #{record.orderNum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.amount != null" >
+        amount = #{record.amount,jdbcType=DECIMAL},
+      </if>
+      <if test="record.payFee != null" >
+        pay_fee = #{record.payFee,jdbcType=DECIMAL},
+      </if>
+      <if test="record.realAmount != null" >
+        real_amount = #{record.realAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="record.remark != null" >
+        remark = #{record.remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update closelist
+    set id = #{record.id,jdbcType=INTEGER},
+      addtime = #{record.addtime,jdbcType=INTEGER},
+      username = #{record.username,jdbcType=VARCHAR},
+      order_num = #{record.orderNum,jdbcType=VARCHAR},
+      amount = #{record.amount,jdbcType=DECIMAL},
+      pay_fee = #{record.payFee,jdbcType=DECIMAL},
+      real_amount = #{record.realAmount,jdbcType=DECIMAL},
+      remark = #{record.remark,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="entity.query.entites.Closelist" >
+    update closelist
+    <set >
+      <if test="addtime != null" >
+        addtime = #{addtime,jdbcType=INTEGER},
+      </if>
+      <if test="username != null" >
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="orderNum != null" >
+        order_num = #{orderNum,jdbcType=VARCHAR},
+      </if>
+      <if test="amount != null" >
+        amount = #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="payFee != null" >
+        pay_fee = #{payFee,jdbcType=DECIMAL},
+      </if>
+      <if test="realAmount != null" >
+        real_amount = #{realAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="entity.query.entites.Closelist" >
+    update closelist
+    set addtime = #{addtime,jdbcType=INTEGER},
+      username = #{username,jdbcType=VARCHAR},
+      order_num = #{orderNum,jdbcType=VARCHAR},
+      amount = #{amount,jdbcType=DECIMAL},
+      pay_fee = #{payFee,jdbcType=DECIMAL},
+      real_amount = #{realAmount,jdbcType=DECIMAL},
+      remark = #{remark,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

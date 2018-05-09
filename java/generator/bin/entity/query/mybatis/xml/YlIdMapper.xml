@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="entity.query.mybatis.map.YlIdMapper" >
+  <resultMap id="BaseResultMap" type="entity.query.entites.YlId" >
+    <id column="id" property="id" jdbcType="SMALLINT" />
+    <result column="yl_id" property="ylId" jdbcType="VARCHAR" />
+    <result column="yl_key" property="ylKey" jdbcType="VARCHAR" />
+    <result column="yl_random" property="ylRandom" jdbcType="VARCHAR" />
+    <result column="yl_use" property="ylUse" jdbcType="SMALLINT" />
+    <result column="yl_type" property="ylType" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, yl_id, yl_key, yl_random, yl_use, yl_type
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="entity.query.entites.YlIdExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from yl_id
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Short" >
+    select 
+    <include refid="Base_Column_List" />
+    from yl_id
+    where id = #{id,jdbcType=SMALLINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Short" >
+    delete from yl_id
+    where id = #{id,jdbcType=SMALLINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="entity.query.entites.YlIdExample" >
+    delete from yl_id
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="entity.query.entites.YlId" >
+    insert into yl_id (id, yl_id, yl_key, 
+      yl_random, yl_use, yl_type
+      )
+    values (#{id,jdbcType=SMALLINT}, #{ylId,jdbcType=VARCHAR}, #{ylKey,jdbcType=VARCHAR}, 
+      #{ylRandom,jdbcType=VARCHAR}, #{ylUse,jdbcType=SMALLINT}, #{ylType,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="entity.query.entites.YlId" >
+    insert into yl_id
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="ylId != null" >
+        yl_id,
+      </if>
+      <if test="ylKey != null" >
+        yl_key,
+      </if>
+      <if test="ylRandom != null" >
+        yl_random,
+      </if>
+      <if test="ylUse != null" >
+        yl_use,
+      </if>
+      <if test="ylType != null" >
+        yl_type,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=SMALLINT},
+      </if>
+      <if test="ylId != null" >
+        #{ylId,jdbcType=VARCHAR},
+      </if>
+      <if test="ylKey != null" >
+        #{ylKey,jdbcType=VARCHAR},
+      </if>
+      <if test="ylRandom != null" >
+        #{ylRandom,jdbcType=VARCHAR},
+      </if>
+      <if test="ylUse != null" >
+        #{ylUse,jdbcType=SMALLINT},
+      </if>
+      <if test="ylType != null" >
+        #{ylType,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="entity.query.entites.YlIdExample" resultType="java.lang.Integer" >
+    select count(*) from yl_id
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update yl_id
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=SMALLINT},
+      </if>
+      <if test="record.ylId != null" >
+        yl_id = #{record.ylId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ylKey != null" >
+        yl_key = #{record.ylKey,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ylRandom != null" >
+        yl_random = #{record.ylRandom,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ylUse != null" >
+        yl_use = #{record.ylUse,jdbcType=SMALLINT},
+      </if>
+      <if test="record.ylType != null" >
+        yl_type = #{record.ylType,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update yl_id
+    set id = #{record.id,jdbcType=SMALLINT},
+      yl_id = #{record.ylId,jdbcType=VARCHAR},
+      yl_key = #{record.ylKey,jdbcType=VARCHAR},
+      yl_random = #{record.ylRandom,jdbcType=VARCHAR},
+      yl_use = #{record.ylUse,jdbcType=SMALLINT},
+      yl_type = #{record.ylType,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="entity.query.entites.YlId" >
+    update yl_id
+    <set >
+      <if test="ylId != null" >
+        yl_id = #{ylId,jdbcType=VARCHAR},
+      </if>
+      <if test="ylKey != null" >
+        yl_key = #{ylKey,jdbcType=VARCHAR},
+      </if>
+      <if test="ylRandom != null" >
+        yl_random = #{ylRandom,jdbcType=VARCHAR},
+      </if>
+      <if test="ylUse != null" >
+        yl_use = #{ylUse,jdbcType=SMALLINT},
+      </if>
+      <if test="ylType != null" >
+        yl_type = #{ylType,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=SMALLINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="entity.query.entites.YlId" >
+    update yl_id
+    set yl_id = #{ylId,jdbcType=VARCHAR},
+      yl_key = #{ylKey,jdbcType=VARCHAR},
+      yl_random = #{ylRandom,jdbcType=VARCHAR},
+      yl_use = #{ylUse,jdbcType=SMALLINT},
+      yl_type = #{ylType,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=SMALLINT}
+  </update>
+</mapper>

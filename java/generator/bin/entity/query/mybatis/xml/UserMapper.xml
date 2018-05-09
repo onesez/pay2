@@ -1,0 +1,543 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="entity.query.mybatis.map.UserMapper" >
+  <resultMap id="BaseResultMap" type="entity.query.entites.User" >
+    <id column="id" property="id" jdbcType="SMALLINT" />
+    <result column="user_name" property="userName" jdbcType="VARCHAR" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+    <result column="md5key" property="md5key" jdbcType="VARCHAR" />
+    <result column="company_name" property="companyName" jdbcType="VARCHAR" />
+    <result column="truename" property="truename" jdbcType="VARCHAR" />
+    <result column="id_card_num" property="idCardNum" jdbcType="VARCHAR" />
+    <result column="mobile" property="mobile" jdbcType="VARCHAR" />
+    <result column="bank_user" property="bankUser" jdbcType="VARCHAR" />
+    <result column="bank_card_num" property="bankCardNum" jdbcType="VARCHAR" />
+    <result column="bank_name" property="bankName" jdbcType="VARCHAR" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="add_time" property="addTime" jdbcType="INTEGER" />
+    <result column="last_login" property="lastLogin" jdbcType="INTEGER" />
+    <result column="payment_ip" property="paymentIp" jdbcType="VARCHAR" />
+    <result column="last_login_ip" property="lastLoginIp" jdbcType="VARCHAR" />
+    <result column="t_balance" property="tBalance" jdbcType="DECIMAL" />
+    <result column="balance" property="balance" jdbcType="DECIMAL" />
+    <result column="platform" property="platform" jdbcType="SMALLINT" />
+    <result column="rate" property="rate" jdbcType="REAL" />
+    <result column="parent_name" property="parentName" jdbcType="VARCHAR" />
+    <result column="period" property="period" jdbcType="BIT" />
+    <result column="is_lock" property="isLock" jdbcType="BIT" />
+    <result column="lock_ratio" property="lockRatio" jdbcType="REAL" />
+    <result column="draw_money_lock" property="drawMoneyLock" jdbcType="BIT" />
+    <result column="role_id" property="roleId" jdbcType="SMALLINT" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, user_name, password, md5key, company_name, truename, id_card_num, mobile, bank_user, 
+    bank_card_num, bank_name, address, add_time, last_login, payment_ip, last_login_ip, 
+    t_balance, balance, platform, rate, parent_name, period, is_lock, lock_ratio, draw_money_lock, 
+    role_id
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="entity.query.entites.UserExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from user
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Short" >
+    select 
+    <include refid="Base_Column_List" />
+    from user
+    where id = #{id,jdbcType=SMALLINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Short" >
+    delete from user
+    where id = #{id,jdbcType=SMALLINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="entity.query.entites.UserExample" >
+    delete from user
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="entity.query.entites.User" >
+    insert into user (id, user_name, password, 
+      md5key, company_name, truename, 
+      id_card_num, mobile, bank_user, 
+      bank_card_num, bank_name, address, 
+      add_time, last_login, payment_ip, 
+      last_login_ip, t_balance, balance, 
+      platform, rate, parent_name, 
+      period, is_lock, lock_ratio, draw_money_lock, 
+      role_id)
+    values (#{id,jdbcType=SMALLINT}, #{userName,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+      #{md5key,jdbcType=VARCHAR}, #{companyName,jdbcType=VARCHAR}, #{truename,jdbcType=VARCHAR}, 
+      #{idCardNum,jdbcType=VARCHAR}, #{mobile,jdbcType=VARCHAR}, #{bankUser,jdbcType=VARCHAR}, 
+      #{bankCardNum,jdbcType=VARCHAR}, #{bankName,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
+      #{addTime,jdbcType=INTEGER}, #{lastLogin,jdbcType=INTEGER}, #{paymentIp,jdbcType=VARCHAR}, 
+      #{lastLoginIp,jdbcType=VARCHAR}, #{tBalance,jdbcType=DECIMAL}, #{balance,jdbcType=DECIMAL}, 
+      #{platform,jdbcType=SMALLINT}, #{rate,jdbcType=REAL}, #{parentName,jdbcType=VARCHAR}, 
+      #{period,jdbcType=BIT}, #{isLock,jdbcType=BIT}, #{lockRatio,jdbcType=REAL}, #{drawMoneyLock,jdbcType=BIT}, 
+      #{roleId,jdbcType=SMALLINT})
+  </insert>
+  <insert id="insertSelective" parameterType="entity.query.entites.User" >
+    insert into user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="userName != null" >
+        user_name,
+      </if>
+      <if test="password != null" >
+        password,
+      </if>
+      <if test="md5key != null" >
+        md5key,
+      </if>
+      <if test="companyName != null" >
+        company_name,
+      </if>
+      <if test="truename != null" >
+        truename,
+      </if>
+      <if test="idCardNum != null" >
+        id_card_num,
+      </if>
+      <if test="mobile != null" >
+        mobile,
+      </if>
+      <if test="bankUser != null" >
+        bank_user,
+      </if>
+      <if test="bankCardNum != null" >
+        bank_card_num,
+      </if>
+      <if test="bankName != null" >
+        bank_name,
+      </if>
+      <if test="address != null" >
+        address,
+      </if>
+      <if test="addTime != null" >
+        add_time,
+      </if>
+      <if test="lastLogin != null" >
+        last_login,
+      </if>
+      <if test="paymentIp != null" >
+        payment_ip,
+      </if>
+      <if test="lastLoginIp != null" >
+        last_login_ip,
+      </if>
+      <if test="tBalance != null" >
+        t_balance,
+      </if>
+      <if test="balance != null" >
+        balance,
+      </if>
+      <if test="platform != null" >
+        platform,
+      </if>
+      <if test="rate != null" >
+        rate,
+      </if>
+      <if test="parentName != null" >
+        parent_name,
+      </if>
+      <if test="period != null" >
+        period,
+      </if>
+      <if test="isLock != null" >
+        is_lock,
+      </if>
+      <if test="lockRatio != null" >
+        lock_ratio,
+      </if>
+      <if test="drawMoneyLock != null" >
+        draw_money_lock,
+      </if>
+      <if test="roleId != null" >
+        role_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=SMALLINT},
+      </if>
+      <if test="userName != null" >
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="md5key != null" >
+        #{md5key,jdbcType=VARCHAR},
+      </if>
+      <if test="companyName != null" >
+        #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="truename != null" >
+        #{truename,jdbcType=VARCHAR},
+      </if>
+      <if test="idCardNum != null" >
+        #{idCardNum,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null" >
+        #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="bankUser != null" >
+        #{bankUser,jdbcType=VARCHAR},
+      </if>
+      <if test="bankCardNum != null" >
+        #{bankCardNum,jdbcType=VARCHAR},
+      </if>
+      <if test="bankName != null" >
+        #{bankName,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="addTime != null" >
+        #{addTime,jdbcType=INTEGER},
+      </if>
+      <if test="lastLogin != null" >
+        #{lastLogin,jdbcType=INTEGER},
+      </if>
+      <if test="paymentIp != null" >
+        #{paymentIp,jdbcType=VARCHAR},
+      </if>
+      <if test="lastLoginIp != null" >
+        #{lastLoginIp,jdbcType=VARCHAR},
+      </if>
+      <if test="tBalance != null" >
+        #{tBalance,jdbcType=DECIMAL},
+      </if>
+      <if test="balance != null" >
+        #{balance,jdbcType=DECIMAL},
+      </if>
+      <if test="platform != null" >
+        #{platform,jdbcType=SMALLINT},
+      </if>
+      <if test="rate != null" >
+        #{rate,jdbcType=REAL},
+      </if>
+      <if test="parentName != null" >
+        #{parentName,jdbcType=VARCHAR},
+      </if>
+      <if test="period != null" >
+        #{period,jdbcType=BIT},
+      </if>
+      <if test="isLock != null" >
+        #{isLock,jdbcType=BIT},
+      </if>
+      <if test="lockRatio != null" >
+        #{lockRatio,jdbcType=REAL},
+      </if>
+      <if test="drawMoneyLock != null" >
+        #{drawMoneyLock,jdbcType=BIT},
+      </if>
+      <if test="roleId != null" >
+        #{roleId,jdbcType=SMALLINT},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="entity.query.entites.UserExample" resultType="java.lang.Integer" >
+    select count(*) from user
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update user
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=SMALLINT},
+      </if>
+      <if test="record.userName != null" >
+        user_name = #{record.userName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.password != null" >
+        password = #{record.password,jdbcType=VARCHAR},
+      </if>
+      <if test="record.md5key != null" >
+        md5key = #{record.md5key,jdbcType=VARCHAR},
+      </if>
+      <if test="record.companyName != null" >
+        company_name = #{record.companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.truename != null" >
+        truename = #{record.truename,jdbcType=VARCHAR},
+      </if>
+      <if test="record.idCardNum != null" >
+        id_card_num = #{record.idCardNum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mobile != null" >
+        mobile = #{record.mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bankUser != null" >
+        bank_user = #{record.bankUser,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bankCardNum != null" >
+        bank_card_num = #{record.bankCardNum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bankName != null" >
+        bank_name = #{record.bankName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.address != null" >
+        address = #{record.address,jdbcType=VARCHAR},
+      </if>
+      <if test="record.addTime != null" >
+        add_time = #{record.addTime,jdbcType=INTEGER},
+      </if>
+      <if test="record.lastLogin != null" >
+        last_login = #{record.lastLogin,jdbcType=INTEGER},
+      </if>
+      <if test="record.paymentIp != null" >
+        payment_ip = #{record.paymentIp,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lastLoginIp != null" >
+        last_login_ip = #{record.lastLoginIp,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tBalance != null" >
+        t_balance = #{record.tBalance,jdbcType=DECIMAL},
+      </if>
+      <if test="record.balance != null" >
+        balance = #{record.balance,jdbcType=DECIMAL},
+      </if>
+      <if test="record.platform != null" >
+        platform = #{record.platform,jdbcType=SMALLINT},
+      </if>
+      <if test="record.rate != null" >
+        rate = #{record.rate,jdbcType=REAL},
+      </if>
+      <if test="record.parentName != null" >
+        parent_name = #{record.parentName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.period != null" >
+        period = #{record.period,jdbcType=BIT},
+      </if>
+      <if test="record.isLock != null" >
+        is_lock = #{record.isLock,jdbcType=BIT},
+      </if>
+      <if test="record.lockRatio != null" >
+        lock_ratio = #{record.lockRatio,jdbcType=REAL},
+      </if>
+      <if test="record.drawMoneyLock != null" >
+        draw_money_lock = #{record.drawMoneyLock,jdbcType=BIT},
+      </if>
+      <if test="record.roleId != null" >
+        role_id = #{record.roleId,jdbcType=SMALLINT},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update user
+    set id = #{record.id,jdbcType=SMALLINT},
+      user_name = #{record.userName,jdbcType=VARCHAR},
+      password = #{record.password,jdbcType=VARCHAR},
+      md5key = #{record.md5key,jdbcType=VARCHAR},
+      company_name = #{record.companyName,jdbcType=VARCHAR},
+      truename = #{record.truename,jdbcType=VARCHAR},
+      id_card_num = #{record.idCardNum,jdbcType=VARCHAR},
+      mobile = #{record.mobile,jdbcType=VARCHAR},
+      bank_user = #{record.bankUser,jdbcType=VARCHAR},
+      bank_card_num = #{record.bankCardNum,jdbcType=VARCHAR},
+      bank_name = #{record.bankName,jdbcType=VARCHAR},
+      address = #{record.address,jdbcType=VARCHAR},
+      add_time = #{record.addTime,jdbcType=INTEGER},
+      last_login = #{record.lastLogin,jdbcType=INTEGER},
+      payment_ip = #{record.paymentIp,jdbcType=VARCHAR},
+      last_login_ip = #{record.lastLoginIp,jdbcType=VARCHAR},
+      t_balance = #{record.tBalance,jdbcType=DECIMAL},
+      balance = #{record.balance,jdbcType=DECIMAL},
+      platform = #{record.platform,jdbcType=SMALLINT},
+      rate = #{record.rate,jdbcType=REAL},
+      parent_name = #{record.parentName,jdbcType=VARCHAR},
+      period = #{record.period,jdbcType=BIT},
+      is_lock = #{record.isLock,jdbcType=BIT},
+      lock_ratio = #{record.lockRatio,jdbcType=REAL},
+      draw_money_lock = #{record.drawMoneyLock,jdbcType=BIT},
+      role_id = #{record.roleId,jdbcType=SMALLINT}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="entity.query.entites.User" >
+    update user
+    <set >
+      <if test="userName != null" >
+        user_name = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="md5key != null" >
+        md5key = #{md5key,jdbcType=VARCHAR},
+      </if>
+      <if test="companyName != null" >
+        company_name = #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="truename != null" >
+        truename = #{truename,jdbcType=VARCHAR},
+      </if>
+      <if test="idCardNum != null" >
+        id_card_num = #{idCardNum,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null" >
+        mobile = #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="bankUser != null" >
+        bank_user = #{bankUser,jdbcType=VARCHAR},
+      </if>
+      <if test="bankCardNum != null" >
+        bank_card_num = #{bankCardNum,jdbcType=VARCHAR},
+      </if>
+      <if test="bankName != null" >
+        bank_name = #{bankName,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="addTime != null" >
+        add_time = #{addTime,jdbcType=INTEGER},
+      </if>
+      <if test="lastLogin != null" >
+        last_login = #{lastLogin,jdbcType=INTEGER},
+      </if>
+      <if test="paymentIp != null" >
+        payment_ip = #{paymentIp,jdbcType=VARCHAR},
+      </if>
+      <if test="lastLoginIp != null" >
+        last_login_ip = #{lastLoginIp,jdbcType=VARCHAR},
+      </if>
+      <if test="tBalance != null" >
+        t_balance = #{tBalance,jdbcType=DECIMAL},
+      </if>
+      <if test="balance != null" >
+        balance = #{balance,jdbcType=DECIMAL},
+      </if>
+      <if test="platform != null" >
+        platform = #{platform,jdbcType=SMALLINT},
+      </if>
+      <if test="rate != null" >
+        rate = #{rate,jdbcType=REAL},
+      </if>
+      <if test="parentName != null" >
+        parent_name = #{parentName,jdbcType=VARCHAR},
+      </if>
+      <if test="period != null" >
+        period = #{period,jdbcType=BIT},
+      </if>
+      <if test="isLock != null" >
+        is_lock = #{isLock,jdbcType=BIT},
+      </if>
+      <if test="lockRatio != null" >
+        lock_ratio = #{lockRatio,jdbcType=REAL},
+      </if>
+      <if test="drawMoneyLock != null" >
+        draw_money_lock = #{drawMoneyLock,jdbcType=BIT},
+      </if>
+      <if test="roleId != null" >
+        role_id = #{roleId,jdbcType=SMALLINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=SMALLINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="entity.query.entites.User" >
+    update user
+    set user_name = #{userName,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      md5key = #{md5key,jdbcType=VARCHAR},
+      company_name = #{companyName,jdbcType=VARCHAR},
+      truename = #{truename,jdbcType=VARCHAR},
+      id_card_num = #{idCardNum,jdbcType=VARCHAR},
+      mobile = #{mobile,jdbcType=VARCHAR},
+      bank_user = #{bankUser,jdbcType=VARCHAR},
+      bank_card_num = #{bankCardNum,jdbcType=VARCHAR},
+      bank_name = #{bankName,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      add_time = #{addTime,jdbcType=INTEGER},
+      last_login = #{lastLogin,jdbcType=INTEGER},
+      payment_ip = #{paymentIp,jdbcType=VARCHAR},
+      last_login_ip = #{lastLoginIp,jdbcType=VARCHAR},
+      t_balance = #{tBalance,jdbcType=DECIMAL},
+      balance = #{balance,jdbcType=DECIMAL},
+      platform = #{platform,jdbcType=SMALLINT},
+      rate = #{rate,jdbcType=REAL},
+      parent_name = #{parentName,jdbcType=VARCHAR},
+      period = #{period,jdbcType=BIT},
+      is_lock = #{isLock,jdbcType=BIT},
+      lock_ratio = #{lockRatio,jdbcType=REAL},
+      draw_money_lock = #{drawMoneyLock,jdbcType=BIT},
+      role_id = #{roleId,jdbcType=SMALLINT}
+    where id = #{id,jdbcType=SMALLINT}
+  </update>
+</mapper>

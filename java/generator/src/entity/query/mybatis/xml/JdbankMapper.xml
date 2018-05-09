@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="entity.query.mybatis.map.JdbankMapper" >
+  <resultMap id="BaseResultMap" type="entity.query.entites.Jdbank" >
+    <id column="id" property="id" jdbcType="SMALLINT" />
+    <result column="bankname" property="bankname" jdbcType="VARCHAR" />
+    <result column="bankcode" property="bankcode" jdbcType="VARCHAR" />
+    <result column="banktype" property="banktype" jdbcType="VARCHAR" />
+    <result column="type" property="type" jdbcType="SMALLINT" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, bankname, bankcode, banktype, type
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="entity.query.entites.JdbankExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from jdbank
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Short" >
+    select 
+    <include refid="Base_Column_List" />
+    from jdbank
+    where id = #{id,jdbcType=SMALLINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Short" >
+    delete from jdbank
+    where id = #{id,jdbcType=SMALLINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="entity.query.entites.JdbankExample" >
+    delete from jdbank
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="entity.query.entites.Jdbank" >
+    insert into jdbank (id, bankname, bankcode, 
+      banktype, type)
+    values (#{id,jdbcType=SMALLINT}, #{bankname,jdbcType=VARCHAR}, #{bankcode,jdbcType=VARCHAR}, 
+      #{banktype,jdbcType=VARCHAR}, #{type,jdbcType=SMALLINT})
+  </insert>
+  <insert id="insertSelective" parameterType="entity.query.entites.Jdbank" >
+    insert into jdbank
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="bankname != null" >
+        bankname,
+      </if>
+      <if test="bankcode != null" >
+        bankcode,
+      </if>
+      <if test="banktype != null" >
+        banktype,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=SMALLINT},
+      </if>
+      <if test="bankname != null" >
+        #{bankname,jdbcType=VARCHAR},
+      </if>
+      <if test="bankcode != null" >
+        #{bankcode,jdbcType=VARCHAR},
+      </if>
+      <if test="banktype != null" >
+        #{banktype,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=SMALLINT},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="entity.query.entites.JdbankExample" resultType="java.lang.Integer" >
+    select count(*) from jdbank
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update jdbank
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=SMALLINT},
+      </if>
+      <if test="record.bankname != null" >
+        bankname = #{record.bankname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bankcode != null" >
+        bankcode = #{record.bankcode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.banktype != null" >
+        banktype = #{record.banktype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.type != null" >
+        type = #{record.type,jdbcType=SMALLINT},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update jdbank
+    set id = #{record.id,jdbcType=SMALLINT},
+      bankname = #{record.bankname,jdbcType=VARCHAR},
+      bankcode = #{record.bankcode,jdbcType=VARCHAR},
+      banktype = #{record.banktype,jdbcType=VARCHAR},
+      type = #{record.type,jdbcType=SMALLINT}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="entity.query.entites.Jdbank" >
+    update jdbank
+    <set >
+      <if test="bankname != null" >
+        bankname = #{bankname,jdbcType=VARCHAR},
+      </if>
+      <if test="bankcode != null" >
+        bankcode = #{bankcode,jdbcType=VARCHAR},
+      </if>
+      <if test="banktype != null" >
+        banktype = #{banktype,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=SMALLINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=SMALLINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="entity.query.entites.Jdbank" >
+    update jdbank
+    set bankname = #{bankname,jdbcType=VARCHAR},
+      bankcode = #{bankcode,jdbcType=VARCHAR},
+      banktype = #{banktype,jdbcType=VARCHAR},
+      type = #{type,jdbcType=SMALLINT}
+    where id = #{id,jdbcType=SMALLINT}
+  </update>
+</mapper>

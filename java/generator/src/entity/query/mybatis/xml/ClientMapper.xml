@@ -1,0 +1,415 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="entity.query.mybatis.map.ClientMapper" >
+  <resultMap id="BaseResultMap" type="entity.query.entites.Client" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="create_date" property="createDate" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="mobile" property="mobile" jdbcType="VARCHAR" />
+    <result column="id_card_num" property="idCardNum" jdbcType="VARCHAR" />
+    <result column="bank_card_num" property="bankCardNum" jdbcType="VARCHAR" />
+    <result column="amount" property="amount" jdbcType="VARCHAR" />
+    <result column="pass_begin" property="passBegin" jdbcType="VARCHAR" />
+    <result column="pass_end" property="passEnd" jdbcType="VARCHAR" />
+    <result column="url1" property="url1" jdbcType="VARCHAR" />
+    <result column="url2" property="url2" jdbcType="VARCHAR" />
+    <result column="url3" property="url3" jdbcType="VARCHAR" />
+    <result column="url4" property="url4" jdbcType="VARCHAR" />
+    <result column="url5" property="url5" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="VARCHAR" />
+    <result column="handler_id" property="handlerId" jdbcType="SMALLINT" />
+    <result column="handler" property="handler" jdbcType="VARCHAR" />
+    <result column="description" property="description" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, create_date, name, mobile, id_card_num, bank_card_num, amount, pass_begin, pass_end, 
+    url1, url2, url3, url4, url5, status, handler_id, handler, description
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="entity.query.entites.ClientExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from client
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from client
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from client
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="entity.query.entites.ClientExample" >
+    delete from client
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="entity.query.entites.Client" >
+    insert into client (id, create_date, name, 
+      mobile, id_card_num, bank_card_num, 
+      amount, pass_begin, pass_end, 
+      url1, url2, url3, url4, 
+      url5, status, handler_id, 
+      handler, description)
+    values (#{id,jdbcType=INTEGER}, #{createDate,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{mobile,jdbcType=VARCHAR}, #{idCardNum,jdbcType=VARCHAR}, #{bankCardNum,jdbcType=VARCHAR}, 
+      #{amount,jdbcType=VARCHAR}, #{passBegin,jdbcType=VARCHAR}, #{passEnd,jdbcType=VARCHAR}, 
+      #{url1,jdbcType=VARCHAR}, #{url2,jdbcType=VARCHAR}, #{url3,jdbcType=VARCHAR}, #{url4,jdbcType=VARCHAR}, 
+      #{url5,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, #{handlerId,jdbcType=SMALLINT}, 
+      #{handler,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="entity.query.entites.Client" >
+    insert into client
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="createDate != null" >
+        create_date,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="mobile != null" >
+        mobile,
+      </if>
+      <if test="idCardNum != null" >
+        id_card_num,
+      </if>
+      <if test="bankCardNum != null" >
+        bank_card_num,
+      </if>
+      <if test="amount != null" >
+        amount,
+      </if>
+      <if test="passBegin != null" >
+        pass_begin,
+      </if>
+      <if test="passEnd != null" >
+        pass_end,
+      </if>
+      <if test="url1 != null" >
+        url1,
+      </if>
+      <if test="url2 != null" >
+        url2,
+      </if>
+      <if test="url3 != null" >
+        url3,
+      </if>
+      <if test="url4 != null" >
+        url4,
+      </if>
+      <if test="url5 != null" >
+        url5,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="handlerId != null" >
+        handler_id,
+      </if>
+      <if test="handler != null" >
+        handler,
+      </if>
+      <if test="description != null" >
+        description,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="createDate != null" >
+        #{createDate,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null" >
+        #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="idCardNum != null" >
+        #{idCardNum,jdbcType=VARCHAR},
+      </if>
+      <if test="bankCardNum != null" >
+        #{bankCardNum,jdbcType=VARCHAR},
+      </if>
+      <if test="amount != null" >
+        #{amount,jdbcType=VARCHAR},
+      </if>
+      <if test="passBegin != null" >
+        #{passBegin,jdbcType=VARCHAR},
+      </if>
+      <if test="passEnd != null" >
+        #{passEnd,jdbcType=VARCHAR},
+      </if>
+      <if test="url1 != null" >
+        #{url1,jdbcType=VARCHAR},
+      </if>
+      <if test="url2 != null" >
+        #{url2,jdbcType=VARCHAR},
+      </if>
+      <if test="url3 != null" >
+        #{url3,jdbcType=VARCHAR},
+      </if>
+      <if test="url4 != null" >
+        #{url4,jdbcType=VARCHAR},
+      </if>
+      <if test="url5 != null" >
+        #{url5,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="handlerId != null" >
+        #{handlerId,jdbcType=SMALLINT},
+      </if>
+      <if test="handler != null" >
+        #{handler,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="entity.query.entites.ClientExample" resultType="java.lang.Integer" >
+    select count(*) from client
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update client
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.createDate != null" >
+        create_date = #{record.createDate,jdbcType=VARCHAR},
+      </if>
+      <if test="record.name != null" >
+        name = #{record.name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mobile != null" >
+        mobile = #{record.mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="record.idCardNum != null" >
+        id_card_num = #{record.idCardNum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bankCardNum != null" >
+        bank_card_num = #{record.bankCardNum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.amount != null" >
+        amount = #{record.amount,jdbcType=VARCHAR},
+      </if>
+      <if test="record.passBegin != null" >
+        pass_begin = #{record.passBegin,jdbcType=VARCHAR},
+      </if>
+      <if test="record.passEnd != null" >
+        pass_end = #{record.passEnd,jdbcType=VARCHAR},
+      </if>
+      <if test="record.url1 != null" >
+        url1 = #{record.url1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.url2 != null" >
+        url2 = #{record.url2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.url3 != null" >
+        url3 = #{record.url3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.url4 != null" >
+        url4 = #{record.url4,jdbcType=VARCHAR},
+      </if>
+      <if test="record.url5 != null" >
+        url5 = #{record.url5,jdbcType=VARCHAR},
+      </if>
+      <if test="record.status != null" >
+        status = #{record.status,jdbcType=VARCHAR},
+      </if>
+      <if test="record.handlerId != null" >
+        handler_id = #{record.handlerId,jdbcType=SMALLINT},
+      </if>
+      <if test="record.handler != null" >
+        handler = #{record.handler,jdbcType=VARCHAR},
+      </if>
+      <if test="record.description != null" >
+        description = #{record.description,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update client
+    set id = #{record.id,jdbcType=INTEGER},
+      create_date = #{record.createDate,jdbcType=VARCHAR},
+      name = #{record.name,jdbcType=VARCHAR},
+      mobile = #{record.mobile,jdbcType=VARCHAR},
+      id_card_num = #{record.idCardNum,jdbcType=VARCHAR},
+      bank_card_num = #{record.bankCardNum,jdbcType=VARCHAR},
+      amount = #{record.amount,jdbcType=VARCHAR},
+      pass_begin = #{record.passBegin,jdbcType=VARCHAR},
+      pass_end = #{record.passEnd,jdbcType=VARCHAR},
+      url1 = #{record.url1,jdbcType=VARCHAR},
+      url2 = #{record.url2,jdbcType=VARCHAR},
+      url3 = #{record.url3,jdbcType=VARCHAR},
+      url4 = #{record.url4,jdbcType=VARCHAR},
+      url5 = #{record.url5,jdbcType=VARCHAR},
+      status = #{record.status,jdbcType=VARCHAR},
+      handler_id = #{record.handlerId,jdbcType=SMALLINT},
+      handler = #{record.handler,jdbcType=VARCHAR},
+      description = #{record.description,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="entity.query.entites.Client" >
+    update client
+    <set >
+      <if test="createDate != null" >
+        create_date = #{createDate,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null" >
+        mobile = #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="idCardNum != null" >
+        id_card_num = #{idCardNum,jdbcType=VARCHAR},
+      </if>
+      <if test="bankCardNum != null" >
+        bank_card_num = #{bankCardNum,jdbcType=VARCHAR},
+      </if>
+      <if test="amount != null" >
+        amount = #{amount,jdbcType=VARCHAR},
+      </if>
+      <if test="passBegin != null" >
+        pass_begin = #{passBegin,jdbcType=VARCHAR},
+      </if>
+      <if test="passEnd != null" >
+        pass_end = #{passEnd,jdbcType=VARCHAR},
+      </if>
+      <if test="url1 != null" >
+        url1 = #{url1,jdbcType=VARCHAR},
+      </if>
+      <if test="url2 != null" >
+        url2 = #{url2,jdbcType=VARCHAR},
+      </if>
+      <if test="url3 != null" >
+        url3 = #{url3,jdbcType=VARCHAR},
+      </if>
+      <if test="url4 != null" >
+        url4 = #{url4,jdbcType=VARCHAR},
+      </if>
+      <if test="url5 != null" >
+        url5 = #{url5,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="handlerId != null" >
+        handler_id = #{handlerId,jdbcType=SMALLINT},
+      </if>
+      <if test="handler != null" >
+        handler = #{handler,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null" >
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="entity.query.entites.Client" >
+    update client
+    set create_date = #{createDate,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      mobile = #{mobile,jdbcType=VARCHAR},
+      id_card_num = #{idCardNum,jdbcType=VARCHAR},
+      bank_card_num = #{bankCardNum,jdbcType=VARCHAR},
+      amount = #{amount,jdbcType=VARCHAR},
+      pass_begin = #{passBegin,jdbcType=VARCHAR},
+      pass_end = #{passEnd,jdbcType=VARCHAR},
+      url1 = #{url1,jdbcType=VARCHAR},
+      url2 = #{url2,jdbcType=VARCHAR},
+      url3 = #{url3,jdbcType=VARCHAR},
+      url4 = #{url4,jdbcType=VARCHAR},
+      url5 = #{url5,jdbcType=VARCHAR},
+      status = #{status,jdbcType=VARCHAR},
+      handler_id = #{handlerId,jdbcType=SMALLINT},
+      handler = #{handler,jdbcType=VARCHAR},
+      description = #{description,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
